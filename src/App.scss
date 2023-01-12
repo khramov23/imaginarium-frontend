@@ -1,0 +1,6 @@
+.App {
+  @apply bg-amber-300 text-7xl p-20;
+  &-header {
+    @apply bg-green-600;
+  }
+}
