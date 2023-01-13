@@ -13,6 +13,7 @@ module.exports = {
 			white: colors.white,
 			transparent: colors.transparent,
 			red: {
+				thin: "#ffc5c5",
 				light: '#ff4d4d',
 				dark: '#E3000E',
 			},
@@ -22,8 +23,7 @@ module.exports = {
 				600: '#66676e',
 				700: '#39393f',
 				800: '#242529',
-				900: '#191b1f',
-				950: '#101215',
+				900: '#0b0b0b',
 			},
 		},
 		extend: {},

@@ -1,0 +1,7 @@
+.button {
+  @apply px-10 py-2 text-xl rounded-md bg-transparent border-primary border-2 hover:bg-red-thin transition-colors text-primary;
+
+  :global(.dark) & {
+    @apply hover:bg-red-dark hover:border-red-dark hover:text-white;
+  }
+}

@@ -1,0 +1,7 @@
+.switcher {
+  @apply w-12 h-12 rounded-full hover:bg-gray-300 transition-colors flex items-center justify-center cursor-pointer;
+
+  :global(.dark) & {
+    @apply hover:bg-gray-800;
+  }
+}

@@ -1,7 +1,12 @@
 import React from 'react'
+import MainScreen from "@/components/screens/main/MainScreen";
 
 const MainPage = () => {
-	return <div className="h-full bg-grey-500">Main page</div>
+	return (
+		<div className=''>
+			<MainScreen />
+		</div>
+	)
 }
 
 export default MainPage
