@@ -1,0 +1,40 @@
+.main {
+  padding: 350px 0;
+  background: url("../../../assets/main-bg.jpg");
+  @apply relative bg-cover flex items-center justify-center;
+
+  &:before {
+    content: "";
+    @apply absolute top-0 bottom-0 left-0 right-0 bg-white opacity-20;
+
+    :global(.dark) & {
+      @apply bg-black opacity-75;
+    }
+  }
+
+  .info {
+    z-index: 1;
+    text-align: center;
+    @apply bg-light-80 px-10 py-5;
+    :global(.dark) & {
+      @apply bg-dark-40;
+    }
+
+    .title {
+      @apply text-8xl font-bold mb-7;
+
+      :global(.dark) & {
+        @apply text-white;
+      }
+    }
+
+    .subtitle {
+      @apply text-3xl mb-5;
+
+      :global(.dark) & {
+        @apply text-gray-300;
+      }
+    }
+  }
+}
+
