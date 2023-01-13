@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .container {
-  @apply px-20 my-0 mx-auto;
+    @apply px-20 my-0 mx-auto;
+}
+
+section {
+    @apply py-8 dark:bg-gray-800;
 }

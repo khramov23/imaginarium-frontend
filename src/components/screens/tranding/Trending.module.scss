@@ -1,0 +1,42 @@
+.images {
+  @apply flex gap-5;
+
+  .left {
+    @apply flex w-1/2 object-center;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .right {
+    @apply flex flex-col w-1/2 gap-5;
+
+    &Top {
+      @apply h-1/2;
+    }
+
+    &Bottom {
+      @apply flex gap-5 h-1/2;
+    }
+  }
+}
+
+.img {
+  @apply relative;
+
+  &:before {
+    content: "";
+    @apply absolute top-0 bottom-0 left-0 right-0;
+    background: rgb(0,0,0);
+    background: linear-gradient(25deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 80%);
+  }
+
+  img {
+    @apply w-full h-full object-cover;
+  }
+
+  .tag {
+    @apply absolute left-5 bottom-5 text-light-80 text-3xl;
+  }
+}

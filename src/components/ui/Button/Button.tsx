@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 
-import styles from './Button.module.scss'
 
 interface ButtonProps {
 	text: string
@@ -8,7 +7,11 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ text, className }) => {
-	return <button className={styles.button + ` ${className}`}>{text}</button>
+	const classNames =
+		'px-10 py-2 text-xl rounded-md bg-transparent border-primary border-2 hover:bg-red-thin transition-colors text-primary dark:hover:text-white ' +
+		className
+
+	return <button className={classNames}>{text}</button>
 }
 
 export default Button

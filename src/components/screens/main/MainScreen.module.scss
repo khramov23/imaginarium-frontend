@@ -5,10 +5,10 @@
 
   &:before {
     content: "";
-    @apply absolute top-0 bottom-0 left-0 right-0 bg-white opacity-20;
+    @apply absolute top-0 bottom-0 left-0 right-0 bg-white opacity-0;
 
     :global(.dark) & {
-      @apply bg-black opacity-75;
+      @apply bg-black opacity-50;
     }
   }
 
