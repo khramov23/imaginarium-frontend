@@ -15,7 +15,7 @@ const Logo = () => {
 				/>
 			</a>
 			<button
-				className="px-5 py-3 bg-primary hover:bg-red-dark transition-colors"
+				className="px-5 py-3 bg-primary hover:bg-red-dark dark:bg-white transition-colors"
 				onClick={() => themeStore.toggleTheme()}
 			>
 				Change theme
