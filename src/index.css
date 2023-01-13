@@ -10,3 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.container {
+  @apply px-20 my-0 mx-auto;
+}

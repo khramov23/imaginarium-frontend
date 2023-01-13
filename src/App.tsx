@@ -1,12 +1,8 @@
 import React from 'react'
-
-import './App.scss'
-import Navbar from "./components/ui/Navbar/Navbar";
+import Router from "@/router/Router";
 
 function App() {
-	return (
-		<Navbar />
-	)
+	return <Router />
 }
 
 export default App

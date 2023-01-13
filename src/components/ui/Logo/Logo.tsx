@@ -1,25 +1,29 @@
 import { observer } from 'mobx-react-lite'
+import { FC } from 'react'
 
 import logoDark from '@/assets/logo-dark.png'
 import logoLight from '@/assets/logo-light.png'
 
 import themeStore from '@/store/theme.store'
 
-const Logo = () => {
+interface LogoProps {
+	className?: string
+	switchMode?: boolean
+}
+
+const Logo: FC<LogoProps> = ({ className, switchMode }) => {
+
+	const currentTheme = switchMode ? !themeStore.theme: themeStore.theme
+
 	return (
-		<div className="logo">
-			<a href="/">
+		<div className={`w-12 ${className}`}>
+			<a href="/" className='block'>
 				<img
-					src={themeStore.theme === 'light' ? logoLight : logoDark}
+					className='w-full'
+					src={currentTheme === 'light' ? logoLight : logoDark}
 					alt="imaginarium"
 				/>
 			</a>
-			<button
-				className="px-5 py-3 bg-primary hover:bg-red-dark dark:bg-white transition-colors"
-				onClick={() => themeStore.toggleTheme()}
-			>
-				Change theme
-			</button>
 		</div>
 	)
 }
