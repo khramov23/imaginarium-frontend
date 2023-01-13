@@ -1,6 +1,6 @@
 import React from 'react'
 import MainScreen from "@/components/screens/main/MainScreen";
-import TrendingScreen from "@/components/screens/tranding/TrendingScreen";
+import TrendingScreen from "@/components/screens/trending/TrendingScreen";
 
 const MainPage = () => {
 	return (
