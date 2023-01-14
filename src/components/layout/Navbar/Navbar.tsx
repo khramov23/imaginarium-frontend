@@ -1,3 +1,6 @@
+import { CSSProperties, FC } from 'react'
+import { Link } from 'react-router-dom'
+
 import Menu from '@/components/layout/Navbar/Menu/Menu'
 import { MenuItem } from '@/components/layout/Navbar/Menu/Menu.types'
 import Button from '@/components/ui/Button/Button'
@@ -6,7 +9,6 @@ import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
 
 import styles from './Navbar.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import {CSSProperties, FC} from "react";
 
 const items: MenuItem[] = [
 	{ link: RoutePaths.GALLERY, value: 'Gallery' },
@@ -18,14 +20,18 @@ interface NavbarInterface {
 	style?: CSSProperties
 }
 
-const Navbar: FC<NavbarInterface>= ({style}) => {
+const Navbar: FC<NavbarInterface> = ({ style }) => {
 	return (
 		<div className={styles.navbar} style={style}>
-			<Logo />
+			<div style={{width: 200}}>
+				<Logo />
+			</div>
 			<Menu items={items} />
-			<div className='flex gap-10'>
+			<div className="flex gap-10" style={{width: 200}}>
 				<ThemeSwitcher />
-				<Button text="Login" />
+				<Link to={RoutePaths.LOGIN}>
+					<Button text="Login" />
+				</Link>
 			</div>
 		</div>
 	)

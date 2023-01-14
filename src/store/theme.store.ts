@@ -4,7 +4,7 @@ import {makeAutoObservable} from "mobx";
 
 class ThemeStore {
 
-    theme: ThemeType = localStorage.getItem("imaginarium-theme") as ThemeType || "light"
+    theme: ThemeType = localStorage.getItem("imaginarium-theme") as ThemeType || "dark"
 
     constructor() {
         makeAutoObservable(this)

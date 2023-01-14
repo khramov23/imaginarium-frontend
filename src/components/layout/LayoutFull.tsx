@@ -1,23 +1,37 @@
-import React, {FC, ReactNode} from 'react'
+import React, { FC, ReactNode } from 'react'
 
 import Footer from '@/components/layout/Footer/Footer'
 import Navbar from '@/components/layout/Navbar/Navbar'
 
+import backgroundDark from '@/assets/logo-dark.png'
+import backgroundLight from '@/assets/logo-light.png'
+
+import styles from './Layout.module.scss'
+import themeStore from "@/store/theme.store";
+import {observer} from "mobx-react-lite";
+
 interface LayoutFullProps {
-    children: ReactNode
-    className?: string
+	children: ReactNode
 }
 
-const LayoutFull: FC<LayoutFullProps> = ({ children, className }) => {
-    return (
-        <div className='flex flex-col' style={{height: '100vh'}}>
-            <Navbar />
-            <div className={`h-full flex justify-center items-center ${className}`}>
-                {children}
-            </div>
-            <Footer  />
-        </div>
-    )
+const LayoutFull: FC<LayoutFullProps> = ({ children }) => {
+
+	const bg = themeStore.theme === "light" ? backgroundLight : backgroundDark
+
+	return (
+		<div className={styles.outer}>
+			<Navbar />
+			<div
+				className={styles.content}
+				style={{
+					background: `url(${bg})`,
+				}}
+			>
+				{children}
+			</div>
+			<Footer />
+		</div>
+	)
 }
 
-export default LayoutFull
+export default observer(LayoutFull)
