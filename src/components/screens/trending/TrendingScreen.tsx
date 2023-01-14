@@ -6,6 +6,7 @@ import Title from '@/components/ui/Title/Title'
 import { ImageService } from '@/services/imageService'
 
 import styles from './Trending.module.scss'
+import TrendingImage from "@/components/screens/trending/TrendingImage";
 
 const TrendingScreen = () => {
 	const {
@@ -14,8 +15,6 @@ const TrendingScreen = () => {
 	} = useQuery('4 images by popular tags', () =>
 		ImageService.getByPopularTags()
 	)
-
-	console.log(images)
 
 	return (
 		<section className={styles.trending}>
@@ -30,13 +29,7 @@ const TrendingScreen = () => {
 				) : images?.length ? (
 					<div className={styles.images}>
 						{images.map((image) => (
-							<div className={styles.img}>
-								<img
-									src={`${process.env.REACT_APP_API_URL}/images/${image[0].src}`}
-									alt=""
-								/>
-								<h3 className={styles.tag}> {image[0].tag}</h3>
-							</div>
+							<TrendingImage image={image[0]} />
 						))}
 					</div>
 				) : (
