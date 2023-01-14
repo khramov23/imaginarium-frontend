@@ -1,7 +1,7 @@
 .main {
   padding: 350px 0;
   background: url("../../../assets/main-bg.jpg");
-  @apply relative bg-cover flex items-center justify-center;
+  @apply relative bg-cover bg-fixed flex items-center justify-center;
 
   &:before {
     content: "";
@@ -21,7 +21,7 @@
     }
 
     .title {
-      @apply text-8xl font-bold mb-7;
+      @apply text-7xl font-bold mb-7;
 
       :global(.dark) & {
         @apply text-white;
@@ -29,7 +29,7 @@
     }
 
     .subtitle {
-      @apply text-3xl mb-5;
+      @apply text-2xl mb-5;
 
       :global(.dark) & {
         @apply text-gray-300;

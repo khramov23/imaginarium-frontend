@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    @apply dark:bg-gray-800
 }
 
 .container {

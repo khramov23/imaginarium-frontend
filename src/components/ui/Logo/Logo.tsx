@@ -17,7 +17,7 @@ const Logo: FC<LogoProps> = ({ className, switchMode = false }) => {
 	const currentTheme = switchMode ? !themeStore.theme : themeStore.theme
 
 	return (
-		<div className={`w-16 ${className}`}>
+		<div className={`w-12 ${className}`}>
 			<Link to={'/'} className="block">
 				<img
 					className="w-full"

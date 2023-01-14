@@ -18,8 +18,10 @@ const Navbar = () => {
 		<div className={styles.navbar}>
 			<Logo />
 			<Menu items={items} />
-			<ThemeSwitcher />
-			<Button text="Login" />
+			<div className='flex gap-10'>
+				<ThemeSwitcher />
+				<Button text="Login" />
+			</div>
 		</div>
 	)
 }

@@ -11,7 +11,7 @@ const Menu: FC<MenuProps> = ({ items }) => {
         <nav>
             <ul className='list-none flex items-center gap-8'>
                 {items.map(item => (
-                    <MenuItemComponent item={item}/>
+                    <MenuItemComponent item={item} key={item.link}/>
                 ))}
             </ul>
         </nav>
