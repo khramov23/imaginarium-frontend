@@ -2,7 +2,7 @@
 export enum RoutePaths {
     MAIN = '/',
     LOGIN = '/login',
-    REGISTER = '/registration',
+    REGISTRATION = '/registration',
     USERS = '/users',
     FEED = 'feed',
     GALLERY = '/gallery',

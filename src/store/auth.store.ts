@@ -2,8 +2,11 @@ import { makeAutoObservable } from 'mobx'
 
 import { AuthService } from '@/services/authService'
 
-import { ILogin, IRegistration } from '@/types/auth.types'
+import {AuthResponse, ILogin, IRegistration} from '@/types/auth.types'
 import { IUser } from '@/types/user.types'
+import axios from "axios";
+import {$api} from "@/http";
+import {getRefreshEndpoint} from "@/http/api.paths";
 
 class AuthStore {
 	user = {} as IUser
@@ -21,25 +24,27 @@ class AuthStore {
 		this.user = user
 	}
 
-	async login(login: ILogin) {
+	async login(loginDto: ILogin) {
 		try {
-			const response = await AuthService.login(login)
+			const response = await AuthService.login(loginDto)
 			localStorage.setItem('imaginarium-token', response.data.accessToken)
 			this.setAuth(true)
 			this.setUser(response.data.user)
+			console.log(response)
 		} catch (e: any) {
-			console.log(e.response?.data?.message)
+			console.log(e.response?.data)
 		}
 	}
 
-	async register(register: IRegistration) {
+	async registration(registrationDto: IRegistration) {
 		try {
-			const response = await AuthService.register(register)
+			const response = await AuthService.registration(registrationDto)
 			localStorage.setItem('imaginarium-token', response.data.accessToken)
 			this.setAuth(true)
 			this.setUser(response.data.user)
+			console.log(response)
 		} catch (e: any) {
-			console.log(e.response?.data?.message)
+			console.log(e.response?.data)
 		}
 	}
 
@@ -50,7 +55,18 @@ class AuthStore {
 			this.setAuth(false)
 			this.setUser({} as IUser)
 		} catch (e: any) {
-			console.log(e.response?.data?.message)
+			console.log(e.response?.data)
+		}
+	}
+
+	async checkAuth() {
+		try {
+			const response = await $api.get<AuthResponse>(getRefreshEndpoint())
+			localStorage.setItem('imaginarium-token', response.data.accessToken)
+			this.setAuth(true)
+			this.setUser(response.data.user)
+		} catch (e: any) {
+			console.log(e.response?.data)
 		}
 	}
 }

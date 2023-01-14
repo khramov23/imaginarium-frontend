@@ -1,11 +1,17 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const $api = axios.create({
+
+export const $authApi = axios.create({
 	withCredentials: true,
 	baseURL: process.env.REACT_APP_API_URL,
 })
 
-$api.interceptors.request.use((config) => {
+export const $api = axios.create({
+	withCredentials: true,
+	baseURL: process.env.REACT_APP_API_URL,
+})
+
+$authApi.interceptors.request.use((config) => {
 	if (typeof config.headers?.set === 'function')
 		config.headers.set(
 			'Authorization',
@@ -13,5 +19,3 @@ $api.interceptors.request.use((config) => {
 		)
 	return config
 })
-
-export default $api

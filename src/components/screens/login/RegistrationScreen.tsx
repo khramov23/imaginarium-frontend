@@ -6,28 +6,42 @@ import Button from '@/components/ui/Button/Button'
 import TextInput from '@/components/ui/TextInput/TextInput'
 import Title from '@/components/ui/Title/Title'
 
+import authStore from '@/store/auth.store'
+
 import styles from './LoginScreen.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import authStore from "@/store/auth.store";
-import {ILogin} from "@/types/auth.types";
+import { IRegistration } from '@/types/auth.types'
 
-interface LoginInputs extends ILogin {}
+interface RegistrationInputs extends IRegistration {
+	confirmPassword: string
+}
 
-const LoginScreen = () => {
+const RegistrationScreen = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<LoginInputs>()
+	} = useForm<RegistrationInputs>()
 
-	const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-		await authStore.login(data)
+	const onSubmit: SubmitHandler<RegistrationInputs> = async (data) => {
+		await authStore.registration(data)
 	}
 
 	return (
 		<div className={styles.box}>
 			<form action="" onSubmit={handleSubmit(onSubmit)}>
-				<Title title="Login" className={styles.title} />
+				<Title title="Registration" className={styles.title} />
+
+				{errors.username && (
+					<span className="text-primary">This field is required</span>
+				)}
+				<TextInput
+					className="w-full mb-5"
+					placeholder="Username..."
+					{...register('username', {
+						required: true,
+					})}
+				/>
 
 				{errors.email && (
 					<span className="text-primary">This field is required</span>
@@ -52,10 +66,22 @@ const LoginScreen = () => {
 					})}
 				/>
 
-				<Button text="Login" className="block ml-auto mr-auto" />
+				{errors.confirmPassword && (
+					<span className="text-primary">This field is required</span>
+				)}
+				<TextInput
+					className="w-full mb-5"
+					placeholder="Confirm password..."
+					type="password"
+					{...register('confirmPassword', {
+						required: true,
+					})}
+				/>
+
+				<Button text="Registration" className="block ml-auto mr-auto" />
 				<div className="mt-5 dark:text-white text-xl">
 					First time here?{' '}
-					<Link to={RoutePaths.REGISTRATION} className="text-primary">
+					<Link to={RoutePaths.LOGIN} className="text-primary">
 						Create an account!
 					</Link>
 				</div>
@@ -64,4 +90,4 @@ const LoginScreen = () => {
 	)
 }
 
-export default LoginScreen
+export default RegistrationScreen

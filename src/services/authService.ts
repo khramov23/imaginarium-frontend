@@ -1,20 +1,21 @@
 import { AxiosResponse } from 'axios'
 
-import $api from '@/http'
+import {$api, $authApi} from '@/http'
 import { AuthResponse, ILogin, IRegistration } from '@/types/auth.types'
+import {getLoginEndpoint, getLogoutEndpoint, getRegistrationEndpoint} from "@/http/api.paths";
 
 export class AuthService {
-	static async login(login: ILogin): Promise<AxiosResponse<AuthResponse>> {
-		return $api.post<AuthResponse>('/login', login)
+	static async login(loginDto: ILogin): Promise<AxiosResponse<AuthResponse>> {
+		return $api.post<AuthResponse>(getLoginEndpoint(), loginDto)
 	}
 
-	static async register(
-		registration: IRegistration
+	static async registration(
+		registrationDto: IRegistration
 	): Promise<AxiosResponse<AuthResponse>> {
-		return $api.post<AuthResponse>('/registration', registration)
+		return $api.post<AuthResponse>(getRegistrationEndpoint(), registrationDto)
 	}
 
 	static async logout(): Promise<void> {
-		return $api.post('/refresh')
+		return $authApi.post(getLogoutEndpoint())
 	}
 }

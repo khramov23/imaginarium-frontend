@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import { CSSProperties, FC } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -23,11 +24,11 @@ interface NavbarInterface {
 const Navbar: FC<NavbarInterface> = ({ style }) => {
 	return (
 		<div className={styles.navbar} style={style}>
-			<div style={{width: 200}}>
+			<div style={{ width: 200 }}>
 				<Logo />
 			</div>
 			<Menu items={items} />
-			<div className="flex gap-10" style={{width: 200}}>
+			<div className="flex gap-10">
 				<ThemeSwitcher />
 				<Link to={RoutePaths.LOGIN}>
 					<Button text="Login" />
@@ -37,4 +38,4 @@ const Navbar: FC<NavbarInterface> = ({ style }) => {
 	)
 }
 
-export default Navbar
+export default observer(Navbar)
