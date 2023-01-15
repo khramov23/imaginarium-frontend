@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
 import Button from '@/components/ui/Button/Button'
-import TextInput from '@/components/ui/TextInput/TextInput'
+import FormInput from '@/components/ui/FormInput/FormInput'
 import Title from '@/components/ui/Title/Title'
 
 import authStore from '@/store/auth.store'
@@ -35,7 +35,7 @@ const RegistrationScreen = () => {
 				{errors.username && (
 					<span className="text-primary">This field is required</span>
 				)}
-				<TextInput
+				<FormInput
 					className="w-full mb-5"
 					placeholder="Username..."
 					{...register('username', {
@@ -46,7 +46,7 @@ const RegistrationScreen = () => {
 				{errors.email && (
 					<span className="text-primary">This field is required</span>
 				)}
-				<TextInput
+				<FormInput
 					className="w-full mb-5"
 					placeholder="E-mail..."
 					{...register('email', {
@@ -57,7 +57,7 @@ const RegistrationScreen = () => {
 				{errors.password && (
 					<span className="text-primary">This field is required</span>
 				)}
-				<TextInput
+				<FormInput
 					className="w-full mb-5"
 					placeholder="Password..."
 					type="password"
@@ -69,7 +69,7 @@ const RegistrationScreen = () => {
 				{errors.confirmPassword && (
 					<span className="text-primary">This field is required</span>
 				)}
-				<TextInput
+				<FormInput
 					className="w-full mb-5"
 					placeholder="Confirm password..."
 					type="password"

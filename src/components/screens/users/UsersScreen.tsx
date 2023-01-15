@@ -1,25 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 
+import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import Title from '@/components/ui/Title/Title'
 import Users from '@/components/ui/Users/Users'
 
+import { useDebounce } from '@/hooks/useDebounce'
+
 import { UserService } from '@/services/userService'
 
+import styles from './UsersScreen.module.scss'
+
 const UsersScreen = () => {
-	const { data: users, isLoading } = useQuery('fetch all users', () =>
-		UserService.fetchUsers().then((response) => response.data)
-	)
+	const [username, setUsername] = useState<string>('')
+	const query = useDebounce(username, 500)
+
+	console.log(username)
+
+	const {
+		data: users,
+		isLoading,
+		refetch,
+	} = useQuery({
+		queryKey: 'fetch users by username',
+		queryFn: () =>
+			UserService.fetchUsers(username).then((response) => response.data),
+	})
+
+	useEffect(() => {
+		refetch()
+	}, [query])
 
 	return (
-		<div>
-			{isLoading ? (
-				<Title>Loading...</Title>
-			) : users?.length ? (
-				<Users users={users} />
-			) : (
-				<Title>Произошла непридвиденная ошибка</Title>
-			)}
+		<div className={styles.outer}>
+			<SearchInput
+				placeholder="Search by username..."
+				value={username}
+				onChange={(e) => setUsername(e.target.value)}
+			/>
+			<div className={styles.users}>
+				{isLoading ? (
+					<Title>Loading...</Title>
+				) : users?.length ? (
+					<Users users={users} />
+				) : (
+					<Title>Unexpected error occurred!</Title>
+				)}
+			</div>
 		</div>
 	)
 }

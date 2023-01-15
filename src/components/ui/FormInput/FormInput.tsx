@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 
 import { InputType } from '@/types/elements/html-elements.types'
 
-const TextInput = forwardRef<HTMLInputElement, InputType>((props, ref) => {
+const FormInput = forwardRef<HTMLInputElement, InputType>((props, ref) => {
 	return (
 		<input
 			ref={ref}
@@ -15,4 +15,4 @@ const TextInput = forwardRef<HTMLInputElement, InputType>((props, ref) => {
 	)
 })
 
-export default TextInput
+export default FormInput
