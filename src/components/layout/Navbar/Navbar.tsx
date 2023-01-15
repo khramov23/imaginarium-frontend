@@ -40,7 +40,7 @@ const Navbar: FC<NavbarInterface> = ({ style }) => {
 				{
 					authStore.isAuth ? (
 						<>
-							<Avatar src={authStore.user.avatar} />
+							<Avatar user={authStore.user} />
 							<Button text="Logout" onClick={logoutHandler} />
 						</>
 					) : (

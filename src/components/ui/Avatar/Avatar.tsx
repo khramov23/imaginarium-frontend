@@ -3,30 +3,30 @@ import {observer} from 'mobx-react-lite'
 import React, {FC} from 'react'
 
 import styles from './Avatar.module.scss'
-import authStore from "@/store/auth.store";
 import {getAvatar} from "@/http/api.paths";
+import {IUser} from "@/types/user.types";
 
 interface AvatarProps {
+    user: IUser
     size?: number
     className?: string
-    src: string
 }
 
-const Avatar: FC<AvatarProps> = ({size = 50, className, src}) => {
+const Avatar: FC<AvatarProps> = ({size = 50, className, user}) => {
     return (
         <div
             className={cls({
                 [styles.box]: true,
                 className,
-                [styles.noAvatar]: !!authStore.user.avatar
+                [styles.noAvatar]: !!user.avatar
             })}
             style={{width: size, height: size}}
         >
             {
-                authStore.user.avatar ? (
-                    <img src={getAvatar(src)} alt=""/>
+                user.avatar ? (
+                    <img src={getAvatar(user.avatar)} alt=""/>
                 ) : (
-                    authStore.user.username.charAt(0).toUpperCase()
+                    user.username.charAt(0).toUpperCase()
                 )
             }
         </div>

@@ -1,0 +1,13 @@
+.user {
+  @apply flex items-center border-2 border-gray-500  px-5 py-3 rounded-xl gap-5;
+  flex: 0 0 32%;
+
+  .field {
+    @apply block mb-1;
+
+    :global(.dark) & {
+      @apply text-gray-300;
+    }
+  }
+
+}

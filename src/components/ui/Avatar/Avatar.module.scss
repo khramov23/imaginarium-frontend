@@ -1,8 +1,8 @@
 .box {
-  @apply flex justify-center items-center rounded-full text-3xl overflow-hidden;
+  @apply flex bg-gray-300 justify-center items-center rounded-full text-3xl overflow-hidden border-2 border-gray-500;
 
   :global(.dark) & {
-    @apply bg-gray-300 text-gray-900;
+    @apply bg-gray-300 text-gray-900 border-gray-800;
   }
 
   img {
