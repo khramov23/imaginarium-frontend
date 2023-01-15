@@ -2,11 +2,10 @@ import { makeAutoObservable } from 'mobx'
 
 import { AuthService } from '@/services/authService'
 
-import {AuthResponse, ILogin, IRegistration} from '@/types/auth.types'
+import { $api } from '@/http'
+import { getRefreshEndpoint } from '@/http/api.paths'
+import { AuthResponse, ILogin, IRegistration } from '@/types/auth.types'
 import { IUser } from '@/types/user.types'
-import axios from "axios";
-import {$api} from "@/http";
-import {getRefreshEndpoint} from "@/http/api.paths";
 
 class AuthStore {
 	user = {} as IUser
@@ -50,7 +49,7 @@ class AuthStore {
 
 	async logout() {
 		try {
-			const response = await AuthService.logout()
+			await AuthService.logout()
 			localStorage.setItem('imaginarium-token', '')
 			this.setAuth(false)
 			this.setUser({} as IUser)

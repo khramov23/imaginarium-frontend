@@ -1,0 +1,11 @@
+.box {
+  @apply flex justify-center items-center rounded-full text-3xl overflow-hidden;
+
+  :global(.dark) & {
+    @apply bg-gray-300 text-gray-900;
+  }
+
+  img {
+    @apply w-full h-full object-cover;
+  }
+}

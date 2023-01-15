@@ -10,6 +10,8 @@ import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
 
 import styles from './Navbar.module.scss'
 import { RoutePaths } from '@/router/router.types'
+import authStore from "@/store/auth.store";
+import Avatar from "@/components/ui/Avatar/Avatar";
 
 const items: MenuItem[] = [
 	{ link: RoutePaths.GALLERY, value: 'Gallery' },
@@ -22,6 +24,11 @@ interface NavbarInterface {
 }
 
 const Navbar: FC<NavbarInterface> = ({ style }) => {
+
+	const logoutHandler = () => {
+		authStore.logout()
+	}
+
 	return (
 		<div className={styles.navbar} style={style}>
 			<div style={{ width: 200 }}>
@@ -30,9 +37,19 @@ const Navbar: FC<NavbarInterface> = ({ style }) => {
 			<Menu items={items} />
 			<div className="flex gap-10">
 				<ThemeSwitcher />
-				<Link to={RoutePaths.LOGIN}>
-					<Button text="Login" />
-				</Link>
+				{
+					authStore.isAuth ? (
+						<>
+							<Avatar src={authStore.user.avatar} />
+							<Button text="Logout" onClick={logoutHandler} />
+						</>
+					) : (
+						<Link to={RoutePaths.LOGIN}>
+							<Button text="Login" />
+						</Link>
+					)
+				}
+
 			</div>
 		</div>
 	)

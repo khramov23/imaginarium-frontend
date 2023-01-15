@@ -7,4 +7,5 @@ export interface IUser {
 	subscriptions: string[]
 	favorites: string[]
 	own: string[]
+	avatar: string
 }
