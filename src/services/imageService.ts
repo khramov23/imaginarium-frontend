@@ -8,8 +8,7 @@ import { ImageSearchFilter } from '@/types/image-search-filter.type'
 
 export class ImageService {
 	static async getAll() {
-		const response = await $api.get<IImage[]>(`/images`)
-		return response
+		return $api.get<IImage[]>(`/images`)
 	}
 
 	static async getByAttribute(filter: ImageSearchFilter) {
@@ -24,9 +23,10 @@ export class ImageService {
 			response = await $api.get<IImage[]>(`/images/many-by-tag/${query}`)
 		} else if (param === 'color') {
 			response = await $api.get<IImage[]>(`/images/by-color/${query}`)
+		} else {
+			return this.getAll()
 		}
 
-		// @ts-ignore
 		return response
 	}
 
