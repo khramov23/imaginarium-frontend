@@ -1,16 +1,15 @@
-import React, {FC} from 'react';
+import cls from 'classnames'
+import React, { FC } from 'react'
 
-interface TitleProps {
-    title: string,
-    className?: string
+import styles from './Title.module.scss'
+import { HeadingType } from '@/types/elements/html-elements.types'
+
+const Title: FC<HeadingType> = ({ children, className, ...props }) => {
+	return (
+		<h2 className={cls(styles.title, className)} {...props}>
+			{children}
+		</h2>
+	)
 }
 
-const Title: FC<TitleProps> = ({ title, className = '' }) => {
-    return (
-        <h1 className={`text-4xl py-3 dark:text-white ${className}`}>
-            {title}
-        </h1>
-    );
-};
-
-export default Title;
+export default Title

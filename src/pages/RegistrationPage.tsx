@@ -1,13 +1,13 @@
 import React from 'react'
 
-import Layout from '@/components/layout/Layout'
+import LoginLayout from '@/components/layout/layouts/LoginLayout'
 import RegistrationScreen from '@/components/screens/login/RegistrationScreen'
 
 const RegistrationPage = () => {
 	return (
-		<Layout>
+		<LoginLayout>
 			<RegistrationScreen />
-		</Layout>
+		</LoginLayout>
 	)
 }
 

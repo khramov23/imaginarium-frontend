@@ -28,7 +28,7 @@ const LoginScreen = () => {
 	return (
 		<div className={styles.box}>
 			<form action="" onSubmit={handleSubmit(onSubmit)}>
-				<Title title="Login" className={styles.title} />
+				<Title className={styles.title}>Login</Title>
 
 				{errors.email && (
 					<span className="text-primary">This field is required</span>

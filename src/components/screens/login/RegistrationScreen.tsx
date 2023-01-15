@@ -30,7 +30,7 @@ const RegistrationScreen = () => {
 	return (
 		<div className={styles.box}>
 			<form action="" onSubmit={handleSubmit(onSubmit)}>
-				<Title title="Registration" className={styles.title} />
+				<Title className={styles.title}>Registration</Title>
 
 				{errors.username && (
 					<span className="text-primary">This field is required</span>

@@ -1,12 +1,12 @@
 .box {
-  @apply px-10 py-5 rounded-xl bg-light-95 z-10;
-  width: 400px;
+  @apply px-12 py-6 rounded-xl bg-light-95 z-10;
+  width: 420px;
 
   :global(.dark) & {
     @apply bg-dark-80
   }
 
   .title {
-    @apply text-center;
+    @apply text-center mb-5 mt-3;
   }
 }

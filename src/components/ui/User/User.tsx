@@ -15,7 +15,7 @@ const User: FC<UserProps> = ({ user }) => {
 		<div className={styles.user}>
 			<Avatar user={user} size={100} />
 			<div className={styles.userInfo}>
-				<Title title={user.username} />
+				<Title>{user.username}</Title>
 				<span className={styles.field}>
 					{user.subscriptions.length} subscriptions
 				</span>

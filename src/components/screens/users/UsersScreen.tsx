@@ -14,11 +14,11 @@ const UsersScreen = () => {
 	return (
 		<div>
 			{isLoading ? (
-				<Title title="Loading..." />
+				<Title>Loading...</Title>
 			) : users?.length ? (
 				<Users users={users} />
 			) : (
-				<Title title="Произошла непридвиденная ошибка" />
+				<Title>Произошла непридвиденная ошибка</Title>
 			)}
 		</div>
 	)

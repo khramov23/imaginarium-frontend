@@ -1,0 +1,7 @@
+.title {
+  @apply text-4xl;
+
+  :global(.dark) & {
+    @apply text-white;
+  }
+}
