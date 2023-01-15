@@ -1,13 +1,13 @@
 import React from 'react'
 
-import LayoutFull from '@/components/layout/LayoutFull'
+import LoginLayout from '@/components/layout/layouts/LoginLayout'
 import LoginScreen from '@/components/screens/login/LoginScreen'
 
 const LoginPage = () => {
 	return (
-		<LayoutFull>
+		<LoginLayout>
 			<LoginScreen />
-		</LayoutFull>
+		</LoginLayout>
 	)
 }
 

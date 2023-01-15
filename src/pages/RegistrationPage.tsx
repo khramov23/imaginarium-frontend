@@ -1,14 +1,14 @@
 import React from 'react'
 
-import LayoutFull from '@/components/layout/LayoutFull'
+import Layout from '@/components/layout/Layout'
 import RegistrationScreen from '@/components/screens/login/RegistrationScreen'
 
 const RegistrationPage = () => {
-    return (
-        <LayoutFull>
-            <RegistrationScreen />
-        </LayoutFull>
-    )
+	return (
+		<Layout>
+			<RegistrationScreen />
+		</Layout>
+	)
 }
 
 export default RegistrationPage

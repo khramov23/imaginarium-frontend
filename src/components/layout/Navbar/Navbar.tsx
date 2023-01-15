@@ -46,7 +46,7 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 					</>
 				) : (
 					<Link to={RoutePaths.LOGIN}>
-						<Button>Logout</Button>
+						<Button>Login</Button>
 					</Link>
 				)}
 			</div>

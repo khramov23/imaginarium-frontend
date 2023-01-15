@@ -1,14 +1,15 @@
 import React from 'react'
-import LayoutFull from "@/components/layout/LayoutFull";
+
+import Layout from '@/components/layout/Layout'
 
 const Error404Page = () => {
 	return (
-		<LayoutFull>
-			<div className="text-3xl dark:text-white text-center">
+		<Layout center>
+			<div className="text-3xl dark:text-white">
 				Error 404. Page not found!
 			</div>
-		</LayoutFull>
+		</Layout>
 	)
 }
 
-export default Error404Page;
+export default Error404Page
