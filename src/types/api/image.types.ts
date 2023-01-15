@@ -1,7 +1,18 @@
+export enum ColorNames {
+	RED = 'red',
+	BLUE = 'blue',
+	CYAN = 'cyan',
+	BLACK = 'black',
+	PINK = 'pink',
+	GREEN = 'green',
+	YELLOW = 'yellow',
+	WHITE = 'white',
+}
+
 export interface IColors {
 	blue: number
 	cyan: number
-	re: number
+	red: number
 	black: number
 	pink: number
 	green: number

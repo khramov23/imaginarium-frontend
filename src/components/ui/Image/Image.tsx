@@ -15,7 +15,8 @@ interface ImageProps {
 }
 
 const Image: FC<ImageProps> = ({ image }) => {
-	const liked = authStore.user.favorites.includes(image._id)
+	const liked =
+		authStore.isAuth && authStore.user.favorites.includes(image._id)
 
 	return (
 		<Link

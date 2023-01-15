@@ -1,0 +1,15 @@
+.gallery {
+  @apply py-10;
+
+  .title {
+    @apply mb-7;
+  }
+
+  .select {
+    @apply my-5;
+  }
+
+  .search {
+    @apply mb-10;
+  }
+}
