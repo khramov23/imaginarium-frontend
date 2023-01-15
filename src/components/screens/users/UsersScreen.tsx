@@ -7,10 +7,7 @@ import Users from '@/components/ui/Users/Users'
 import { UserService } from '@/services/userService'
 
 const UsersScreen = () => {
-	const {
-		data: users,
-		isLoading,
-	} = useQuery('fetch all users', () =>
+	const { data: users, isLoading } = useQuery('fetch all users', () =>
 		UserService.fetchUsers().then((response) => response.data)
 	)
 
