@@ -6,10 +6,11 @@ import Button from '@/components/ui/Button/Button'
 import TextInput from '@/components/ui/TextInput/TextInput'
 import Title from '@/components/ui/Title/Title'
 
+import authStore from '@/store/auth.store'
+
 import styles from './LoginScreen.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import authStore from "@/store/auth.store";
-import {ILogin} from "@/types/auth.types";
+import { ILogin } from '@/types/api/auth.types'
 
 interface LoginInputs extends ILogin {}
 
@@ -52,7 +53,7 @@ const LoginScreen = () => {
 					})}
 				/>
 
-				<Button text="Login" className="block ml-auto mr-auto" />
+				<Button className="block ml-auto mr-auto">Login</Button>
 				<div className="mt-5 dark:text-white text-xl">
 					First time here?{' '}
 					<Link to={RoutePaths.REGISTRATION} className="text-primary">

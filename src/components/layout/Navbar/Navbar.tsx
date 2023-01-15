@@ -1,6 +1,7 @@
+import cls from 'classnames'
 import { autorun } from 'mobx'
 import { observer } from 'mobx-react-lite'
-import { CSSProperties, FC } from 'react'
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react'
 import { Link } from 'react-router-dom'
 
 import Menu from '@/components/layout/Navbar/Menu/Menu'
@@ -22,17 +23,16 @@ autorun(() => {
 	items = getMenuItems()
 })
 
-interface NavbarInterface {
-	style?: CSSProperties
-}
+interface NavbarInterface
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
-const Navbar: FC<NavbarInterface> = ({ style }) => {
+const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 	const logoutHandler = () => {
 		authStore.logout()
 	}
 
 	return (
-		<div className={styles.navbar} style={style}>
+		<div className={cls(styles.navbar, className)} {...rest}>
 			<div style={{ width: 200 }}>
 				<Logo />
 			</div>
@@ -42,11 +42,11 @@ const Navbar: FC<NavbarInterface> = ({ style }) => {
 				{authStore.isAuth ? (
 					<>
 						<Avatar user={authStore.user} />
-						<Button text="Logout" onClick={logoutHandler} />
+						<Button onClick={logoutHandler}>Logout</Button>
 					</>
 				) : (
 					<Link to={RoutePaths.LOGIN}>
-						<Button text="Login" />
+						<Button>Logout</Button>
 					</Link>
 				)}
 			</div>

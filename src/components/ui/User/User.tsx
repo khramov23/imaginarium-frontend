@@ -4,7 +4,7 @@ import Avatar from '@/components/ui/Avatar/Avatar'
 import Title from '@/components/ui/Title/Title'
 
 import styles from './User.module.scss'
-import { IUser } from '@/types/user.types'
+import { IUser } from '@/types/api/user.types'
 
 interface UserProps {
 	user: IUser

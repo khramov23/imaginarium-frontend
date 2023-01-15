@@ -10,7 +10,7 @@ import authStore from '@/store/auth.store'
 
 import styles from './LoginScreen.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import { IRegistration } from '@/types/auth.types'
+import { IRegistration } from '@/types/api/auth.types'
 
 interface RegistrationInputs extends IRegistration {
 	confirmPassword: string
@@ -78,7 +78,7 @@ const RegistrationScreen = () => {
 					})}
 				/>
 
-				<Button text="Registration" className="block ml-auto mr-auto" />
+				<Button className="block ml-auto mr-auto">Registration</Button>
 				<div className="mt-5 dark:text-white text-xl">
 					First time here?{' '}
 					<Link to={RoutePaths.LOGIN} className="text-primary">

@@ -15,10 +15,9 @@ const MainScreen = () => {
 					Find and download the best photos, designs, and mockups
 				</h2>
 				<Link to={RoutePaths.GALLERY}>
-					<Button
-						text="Search Images"
-						className="border-red-main text-red-main"
-					/>
+					<Button className="border-red-main text-red-main">
+						Search Images
+					</Button>
 				</Link>
 			</div>
 		</div>

@@ -12,3 +12,11 @@
     }
   }
 }
+
+.layout {
+  @apply flex flex-col;
+
+  .layoutContent {
+    @apply flex-grow
+  }
+}

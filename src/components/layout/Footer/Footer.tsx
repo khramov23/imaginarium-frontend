@@ -1,11 +1,17 @@
+import cls from 'classnames'
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react'
+
 import Social from '@/components/layout/Footer/Social'
 import Logo from '@/components/ui/Logo/Logo'
 
 import styles from './Footer.module.scss'
 
-const Footer = () => {
+interface FooterProps
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+const Footer: FC<FooterProps> = ({ className, ...rest }) => {
 	return (
-		<div className={styles.footer}>
+		<div className={cls(styles.footer, className)} {...rest}>
 			<div style={{ width: 150 }}>
 				<Logo />
 			</div>

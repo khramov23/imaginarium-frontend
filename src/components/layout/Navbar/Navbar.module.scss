@@ -1,5 +1,6 @@
 .navbar {
-  @apply  px-10 py-4 shadow-gray-300 shadow-sm flex items-center justify-between;
+  @apply px-10 py-4 shadow-gray-300 shadow-sm flex items-center justify-between;
+  flex: 0 0 auto;
 
   :global(.dark) & {
     @apply bg-gray-900 text-white shadow-black
