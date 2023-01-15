@@ -1,0 +1,30 @@
+.select {
+  @apply w-32 text-xl relative cursor-pointer;
+
+  .value {
+    @apply px-3 py-1;
+    @apply border-2 border-gray-500
+
+  }
+
+  :global(.dark) & {
+    @apply bg-gray-700 text-gray-300;
+  }
+
+
+  .options {
+    @apply absolute bg-gray-700 w-full z-10;
+    display: none;
+    top: 100%;
+  }
+
+  .active {
+    @apply block;
+  }
+
+  .option {
+    @apply px-3 py-2;
+  }
+
+
+}

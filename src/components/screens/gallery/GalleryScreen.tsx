@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
+import Select from '@/components/ui/Select/Select'
 import Title from '@/components/ui/Title/Title'
 
 import { useDebounce } from '@/hooks/useDebounce'
@@ -22,36 +23,29 @@ const GalleryScreen = () => {
 
 	useEffect(() => {
 		refetch()
-	}, [debouncedQuery])
+		console.log(param)
+	}, [debouncedQuery, param])
 
 	const {
 		data: images,
 		isLoading,
 		refetch,
-	} = useQuery(
-		'fetch images',
-		() =>
-			ImageService.getByAttribute({ param, query }).then(
-				(response) => response.data
-			),
-		{
-			refetchIntervalInBackground: false,
-		}
+	} = useQuery('fetch images', () =>
+		ImageService.getByAttribute({ param, query }).then(
+			(response) => response.data
+		)
 	)
 
 	return (
 		<div className={styles.gallery}>
 			<div className="container">
 				<Title className={styles.title}>Gallery</Title>
-				<select
+				<Select
+					param={param}
+					options={optionValues}
+					setParam={setParam}
 					className={styles.select}
-					value={param}
-					onChange={(e) => setParam(e.target.value as optionValue)}
-				>
-					{optionValues.map((optionValue) => (
-						<option value={optionValue}>by {optionValue}</option>
-					))}
-				</select>
+				/>
 				<SearchInput
 					className={styles.search}
 					value={query}
