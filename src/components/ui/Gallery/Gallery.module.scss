@@ -1,0 +1,7 @@
+.gallery {
+  @apply flex justify-between;
+
+  .column {
+    flex-basis: 24%;
+  }
+}

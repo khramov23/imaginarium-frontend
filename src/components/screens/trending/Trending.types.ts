@@ -1,5 +1,5 @@
-import { Image } from '@/types/api/image.types'
+import { IImage } from '@/types/api/image.types'
 
-export type ImageByPopularTag = Image & { tag: string }
+export type ImageByPopularTag = IImage & { tag: string }
 
 export type ImagesByPopularTags = [[ImageByPopularTag]]
