@@ -5,4 +5,12 @@
   :global(.dark) & {
     @apply bg-gray-900 text-white shadow-black
   }
+
+  .searchForm {
+    @apply  flex-grow mr-10;
+
+    .input {
+      @apply w-full py-1;
+    }
+  }
 }
