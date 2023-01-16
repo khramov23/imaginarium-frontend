@@ -8,7 +8,7 @@ import { ColorNames } from '@/types/api/image.types'
 
 interface ColorListProps {
 	colors: ColorNames[]
-	setColor: React.Dispatch<React.SetStateAction<ColorNames | null>>
+	setColor: (color: ColorNames) => void
 	value: ColorNames | null
 }
 

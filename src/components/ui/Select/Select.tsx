@@ -7,7 +7,7 @@ import styles from './Select.module.scss'
 
 interface SelectProps {
 	param: string
-	setParam: any
+	setParam: (param: any) => void
 	options: string[]
 	className?: string
 }

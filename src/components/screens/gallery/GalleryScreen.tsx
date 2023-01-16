@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import React from 'react'
 import { useQuery } from 'react-query'
 
 import ColorList from '@/components/screens/gallery/ColorList'
@@ -10,6 +11,8 @@ import Title from '@/components/ui/Title/Title'
 import { useDebounce } from '@/hooks/useDebounce'
 
 import { ImageService } from '@/services/imageService'
+
+import filterStore from '@/store/filter.store'
 
 import styles from './GalleryScreen.module.scss'
 import { ColorNames } from '@/types/api/image.types'
@@ -28,18 +31,25 @@ const colors: ColorNames[] = [
 ]
 
 const GalleryScreen = () => {
-	const [query, setQuery] = useState<string>('')
-	const [color, setColor] = useState<ColorNames | null>(null)
-	const [param, setParam] = useState<optionValue>('title')
+	// const [query, setQuery] = useState<string>('')
+	// const [color, setColor] = useState<ColorNames | null>(null)
+	// const [param, setParam] = useState<optionValue>('title')
 
-	const debouncedQuery = useDebounce(query, 500)
+	const debouncedQuery = useDebounce(filterStore.query, 500)
 
 	const { data: images, isLoading } = useQuery({
-		queryKey: ['fetch images', param, debouncedQuery, color],
+		queryKey: [
+			'fetch images',
+			filterStore.param,
+			debouncedQuery,
+			filterStore.color,
+		],
 		queryFn: () =>
-			ImageService.getByAttribute({ param, query, color }).then(
-				(response) => response.data
-			),
+			ImageService.getByAttribute({
+				query: filterStore.query,
+				param: filterStore.param,
+				color: filterStore.color,
+			}).then((response) => response.data),
 	})
 
 	return (
@@ -47,22 +57,22 @@ const GalleryScreen = () => {
 			<div className="container">
 				<Title className={styles.title}>Gallery</Title>
 				<Select
-					param={param}
+					param={filterStore.param}
 					options={optionValues}
-					setParam={setParam}
+					setParam={filterStore.setParam.bind(filterStore)}
 					className={styles.select}
 				/>
-				{param === 'color' ? (
+				{filterStore.param === 'color' ? (
 					<ColorList
 						colors={colors}
-						value={color}
-						setColor={setColor}
+						value={filterStore.color}
+						setColor={filterStore.setColor.bind(filterStore)}
 					/>
 				) : (
 					<SearchInput
 						className={styles.search}
-						value={query}
-						onChange={(e) => setQuery(e.target.value)}
+						value={filterStore.query}
+						onChange={(e) => filterStore.setQuery(e.target.value)}
 					/>
 				)}
 				{isLoading ? (
@@ -70,11 +80,11 @@ const GalleryScreen = () => {
 				) : images?.length ? (
 					<Gallery images={images} />
 				) : (
-					<Title>No images with this {param}</Title>
+					<Title>No images with this {filterStore.param}</Title>
 				)}
 			</div>
 		</div>
 	)
 }
 
-export default GalleryScreen
+export default observer(GalleryScreen)
