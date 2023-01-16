@@ -37,6 +37,7 @@ const Select: FC<SelectProps> = ({ options, param, setParam, className }) => {
 					<div
 						className={styles.option}
 						onClick={() => setParam(option)}
+						key={option}
 					>
 						{option}
 					</div>

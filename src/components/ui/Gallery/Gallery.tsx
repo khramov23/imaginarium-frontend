@@ -18,11 +18,11 @@ const Gallery: FC<GalleryProps> = ({ images }) => {
 	return (
 		<div className={styles.gallery}>
 			{columns.map((num, colNum) => (
-				<div className={styles.column}>
+				<div className={styles.column} key={colNum}>
 					{images.map(
 						(image, index) =>
 							index % columnsNum === columns[colNum] && (
-								<Image image={image} />
+								<Image image={image} key={image.src} />
 							)
 					)}
 				</div>

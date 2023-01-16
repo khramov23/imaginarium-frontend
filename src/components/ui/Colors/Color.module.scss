@@ -1,0 +1,47 @@
+.color {
+  @apply px-7 py-1 text-xl border-2 border-transparent inline-block;
+
+  :global(.dark) & {
+    @apply border-2
+  }
+}
+
+.red {
+  @apply bg-primary text-white;
+}
+
+.cyan {
+  @apply text-black bg-cyan;
+}
+
+.green {
+  @apply text-black bg-green;
+}
+
+.pink {
+  @apply text-white bg-pink;
+}
+
+.blue {
+  @apply text-white bg-blue;
+}
+
+.yellow {
+  @apply text-black bg-yellow;
+}
+
+.white {
+  @apply text-black bg-white;
+  border: 1px solid black;
+  :global(.dark) & {
+    border-color: transparent;
+  }
+}
+
+.black {
+  @apply text-white bg-black;
+  :global(.dark) & {
+    border-color: white;
+  }
+}
+

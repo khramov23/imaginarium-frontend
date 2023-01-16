@@ -12,17 +12,17 @@ export class ImageService {
 	}
 
 	static async getByAttribute(filter: ImageSearchFilter) {
-		const { query, param } = filter
+		const { param, color } = filter
+		let query = filter.query
 		let response: AxiosResponse<IImage[]>
 
-		if (!query) return this.getAll()
-		console.log(filter)
-
-		if (param === 'title') {
+		if (param === 'title' && query) {
 			response = await $api.get<IImage[]>(`/images/by-title/${query}`)
-		} else if (param === 'tag') {
+		} else if (param === 'tag' && query) {
 			response = await $api.get<IImage[]>(`/images/many-by-tag/${query}`)
-		} else if (param === 'color') {
+		} else if (param === 'color' && color) {
+			query = color as string
+			console.log(query)
 			response = await $api.get<IImage[]>(`/images/by-color/${query}`)
 		} else {
 			return this.getAll()

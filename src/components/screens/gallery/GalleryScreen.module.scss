@@ -12,4 +12,25 @@
   .search {
     @apply mb-10;
   }
+
+  .colors {
+    @apply flex items-center gap-10 mb-14 ;
+
+    .color {
+      @apply relative rounded-xl cursor-pointer border-4;
+
+      &:before {
+        content: '';
+        @apply absolute top-0 bottom-0 left-0 right-0 bg-transparent hover:bg-dark-20;
+      }
+    }
+
+    .colorActive {
+      @apply border-dark-40;
+
+      :global(.dark) & {
+        @apply border-white;
+      }
+    }
+  }
 }
