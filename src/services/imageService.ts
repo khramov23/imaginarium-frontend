@@ -16,6 +16,7 @@ export class ImageService {
 		let response: AxiosResponse<IImage[]>
 
 		if (!query) return this.getAll()
+		console.log(filter)
 
 		if (param === 'title') {
 			response = await $api.get<IImage[]>(`/images/by-title/${query}`)

@@ -2,9 +2,7 @@
   @apply w-32 text-xl relative cursor-pointer;
 
   .value {
-    @apply px-3 py-1;
-    @apply border-2 border-gray-500
-
+    @apply px-3 py-1 border-2 border-transparent;
   }
 
   :global(.dark) & {
@@ -18,12 +16,16 @@
     top: 100%;
   }
 
-  .active {
+  .activeValue {
+    @apply  border-gray-500
+  }
+
+  .activeDropDown {
     @apply block;
   }
 
   .option {
-    @apply px-3 py-2;
+    @apply px-3 py-2 hover:bg-dark-20;
   }
 
 

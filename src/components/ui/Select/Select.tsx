@@ -27,8 +27,12 @@ const Select: FC<SelectProps> = ({ options, param, setParam, className }) => {
 			className={cls(styles.select, className)}
 			onClick={toggleActive}
 		>
-			<div className={styles.value}>By {param}</div>
-			<div className={cls(styles.options, active && styles.active)}>
+			<div className={cls(styles.value, active && styles.activeValue)}>
+				By {param}
+			</div>
+			<div
+				className={cls(styles.options, active && styles.activeDropDown)}
+			>
 				{options.map((option) => (
 					<div
 						className={styles.option}

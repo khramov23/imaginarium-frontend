@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 
 import Gallery from '@/components/ui/Gallery/Gallery'
@@ -21,20 +21,13 @@ const GalleryScreen = () => {
 
 	const debouncedQuery = useDebounce(query, 500)
 
-	useEffect(() => {
-		refetch()
-		console.log(param)
-	}, [debouncedQuery, param])
-
-	const {
-		data: images,
-		isLoading,
-		refetch,
-	} = useQuery('fetch images', () =>
-		ImageService.getByAttribute({ param, query }).then(
-			(response) => response.data
-		)
-	)
+	const { data: images, isLoading } = useQuery({
+		queryKey: ['fetch images', param, debouncedQuery],
+		queryFn: () =>
+			ImageService.getByAttribute({ param, query }).then(
+				(response) => response.data
+			),
+	})
 
 	return (
 		<div className={styles.gallery}>
@@ -56,7 +49,7 @@ const GalleryScreen = () => {
 				) : images?.length ? (
 					<Gallery images={images} />
 				) : (
-					<Title>Error while fetching images occurred!</Title>
+					<Title>No images with this {param}</Title>
 				)}
 			</div>
 		</div>
