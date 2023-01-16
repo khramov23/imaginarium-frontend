@@ -13,7 +13,7 @@ const Users: FC<UsersProps> = ({ users }) => {
 	return (
 		<div className={styles.users}>
 			{users.map((user) => (
-				<User user={user} />
+				<User user={user} key={user._id} />
 			))}
 		</div>
 	)

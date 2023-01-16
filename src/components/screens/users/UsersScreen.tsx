@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
@@ -15,21 +15,11 @@ const UsersScreen = () => {
 	const [username, setUsername] = useState<string>('')
 	const query = useDebounce(username, 500)
 
-	console.log(username)
-
-	const {
-		data: users,
-		isLoading,
-		refetch,
-	} = useQuery({
-		queryKey: 'fetch users by username',
+	const { data: users, isLoading } = useQuery({
+		queryKey: ['fetch users', query],
 		queryFn: () =>
 			UserService.fetchUsers(username).then((response) => response.data),
 	})
-
-	useEffect(() => {
-		refetch()
-	}, [query])
 
 	return (
 		<div className={styles.outer}>
