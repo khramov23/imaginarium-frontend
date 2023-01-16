@@ -26,7 +26,10 @@ const TrendingScreen = () => {
 				) : images?.length ? (
 					<div className={styles.images}>
 						{images.map((image) => (
-							<TrendingImage image={image[0]} />
+							<TrendingImage
+								image={image[0]}
+								key={image[0].src}
+							/>
 						))}
 					</div>
 				) : (

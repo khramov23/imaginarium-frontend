@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-import styles from './Trending.module.scss'
-import {ImageByPopularTag} from "@/components/screens/trending/Trending.types";
+import { ImageByPopularTag } from '@/components/screens/trending/Trending.types'
 
+import styles from './Trending.module.scss'
 
 interface TrendingImageProps {
 	image: ImageByPopularTag

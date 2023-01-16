@@ -42,11 +42,6 @@ const GalleryScreen = () => {
 			),
 	})
 
-	const switchToColor = (e: any) => {
-		setQuery('')
-		setColor(e)
-	}
-
 	return (
 		<div className={styles.gallery}>
 			<div className="container">
@@ -61,7 +56,7 @@ const GalleryScreen = () => {
 					<ColorList
 						colors={colors}
 						value={color}
-						setColor={switchToColor}
+						setColor={setColor}
 					/>
 				) : (
 					<SearchInput
