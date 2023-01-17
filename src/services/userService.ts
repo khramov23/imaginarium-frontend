@@ -10,4 +10,8 @@ export class UserService {
 			: $authApi.get<IUser[]>('/users')
 		return response
 	}
+
+	static async fetchUserById(id: string): Promise<AxiosResponse<IUser>> {
+		return $authApi.get<IUser>('/users/' + id)
+	}
 }

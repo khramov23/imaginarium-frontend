@@ -1,0 +1,24 @@
+.box {
+  @apply flex;
+
+  img {
+    @apply flex;
+    min-height: 50vh;
+    max-height: 80vh;
+    max-width: 60vw;
+  }
+
+  .arrow {
+    @apply absolute h-full top-0 bg-light-20 hover:opacity-20 transition-opacity  text-7xl text-white flex items-center justify-center cursor-pointer;
+    width: 7%;
+    opacity: 3%;
+  }
+
+  .prev {
+    @apply left-0;
+  }
+
+  .next {
+   @apply right-0;
+  }
+}

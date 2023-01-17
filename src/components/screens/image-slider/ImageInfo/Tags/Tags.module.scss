@@ -1,0 +1,15 @@
+.tags {
+  @apply flex gap-5 mt-5;
+
+  .tagsTitle {
+    @apply text-2xl;
+  }
+
+  .tagList {
+    @apply flex gap-2 items-center flex-wrap;
+
+    .tag {
+      @apply block px-5 py-1 bg-gray-700 text-gray-300 rounded-full transition-colors cursor-pointer hover:bg-gray-600;
+    }
+  }
+}

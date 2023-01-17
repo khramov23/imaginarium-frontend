@@ -10,6 +10,7 @@ interface ColorListProps {
 	colors: ColorNames[]
 	setColor: (color: ColorNames) => void
 	value: ColorNames | null
+	text?: string
 }
 
 const ColorList: FC<ColorListProps> = ({ colors, value, setColor }) => {

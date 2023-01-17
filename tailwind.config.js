@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -41,13 +42,21 @@ module.exports = {
 				800: '#101010',
 				900: '#0b0b0b',
 			},
-			cyan: 'rgba(0, 255, 255, 1)',
-			yellow: 'rgba(255, 255, 0, 1)',
-			pink: 'rgba(255, 0, 255, 1)',
-			green: 'rgba(0, 255, 0, 1)',
-			blue: 'rgba(0, 0, 255, 1)',
+			cyan: 'rgba(38, 208, 187,1)',
+			yellow: 'rgba(226, 226, 68, 1)',
+			pink: 'rgba(217, 80, 217, 1)',
+			green: 'rgba(38, 174, 38, 1)',
+			blue: 'rgba(41, 41, 208, 1)',
 		},
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		plugin(({ addComponents, theme, addUtilities }) => {
+			addComponents({
+				'.username': {
+					color: 'white',
+				},
+			})
+		}),
+	],
 }

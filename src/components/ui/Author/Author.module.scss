@@ -1,0 +1,7 @@
+.author {
+  @apply flex items-center gap-3;
+
+  .username {
+    @apply font-bold text-xl;
+  }
+}

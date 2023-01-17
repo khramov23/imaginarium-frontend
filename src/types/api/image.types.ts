@@ -9,6 +9,12 @@ export enum ColorNames {
 	WHITE = 'white',
 }
 
+export interface ITag {
+	_id: string
+	value: string
+	count: number
+}
+
 export interface IColors {
 	blue: number
 	cyan: number
@@ -29,5 +35,5 @@ export interface IImage {
 	height: number
 	colors: IColors
 	likes: number
-	tags: string[]
+	tags: ITag[]
 }

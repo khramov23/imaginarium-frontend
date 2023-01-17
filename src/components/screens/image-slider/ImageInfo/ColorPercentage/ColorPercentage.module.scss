@@ -1,0 +1,15 @@
+.box {
+  @apply flex gap-5 mt-7;
+
+  .title {
+    @apply text-2xl;
+  }
+
+  .colors {
+    @apply flex gap-2 items-center flex-wrap;
+
+    .color {
+      @apply block px-5 py-1 rounded-full cursor-pointer;
+    }
+  }
+}

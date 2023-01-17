@@ -1,0 +1,16 @@
+.info {
+  @apply relative bg-gray-800 px-10 py-10;
+  width: 450px;
+
+  :global(.dark) & {
+    @apply text-white;
+  }
+
+  .username {
+    @apply mt-4;
+  }
+
+  .buttons {
+    @apply absolute flex gap-5 bottom-10
+  }
+}

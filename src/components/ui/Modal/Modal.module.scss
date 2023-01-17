@@ -1,5 +1,7 @@
 .overlay {
-  @apply fixed top-0 left-0 right-0 bottom-0 bg-dark-80 flex items-center justify-center transition ;
+  @apply fixed top-0 left-0 bg-dark-80 flex items-center justify-center transition ;
+  height: 100vh;
+  width: 100vw;
 
   .content {
     @apply rounded-xl overflow-hidden;
