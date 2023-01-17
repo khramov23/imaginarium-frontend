@@ -1,9 +1,8 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
-import Button from '@/components/ui/Button/Button'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Image from '@/components/ui/Image/Image'
 
@@ -28,6 +27,16 @@ const columns = getColumns(columnsNum)
 
 const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 	const [position, setPosition] = useState<Position>({ page: 0, number: 0 })
+	const lastElement = useRef<HTMLDivElement>(null)
+	const observer = useRef<IntersectionObserver | null>(null)
+
+	useEffect(() => {
+		const callback = async (entries: IntersectionObserverEntry[]) => {
+			if (entries[0].isIntersecting) await fetchNextPage()
+		}
+		observer.current = new IntersectionObserver(callback)
+		observer.current?.observe(lastElement.current as HTMLDivElement)
+	}, [])
 
 	return (
 		<>
@@ -69,11 +78,7 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 				fetchNextPage={fetchNextPage}
 				hasNextPage={hasNextPage}
 			/>
-			{hasNextPage && (
-				<Button onClick={() => fetchNextPage()} className={styles.load}>
-					Load more...
-				</Button>
-			)}
+			<div ref={lastElement} className="h-10 invisible"></div>
 		</>
 	)
 }
