@@ -33,6 +33,7 @@ const ColorPercentage: FC<ColorPercentageProps> = ({ colors }) => {
 						color={color as ColorNames}
 						className={styles.color}
 						onClick={() => onClick(color)}
+						key={color}
 					>
 						{Math.floor(percentage)}%
 					</Color>

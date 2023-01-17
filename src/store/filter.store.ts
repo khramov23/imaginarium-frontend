@@ -7,6 +7,7 @@ class FilterStore {
 	query = ''
 	param: optionValue = 'title'
 	color: ColorNames | null = null
+	limit = 10
 
 	constructor() {
 		makeAutoObservable(this)
@@ -22,6 +23,10 @@ class FilterStore {
 
 	setColor(color: ColorNames) {
 		this.color = color
+	}
+
+	setLimit(limit: number) {
+		this.limit = limit
 	}
 }
 

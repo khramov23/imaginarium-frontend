@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
-import React, { useEffect, useState } from 'react'
-import { useInfiniteQuery, useQuery } from 'react-query'
+import React from 'react'
+import { useInfiniteQuery } from 'react-query'
 
 import ColorList from '@/components/screens/gallery/ColorList'
 import Gallery from '@/components/ui/Gallery/Gallery'
@@ -15,7 +15,7 @@ import { ImageService } from '@/services/imageService'
 import filterStore from '@/store/filter.store'
 
 import styles from './GalleryScreen.module.scss'
-import { ColorNames, IImage } from '@/types/api/image.types'
+import { ColorNames } from '@/types/api/image.types'
 import { optionValue } from '@/types/image-search-filter.type'
 
 const optionValues: optionValue[] = ['title', 'tag', 'color']
@@ -31,8 +31,6 @@ const colors: ColorNames[] = [
 ]
 
 const GalleryScreen = () => {
-	const [page, setPage] = useState(0)
-
 	const debouncedQuery = useDebounce(filterStore.query, 500)
 
 	// const { data: images, isLoading } = useQuery({
@@ -58,13 +56,13 @@ const GalleryScreen = () => {
 		data: lazyImages,
 		isLoading,
 		fetchNextPage,
+		hasNextPage,
 	} = useInfiniteQuery(
 		[
 			'fetch lazy images',
 			filterStore.param,
 			debouncedQuery,
 			filterStore.color,
-			page,
 		],
 		({ pageParam = 0 }) =>
 			ImageService.getByAttribute(
@@ -115,6 +113,7 @@ const GalleryScreen = () => {
 					<Gallery
 						pages={lazyImages?.pages}
 						fetchNextPage={fetchNextPage}
+						hasNextPage={hasNextPage}
 					/>
 				) : (
 					<Title>No images with this {filterStore.param}</Title>
