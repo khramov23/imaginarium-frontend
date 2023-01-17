@@ -1,3 +1,7 @@
 .gallery {
   @apply grid grid-cols-4 gap-5;
 }
+
+.load {
+  @apply block mt-6 mx-auto;
+}

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
-import { useQuery } from 'react-query'
+import React, { useEffect, useState } from 'react'
+import { useInfiniteQuery, useQuery } from 'react-query'
 
 import ColorList from '@/components/screens/gallery/ColorList'
 import Gallery from '@/components/ui/Gallery/Gallery'
@@ -15,7 +15,7 @@ import { ImageService } from '@/services/imageService'
 import filterStore from '@/store/filter.store'
 
 import styles from './GalleryScreen.module.scss'
-import { ColorNames } from '@/types/api/image.types'
+import { ColorNames, IImage } from '@/types/api/image.types'
 import { optionValue } from '@/types/image-search-filter.type'
 
 const optionValues: optionValue[] = ['title', 'tag', 'color']
@@ -31,31 +31,65 @@ const colors: ColorNames[] = [
 ]
 
 const GalleryScreen = () => {
-	// const [query, setQuery] = useState<string>('')
-	// const [color, setColor] = useState<ColorNames | null>(null)
-	// const [param, setParam] = useState<optionValue>('title')
+	const [page, setPage] = useState(0)
 
 	const debouncedQuery = useDebounce(filterStore.query, 500)
 
-	const { data: images, isLoading } = useQuery({
-		queryKey: [
-			'fetch images',
+	// const { data: images, isLoading } = useQuery({
+	// 	queryKey: [
+	// 		'fetch images',
+	// 		filterStore.param,
+	// 		debouncedQuery,
+	// 		filterStore.color,
+	// 		page,
+	// 	],
+	// 	queryFn: () =>
+	// 		ImageService.getByAttribute(
+	// 			{
+	// 				query: filterStore.query,
+	// 				param: filterStore.param,
+	// 				color: filterStore.color,
+	// 			},
+	// 			page
+	// 		).then((response) => response.data),
+	// })
+
+	const {
+		data: lazyImages,
+		isLoading,
+		fetchNextPage,
+	} = useInfiniteQuery(
+		[
+			'fetch lazy images',
 			filterStore.param,
 			debouncedQuery,
 			filterStore.color,
+			page,
 		],
-		queryFn: () =>
-			ImageService.getByAttribute({
-				query: filterStore.query,
-				param: filterStore.param,
-				color: filterStore.color,
-			}).then((response) => response.data),
-	})
+		({ pageParam = 0 }) =>
+			ImageService.getByAttribute(
+				{
+					query: filterStore.query,
+					param: filterStore.param,
+					color: filterStore.color,
+				},
+				pageParam
+			).then((response) => response.data),
+		{
+			getNextPageParam: (lastPage, allPages) => {
+				if (lastPage.length === 0) return undefined
+				return allPages.length
+			},
+		}
+	)
+	console.log(lazyImages)
 
 	return (
 		<div className={styles.gallery}>
 			<div className="container">
-				<Title className={styles.title}>Gallery</Title>
+				<Title onClick={() => fetchNextPage()} className={styles.title}>
+					Gallery
+				</Title>
 				<Select
 					param={filterStore.param}
 					options={optionValues}
@@ -77,8 +111,11 @@ const GalleryScreen = () => {
 				)}
 				{isLoading ? (
 					<Title>Loading images...</Title>
-				) : images?.length ? (
-					<Gallery images={images} />
+				) : lazyImages?.pages?.length && lazyImages.pages[0].length ? (
+					<Gallery
+						pages={lazyImages?.pages}
+						fetchNextPage={fetchNextPage}
+					/>
 				) : (
 					<Title>No images with this {filterStore.param}</Title>
 				)}

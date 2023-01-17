@@ -1,7 +1,7 @@
 .box {
   @apply flex;
 
-  img {
+  > img {
     @apply flex;
     min-height: 50vh;
     max-height: 80vh;

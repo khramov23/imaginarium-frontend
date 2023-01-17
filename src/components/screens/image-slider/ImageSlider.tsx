@@ -4,6 +4,7 @@ import React, { Dispatch, FC } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 import ImageInfo from '@/components/screens/image-slider/ImageInfo/ImageInfo'
+import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Modal from '@/components/ui/Modal/Modal'
 
 import modalStore from '@/store/modal.store'
@@ -12,21 +13,19 @@ import styles from './ImageSlider.module.scss'
 import { IImage } from '@/types/api/image.types'
 
 interface ImageSliderProps {
-	images: IImage[]
-	number: number
-	setNumber: Dispatch<React.SetStateAction<number>>
+	pages: IImage[][]
+	position: Position
+	setPosition: Dispatch<React.SetStateAction<Position>>
 }
 
-const ImageSlider: FC<ImageSliderProps> = ({ images, number, setNumber }) => {
-	const incrementNumber = () => {
-		if (number === images.length - 1) setNumber(0)
-		else setNumber((prev) => ++prev)
-	}
+const ImageSlider: FC<ImageSliderProps> = ({
+	pages,
+	position,
+	setPosition,
+}) => {
+	const incrementNumber = () => {}
 
-	const decrementNumber = () => {
-		if (number === 0) setNumber(images.length - 1)
-		else setNumber((prev) => --prev)
-	}
+	const decrementNumber = () => {}
 
 	const onModalClose = () => {
 		modalStore.setImageSliderModal(false)
@@ -40,7 +39,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ images, number, setNumber }) => {
 			>
 				<img
 					src={`${process.env.REACT_APP_API_URL}/images/${images[number].src}`}
-					alt={images[number].title}
+					alt={images[position.number].title}
 					onClick={incrementNumber}
 				/>
 				<ImageInfo image={images[number]} />
