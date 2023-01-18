@@ -78,7 +78,9 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 				fetchNextPage={fetchNextPage}
 				hasNextPage={hasNextPage}
 			/>
-			<div ref={lastElement} className="h-10 invisible"></div>
+			{hasNextPage && (
+				<div ref={lastElement} className="h-10 invisible"></div>
+			)}
 		</>
 	)
 }

@@ -1,16 +1,14 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { useInfiniteQuery } from 'react-query'
 
 import ColorList from '@/components/screens/gallery/ColorList'
+import { useImages } from '@/components/screens/gallery/useImages'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import Select from '@/components/ui/Select/Select'
 import Title from '@/components/ui/Title/Title'
 
 import { useDebounce } from '@/hooks/useDebounce'
-
-import { ImageService } from '@/services/imageService'
 
 import filterStore from '@/store/filter.store'
 
@@ -33,54 +31,12 @@ const colors: ColorNames[] = [
 const GalleryScreen = () => {
 	const debouncedQuery = useDebounce(filterStore.query, 500)
 
-	// const { data: images, isLoading } = useQuery({
-	// 	queryKey: [
-	// 		'fetch images',
-	// 		filterStore.param,
-	// 		debouncedQuery,
-	// 		filterStore.color,
-	// 		page,
-	// 	],
-	// 	queryFn: () =>
-	// 		ImageService.getByAttribute(
-	// 			{
-	// 				query: filterStore.query,
-	// 				param: filterStore.param,
-	// 				color: filterStore.color,
-	// 			},
-	// 			page
-	// 		).then((response) => response.data),
-	// })
-
 	const {
 		data: lazyImages,
 		isLoading,
 		fetchNextPage,
 		hasNextPage,
-	} = useInfiniteQuery(
-		[
-			'fetch lazy images',
-			filterStore.param,
-			debouncedQuery,
-			filterStore.color,
-		],
-		({ pageParam = 0 }) =>
-			ImageService.getByAttribute(
-				{
-					query: filterStore.query,
-					param: filterStore.param,
-					color: filterStore.color,
-				},
-				pageParam
-			).then((response) => response.data),
-		{
-			getNextPageParam: (lastPage, allPages) => {
-				if (lastPage.length === 0) return undefined
-				return allPages.length
-			},
-		}
-	)
-	console.log(lazyImages)
+	} = useImages(debouncedQuery)
 
 	return (
 		<div className={styles.gallery}>
