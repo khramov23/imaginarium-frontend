@@ -1,4 +1,5 @@
 import cls from 'classnames'
+import { observer } from 'mobx-react-lite'
 import React, { FC, MouseEventHandler } from 'react'
 import { FaHeart } from 'react-icons/fa'
 
@@ -29,4 +30,4 @@ const Image: FC<ImageProps> = ({ image, onClick }) => {
 	)
 }
 
-export default Image
+export default observer(Image)

@@ -23,7 +23,12 @@ const Modal: FC<ModalProps> = ({ onClose, children, visible }) => {
 	return (
 		<Portal>
 			<div className={styles.overlay} onClick={onClose}>
-				<div className={styles.content}>{children}</div>
+				<div
+					className={styles.content}
+					onClick={(e) => e.stopPropagation()}
+				>
+					{children}
+				</div>
 			</div>
 		</Portal>
 	)

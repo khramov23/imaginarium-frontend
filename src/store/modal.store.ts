@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 
 class ModalStore {
 	imageSliderModal = false
+	authModal = false
 
 	constructor() {
 		makeAutoObservable(this)
@@ -9,6 +10,10 @@ class ModalStore {
 
 	setImageSliderModal(flag: boolean) {
 		this.imageSliderModal = flag
+	}
+
+	setAuthModal(flag: boolean) {
+		this.authModal = flag
 	}
 }
 

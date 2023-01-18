@@ -81,10 +81,7 @@ const ImageSlider: FC<ImageSliderProps> = ({
 
 	return (
 		<Modal onClose={onModalClose} visible={modalStore.imageSliderModal}>
-			<div
-				className={styles.box}
-				onClick={(event) => event.stopPropagation()}
-			>
+			<div className={styles.box}>
 				<img
 					src={`${process.env.REACT_APP_API_URL}/images/${img.src}`}
 					alt={img.title}

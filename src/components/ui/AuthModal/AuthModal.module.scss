@@ -1,0 +1,7 @@
+.content {
+  @apply bg-gray-800 px-10 py-7;
+
+  .buttons {
+    @apply mt-5 flex gap-5;
+  }
+}

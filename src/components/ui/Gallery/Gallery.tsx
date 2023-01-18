@@ -3,11 +3,13 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
+import AuthModal from '@/components/ui/AuthModal/AuthModal'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Image from '@/components/ui/Image/Image'
 
 import { getColumns } from '@/utils/getColumns'
 
+import authStore from '@/store/auth.store'
 import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
 
@@ -28,7 +30,7 @@ const columns = getColumns(columnsNum)
 const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 	const [position, setPosition] = useState<Position>({ page: 0, number: 0 })
 	const lastElement = useRef<HTMLDivElement>(null)
-	const observer = useRef<IntersectionObserver | null>(null)
+	const observer = useRef<IntersectionObserver>()
 
 	useEffect(() => {
 		const callback = async (entries: IntersectionObserverEntry[]) => {
@@ -37,6 +39,11 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 		observer.current = new IntersectionObserver(callback)
 		observer.current?.observe(lastElement.current as HTMLDivElement)
 	}, [])
+
+	const onImageOpen = () => {
+		if (authStore.isAuth) modalStore.setImageSliderModal(true)
+		else modalStore.setAuthModal(true)
+	}
 
 	return (
 		<>
@@ -55,9 +62,7 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 												image={image}
 												key={image.src}
 												onClick={() => {
-													modalStore.setImageSliderModal(
-														true
-													)
+													onImageOpen()
 													setPosition({
 														page: pageIndex,
 														number: numberIndex,
@@ -71,16 +76,19 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 					</div>
 				))}
 			</div>
-			<ImageSlider
-				pages={pages}
-				position={position}
-				setPosition={setPosition}
-				fetchNextPage={fetchNextPage}
-				hasNextPage={hasNextPage}
-			/>
-			{hasNextPage && (
-				<div ref={lastElement} className="h-10 invisible"></div>
+			{authStore.isAuth ? (
+				<ImageSlider
+					pages={pages}
+					position={position}
+					setPosition={setPosition}
+					fetchNextPage={fetchNextPage}
+					hasNextPage={hasNextPage}
+				/>
+			) : (
+				<AuthModal />
 			)}
+
+			<div ref={lastElement} className="h-10 invisible"></div>
 		</>
 	)
 }
