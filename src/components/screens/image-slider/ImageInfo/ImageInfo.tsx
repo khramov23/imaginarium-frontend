@@ -1,3 +1,5 @@
+import cls from 'classnames'
+import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 import { useQuery } from 'react-query'
 
@@ -7,9 +9,14 @@ import Author from '@/components/ui/Author/Author'
 import Button from '@/components/ui/Button/Button'
 import Title from '@/components/ui/Title/Title'
 
+import { useLikes } from '@/hooks/query-hooks/useLikes'
+
+import { ImageService } from '@/services/imageService'
 import { UserService } from '@/services/userService'
 
 import { capitalizedText } from '@/utils/capitalizedText'
+
+import authStore from '@/store/auth.store'
 
 import styles from './ImageInfo.module.scss'
 import { IImage } from '@/types/api/image.types'
@@ -27,6 +34,21 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 			),
 	})
 
+	const like = useLikes()
+
+	const liked =
+		authStore.isAuth && authStore.user.favorites.includes(image._id)
+
+	const { data: img, isLoading: likesLoading } = useQuery(
+		['fetch image by id', liked],
+		() => {
+			console.log('update likes')
+			return ImageService.getById(image._id).then(
+				(response) => response.data
+			)
+		}
+	)
+
 	return (
 		<div className={styles.info}>
 			<Title>{capitalizedText(image.title)}</Title>
@@ -42,11 +64,16 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 			<Tags tags={image.tags} />
 			<ColorPercentage colors={image.colors} />
 			<div className={styles.buttons}>
-				<Button>Like {image.likes}</Button>
+				<Button
+					className={cls(liked && styles.active)}
+					onClick={() => like(image._id)}
+				>
+					Like {likesLoading ? image.likes : img?.likes}
+				</Button>
 				<Button>Download</Button>
 			</div>
 		</div>
 	)
 }
 
-export default ImageInfo
+export default observer(ImageInfo)

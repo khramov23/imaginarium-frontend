@@ -11,6 +11,10 @@
   }
 
   .buttons {
-    @apply absolute flex gap-5 bottom-10
+    @apply absolute flex gap-5 bottom-10;
+
+    .active {
+      @apply bg-primary text-white;
+    }
   }
 }

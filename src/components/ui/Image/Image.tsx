@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite'
 import React, { FC, MouseEventHandler } from 'react'
 import { FaHeart } from 'react-icons/fa'
 
+import { useLikes } from '@/hooks/query-hooks/useLikes'
+
 import authStore from '@/store/auth.store'
 
 import styles from './Image.module.scss'
@@ -15,14 +17,26 @@ interface ImageProps {
 }
 
 const Image: FC<ImageProps> = ({ image, onClick }) => {
+	const like = useLikes()
+
 	const liked =
 		authStore.isAuth && authStore.user.favorites.includes(image._id)
+
+	const likeImage = async (
+		e: React.MouseEvent<HTMLDivElement, MouseEvent>
+	) => {
+		e.stopPropagation()
+		like(image._id)
+	}
 
 	return (
 		<div className={styles.outer} onClick={onClick}>
 			<img src={getImage(image.src)} alt="" />
 			<div className={styles.background}>
-				<div className={cls(styles.icons, liked && styles.liked)}>
+				<div
+					className={cls(styles.icons, liked && styles.liked)}
+					onClick={likeImage}
+				>
 					<FaHeart />
 				</div>
 			</div>

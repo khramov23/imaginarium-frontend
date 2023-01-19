@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 
 import { AuthService } from '@/services/authService'
+import { UserService } from '@/services/userService'
 
 import { $api } from '@/http'
 import { getRefreshEndpoint } from '@/http/api.paths'
@@ -21,6 +22,15 @@ class AuthStore {
 
 	setUser(user: IUser) {
 		this.user = user
+	}
+
+	async updateMe() {
+		try {
+			const response = await UserService.fetchUserById(this.user._id)
+			this.setUser(response.data)
+		} catch (e: any) {
+			console.log(e.response?.data)
+		}
 	}
 
 	async login(loginDto: ILogin) {

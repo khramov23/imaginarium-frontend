@@ -4,7 +4,7 @@ import { ImagesByPopularTags } from '@/components/screens/trending/Trending.type
 
 import filterStore from '@/store/filter.store'
 
-import { $api } from '@/http'
+import { $api, $authApi } from '@/http'
 import { IImage } from '@/types/api/image.types'
 import { ImageSearchFilter } from '@/types/image-search-filter.type'
 
@@ -13,6 +13,10 @@ export class ImageService {
 		return $api.get<IImage[]>(
 			`/images?limit=${filterStore.limit}&page=${page}`
 		)
+	}
+
+	static async getById(id: string): Promise<AxiosResponse<IImage>> {
+		return $authApi.get<IImage>(`/images/by-id/${id}`)
 	}
 
 	static async getByAttribute(filter: ImageSearchFilter, page: number) {
@@ -44,5 +48,9 @@ export class ImageService {
 	static async getByPopularTags() {
 		const response = await $api.get<ImagesByPopularTags>(`/images/by-tags`)
 		return response.data
+	}
+
+	static async like(id: string): Promise<AxiosResponse<IImage>> {
+		return $authApi.post<IImage>(`/images/likes/${id}`)
 	}
 }
