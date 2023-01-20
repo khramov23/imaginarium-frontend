@@ -14,4 +14,24 @@ export class UserService {
 	static async fetchUserById(id: string): Promise<AxiosResponse<IUser>> {
 		return $authApi.get<IUser>('/users/' + id)
 	}
+
+	static fetchUsersInfo(): Promise<AxiosResponse<IUser[]>> {
+		return $authApi.get<IUser[]>('/users/info/')
+	}
+
+	static async fetchUserInfoById(id: string): Promise<AxiosResponse<IUser>> {
+		return $authApi.get<IUser>('/users/info/' + id)
+	}
+
+	static async getSubscriptions(id: string): Promise<AxiosResponse<IUser[]>> {
+		return $authApi.get<IUser[]>(`/users/subscriptions/${id}`)
+	}
+
+	static async getFollowers(id: string): Promise<AxiosResponse<IUser[]>> {
+		return $authApi.get<IUser[]>(`/users/followers/${id}`)
+	}
+
+	static subscribe(id: string): Promise<AxiosResponse<IUser[]>> {
+		return $authApi.post<IUser[]>(`/users/subscribe/${id}`)
+	}
 }

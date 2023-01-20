@@ -1,0 +1,20 @@
+.tabs {
+  @apply flex items-center justify-around text-2xl mt-10 ;
+
+  :global(.dark) & {
+    @apply text-white;
+  }
+
+  .tab {
+    @apply border-b-4 border-transparent hover:border-primary cursor-pointer pb-2 px-10 transition-colors;
+  }
+
+  .active {
+    @apply border-primary;
+  }
+
+}
+
+.area {
+  @apply mt-5;
+}

@@ -1,11 +1,13 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
 import AuthModal from '@/components/ui/AuthModal/AuthModal'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Image from '@/components/ui/Image/Image'
+
+import { useObserver } from '@/hooks/useObserver'
 
 import { getColumns } from '@/utils/getColumns'
 
@@ -21,24 +23,22 @@ interface GalleryProps {
 	fetchNextPage: (
 		options?: FetchNextPageOptions | undefined
 	) => Promise<InfiniteQueryObserverResult<IImage[], unknown>>
-	hasNextPage: boolean | undefined
 }
 
 const columnsNum = 4
 const columns = getColumns(columnsNum)
 
-const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
+const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage }) => {
 	const [position, setPosition] = useState<Position>({ page: 0, number: 0 })
-	const lastElement = useRef<HTMLDivElement>(null)
-	const observer = useRef<IntersectionObserver>()
 
-	useEffect(() => {
-		const callback = async (entries: IntersectionObserverEntry[]) => {
-			if (entries[0].isIntersecting) await fetchNextPage()
+	const { lastElement } = useObserver(
+		async (entries: IntersectionObserverEntry[]) => {
+			if (entries[0].isIntersecting) {
+				console.log(pages)
+				await fetchNextPage()
+			}
 		}
-		observer.current = new IntersectionObserver(callback)
-		observer.current?.observe(lastElement.current as HTMLDivElement)
-	}, [])
+	)
 
 	const onImageOpen = () => {
 		if (authStore.isAuth) modalStore.setImageSliderModal(true)
@@ -82,13 +82,13 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage, hasNextPage }) => {
 					position={position}
 					setPosition={setPosition}
 					fetchNextPage={fetchNextPage}
-					hasNextPage={hasNextPage}
 				/>
 			) : (
 				<AuthModal />
 			)}
 
 			<div ref={lastElement} className="h-10 invisible"></div>
+			{/*<Button onClick={() => fetchNextPage()}>Next...</Button>*/}
 		</>
 	)
 }

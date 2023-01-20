@@ -4,7 +4,7 @@ import { ImageService } from '@/services/imageService'
 
 import filterStore from '@/store/filter.store'
 
-export const useImages = (query: string) => {
+export const useSearchedImages = (query: string) => {
 	return useInfiniteQuery(
 		['fetch lazy images', filterStore.param, query, filterStore.color],
 		({ pageParam = 0 }) =>

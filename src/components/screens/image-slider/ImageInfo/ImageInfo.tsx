@@ -9,7 +9,7 @@ import Author from '@/components/ui/Author/Author'
 import Button from '@/components/ui/Button/Button'
 import Title from '@/components/ui/Title/Title'
 
-import { useLikes } from '@/hooks/query-hooks/useLikes'
+import { useLikes } from '@/hooks/mutations/useLikes'
 
 import { ImageService } from '@/services/imageService'
 import { UserService } from '@/services/userService'
@@ -70,7 +70,6 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 				>
 					Like {likesLoading ? image.likes : img?.likes}
 				</Button>
-				<Button>Download</Button>
 			</div>
 		</div>
 	)

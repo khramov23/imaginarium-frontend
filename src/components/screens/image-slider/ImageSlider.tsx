@@ -22,7 +22,6 @@ interface ImageSliderProps {
 	fetchNextPage: (
 		options?: FetchNextPageOptions | undefined
 	) => Promise<InfiniteQueryObserverResult<IImage[], unknown>>
-	hasNextPage: boolean | undefined
 }
 
 const ImageSlider: FC<ImageSliderProps> = ({

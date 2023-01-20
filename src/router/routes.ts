@@ -2,6 +2,7 @@ import GalleryPage from '@/pages/GalleryPage'
 import LoginPage from '@/pages/LoginPage'
 import MainPage from '@/pages/MainPage'
 import RegistrationPage from '@/pages/RegistrationPage'
+import UserInfoPage from '@/pages/UserInfoPage'
 import UsersPage from '@/pages/UsersPage'
 import { Route, RoutePaths } from '@/router/router.types'
 
@@ -11,4 +12,5 @@ export const routes: Route[] = [
 	{ element: RegistrationPage, path: RoutePaths.REGISTRATION },
 	{ element: UsersPage, path: RoutePaths.USERS },
 	{ element: GalleryPage, path: RoutePaths.GALLERY },
+	{ element: UserInfoPage, path: RoutePaths.USER_INFO },
 ]

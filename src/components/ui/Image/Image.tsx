@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import React, { FC, MouseEventHandler } from 'react'
 import { FaHeart } from 'react-icons/fa'
 
-import { useLikes } from '@/hooks/query-hooks/useLikes'
+import { useLikes } from '@/hooks/mutations/useLikes'
 
 import authStore from '@/store/auth.store'
 
@@ -25,8 +25,10 @@ const Image: FC<ImageProps> = ({ image, onClick }) => {
 	const likeImage = async (
 		e: React.MouseEvent<HTMLDivElement, MouseEvent>
 	) => {
-		e.stopPropagation()
-		like(image._id)
+		if (authStore.isAuth) {
+			e.stopPropagation()
+			like(image._id)
+		}
 	}
 
 	return (

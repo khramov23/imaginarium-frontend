@@ -65,7 +65,9 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 				<ThemeSwitcher />
 				{authStore.isAuth ? (
 					<>
-						<Avatar user={authStore.user} />
+						<Link to={`${RoutePaths.USERS}/${authStore.user._id}`}>
+							<Avatar user={authStore.user} />
+						</Link>
 						<Button onClick={logoutHandler}>Logout</Button>
 					</>
 				) : (

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React from 'react'
 
 import ColorList from '@/components/screens/gallery/ColorList'
-import { useImages } from '@/components/screens/gallery/useImages'
+import { useSearchedImages } from '@/components/screens/gallery/useImages'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import Select from '@/components/ui/Select/Select'
@@ -35,8 +35,7 @@ const GalleryScreen = () => {
 		data: lazyImages,
 		isLoading,
 		fetchNextPage,
-		hasNextPage,
-	} = useImages(debouncedQuery)
+	} = useSearchedImages(debouncedQuery)
 
 	return (
 		<div className={styles.gallery}>
@@ -69,7 +68,6 @@ const GalleryScreen = () => {
 					<Gallery
 						pages={lazyImages?.pages}
 						fetchNextPage={fetchNextPage}
-						hasNextPage={hasNextPage}
 					/>
 				) : (
 					<Title>No images with this {filterStore.param}</Title>

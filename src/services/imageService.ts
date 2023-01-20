@@ -19,7 +19,10 @@ export class ImageService {
 		return $authApi.get<IImage>(`/images/by-id/${id}`)
 	}
 
-	static async getByAttribute(filter: ImageSearchFilter, page: number) {
+	static async getByAttribute(
+		filter: ImageSearchFilter,
+		page: number
+	): Promise<AxiosResponse<IImage[]>> {
 		const { param, color } = filter
 		let query = filter.query
 		let response: AxiosResponse<IImage[]>
@@ -48,6 +51,24 @@ export class ImageService {
 	static async getByPopularTags() {
 		const response = await $api.get<ImagesByPopularTags>(`/images/by-tags`)
 		return response.data
+	}
+
+	static async getFavorites(
+		userId: string,
+		page: number
+	): Promise<AxiosResponse<IImage[]>> {
+		return $authApi.get<IImage[]>(
+			`/images/favorites/${userId}?limit=${filterStore.limit}&page=${page}`
+		)
+	}
+
+	static async getOwn(
+		userId: string,
+		page: number
+	): Promise<AxiosResponse<IImage[]>> {
+		return $authApi.get<IImage[]>(
+			`/images/own/${userId}?limit=${filterStore.limit}&page=${page}`
+		)
 	}
 
 	static async like(id: string): Promise<AxiosResponse<IImage>> {
