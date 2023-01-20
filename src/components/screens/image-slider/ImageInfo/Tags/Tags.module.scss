@@ -9,7 +9,11 @@
     @apply flex gap-2 items-center flex-wrap;
 
     .tag {
-      @apply block px-5 py-1 bg-gray-700 text-gray-300 rounded-full transition-colors cursor-pointer hover:bg-gray-600;
+      @apply block px-5 py-1 bg-gray-300 rounded-full transition-colors cursor-pointer hover:bg-gray-500  ;
+
+      :global(.dark) & {
+        @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
+      }
     }
   }
 }

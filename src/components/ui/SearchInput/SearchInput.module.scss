@@ -1,8 +1,8 @@
 .input {
-  @apply w-full px-7 py-3 text-xl rounded-3xl border-2 border-gray-500;
+  @apply w-full px-7 py-3 text-xl rounded-3xl border-2 border-transparent bg-gray-300;
 
   :global(.dark) & {
-    @apply bg-gray-700 text-white border-gray-700;
+    @apply bg-gray-700 text-white;
 
     &:focus {
       @apply border-gray-500 outline-none;

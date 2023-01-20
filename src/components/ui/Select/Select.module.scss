@@ -1,5 +1,5 @@
 .select {
-  @apply w-32 text-xl relative cursor-pointer;
+  @apply w-32 text-xl relative cursor-pointer bg-gray-300;
 
   .value {
     @apply px-3 py-1 border-2 border-transparent;
@@ -11,13 +11,17 @@
 
 
   .options {
-    @apply absolute bg-gray-700 w-full z-10;
+    @apply absolute bg-gray-700 w-full z-10 bg-gray-300;
     display: none;
     top: 100%;
+
+    :global(.dark) & {
+      @apply bg-gray-700 text-gray-300;
+    }
   }
 
   .activeValue {
-    @apply  border-gray-500
+    @apply border-gray-500
   }
 
   .activeDropDown {
