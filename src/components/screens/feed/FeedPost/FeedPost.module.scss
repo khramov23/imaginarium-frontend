@@ -1,0 +1,27 @@
+.post {
+  @apply rounded-xl border-2 border-gray-700 py-5 mt-10;
+
+  .author {
+    @apply ml-5
+  }
+
+  .date {
+    @apply ml-5 mb-3 mt-2;
+  }
+
+  .img {
+    @apply cursor-pointer;
+
+    img {
+      @apply w-full;
+    }
+  }
+
+  .buttons {
+    @apply ml-5 mt-5;
+
+    .active {
+      @apply bg-primary text-white;
+    }
+  }
+}

@@ -71,6 +71,13 @@ export class ImageService {
 		)
 	}
 
+	static async getFeed(page: number): Promise<AxiosResponse<IImage[]>> {
+		console.log('getFeed')
+		return $authApi.get<IImage[]>(
+			`/images/feed?limit=${filterStore.limit}&page=${page}`
+		)
+	}
+
 	static async like(id: string): Promise<AxiosResponse<IImage>> {
 		return $authApi.post<IImage>(`/images/likes/${id}`)
 	}

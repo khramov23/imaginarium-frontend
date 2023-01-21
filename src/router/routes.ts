@@ -1,3 +1,4 @@
+import FeedPage from '@/pages/FeedPage'
 import GalleryPage from '@/pages/GalleryPage'
 import LoginPage from '@/pages/LoginPage'
 import MainPage from '@/pages/MainPage'
@@ -13,4 +14,5 @@ export const routes: Route[] = [
 	{ element: UsersPage, path: RoutePaths.USERS },
 	{ element: GalleryPage, path: RoutePaths.GALLERY },
 	{ element: UserInfoPage, path: RoutePaths.USER_INFO },
+	{ element: FeedPage, path: RoutePaths.FEED },
 ]

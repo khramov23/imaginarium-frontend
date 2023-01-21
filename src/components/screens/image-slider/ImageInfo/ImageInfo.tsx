@@ -34,7 +34,7 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 			),
 	})
 
-	const like = useLikes()
+	const { like } = useLikes()
 
 	const liked =
 		authStore.isAuth && authStore.user.favorites.includes(image._id)
@@ -68,6 +68,7 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 					className={cls(liked && styles.active)}
 					onClick={() => like(image._id)}
 				>
+					{/*Like {image.likes}*/}
 					Like {likesLoading ? image.likes : img?.likes}
 				</Button>
 			</div>

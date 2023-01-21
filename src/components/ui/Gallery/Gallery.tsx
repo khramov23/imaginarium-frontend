@@ -88,7 +88,6 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage }) => {
 			)}
 
 			<div ref={lastElement} className="h-10 invisible"></div>
-			{/*<Button onClick={() => fetchNextPage()}>Next...</Button>*/}
 		</>
 	)
 }

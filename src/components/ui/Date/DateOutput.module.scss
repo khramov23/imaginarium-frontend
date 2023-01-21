@@ -1,0 +1,7 @@
+.date {
+  @apply text-lg;
+
+  :global(.dark) & {
+    @apply text-gray-500;
+  }
+}

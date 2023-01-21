@@ -36,4 +36,5 @@ export interface IImage {
 	colors: IColors
 	likes: number
 	tags: ITag[]
+	date: number
 }

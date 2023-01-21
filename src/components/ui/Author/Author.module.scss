@@ -3,5 +3,9 @@
 
   .username {
     @apply font-bold text-xl;
+
+    :global(.dark) & {
+      @apply text-white;
+    }
   }
 }
