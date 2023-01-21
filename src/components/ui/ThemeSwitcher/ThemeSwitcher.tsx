@@ -1,9 +1,9 @@
+import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
 import themeStore from '@/store/theme.store'
-import {observer} from "mobx-react-lite";
 
 import styles from './ThemeSwitcher.module.scss'
 

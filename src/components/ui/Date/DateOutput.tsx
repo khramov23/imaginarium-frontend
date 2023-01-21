@@ -1,8 +1,9 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
 
-import styles from './DateOutput.module.scss'
 import { DivType } from '@/types/elements/html-elements.types'
+
+import styles from './DateOutput.module.scss'
 
 interface DateProps extends DivType {
 	date: number

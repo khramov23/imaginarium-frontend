@@ -1,12 +1,14 @@
 import { AxiosResponse } from 'axios'
 
-import { $api, $authApi } from '@/http'
+import { AuthResponse, ILogin, IRegistration } from '@/types/api/auth.types'
+
 import {
 	getLoginEndpoint,
 	getLogoutEndpoint,
 	getRegistrationEndpoint,
 } from '@/http/api.paths'
-import { AuthResponse, ILogin, IRegistration } from '@/types/api/auth.types'
+
+import { $api, $authApi } from '@/http'
 
 export class AuthService {
 	static async login(loginDto: ILogin): Promise<AxiosResponse<AuthResponse>> {

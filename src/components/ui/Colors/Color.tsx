@@ -1,9 +1,10 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
 
-import styles from './Color.module.scss'
 import { ColorNames } from '@/types/api/image.types'
 import { DivType } from '@/types/elements/html-elements.types'
+
+import styles from './Color.module.scss'
 
 interface ColorInterface extends DivType {
 	color: ColorNames

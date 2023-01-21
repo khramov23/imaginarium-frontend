@@ -1,6 +1,8 @@
 import cls from 'classnames'
 import React, { FC, useState } from 'react'
 
+import { IUser } from '@/types/api/user.types'
+
 import Gallery from '@/components/ui/Gallery/Gallery'
 import Users from '@/components/ui/Users/Users'
 
@@ -10,7 +12,6 @@ import { useOwn } from '@/hooks/queries/useOwn'
 import { useSubscriptions } from '@/hooks/queries/useSubscriptions'
 
 import styles from './Tabs.module.scss'
-import { IUser } from '@/types/api/user.types'
 
 interface TabsProps {
 	user: IUser
@@ -23,11 +24,8 @@ const Tabs: FC<TabsProps> = ({ user }) => {
 		user._id
 	)
 	const { data: own, fetchNextPage: fetchNextPageOwn } = useOwn(user._id)
-	const {
-		data: favorites,
-		hasNextPage: hasNextPageFavorites,
-		fetchNextPage: fetchNextPageFavorites,
-	} = useFavorites(user._id)
+	const { data: favorites, fetchNextPage: fetchNextPageFavorites } =
+		useFavorites(user._id)
 
 	const [isOwn, setIsOwn] = useState(false)
 	const [isFavorites, setIsFavorites] = useState(false)

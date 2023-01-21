@@ -1,14 +1,16 @@
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { ColorNames, IColors } from '@/types/api/image.types'
+
 import Color from '@/components/ui/Colors/Color'
+
+import { RoutePaths } from '@/router/router.types'
 
 import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
 
 import styles from './ColorPercentage.module.scss'
-import { RoutePaths } from '@/router/router.types'
-import { ColorNames, IColors } from '@/types/api/image.types'
 
 interface ColorPercentageProps {
 	colors: IColors
@@ -31,7 +33,7 @@ const ColorPercentage: FC<ColorPercentageProps> = ({ colors }) => {
 
 	return (
 		<div className={styles.box}>
-			<div className={styles.title}>Colors: </div>
+			<div className={styles.title}>Colors:</div>
 			<div className={styles.colors}>
 				{sortedArr.map(([color, percentage]) => (
 					<Color

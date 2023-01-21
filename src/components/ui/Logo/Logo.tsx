@@ -7,7 +7,6 @@ import logoLight from '@/assets/logo-light.png'
 
 import themeStore from '@/store/theme.store'
 
-
 interface LogoProps {
 	className?: string
 	switchMode?: boolean

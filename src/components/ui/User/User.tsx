@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
+import { IUser } from '@/types/api/user.types'
+
 import Avatar from '@/components/ui/Avatar/Avatar'
 import Title from '@/components/ui/Title/Title'
 
-import styles from './User.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import { IUser } from '@/types/api/user.types'
+
+import styles from './User.module.scss'
 
 interface UserProps {
 	user: IUser

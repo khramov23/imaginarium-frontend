@@ -2,6 +2,8 @@ import { observer } from 'mobx-react-lite'
 import React, { FC, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
+import { IImage } from '@/types/api/image.types'
+
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
 import AuthModal from '@/components/ui/AuthModal/AuthModal'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
@@ -16,7 +18,6 @@ import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
 
 import styles from './Gallery.module.scss'
-import { IImage } from '@/types/api/image.types'
 
 interface GalleryProps {
 	pages: Array<IImage[]>

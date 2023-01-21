@@ -1,12 +1,13 @@
 import { AxiosResponse } from 'axios'
 
+import { IImage } from '@/types/api/image.types'
+import { ImageSearchFilter } from '@/types/image-search-filter.type'
+
 import { ImagesByPopularTags } from '@/components/screens/trending/Trending.types'
 
 import filterStore from '@/store/filter.store'
 
 import { $api, $authApi } from '@/http'
-import { IImage } from '@/types/api/image.types'
-import { ImageSearchFilter } from '@/types/image-search-filter.type'
 
 export class ImageService {
 	static async getAll(page: number) {

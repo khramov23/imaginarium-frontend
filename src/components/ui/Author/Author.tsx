@@ -2,11 +2,13 @@ import cls from 'classnames'
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
+import { IUser } from '@/types/api/user.types'
+
 import Avatar from '@/components/ui/Avatar/Avatar'
 
-import styles from './Author.module.scss'
 import { RoutePaths } from '@/router/router.types'
-import { IUser } from '@/types/api/user.types'
+
+import styles from './Author.module.scss'
 
 interface AuthorProps {
 	author: IUser

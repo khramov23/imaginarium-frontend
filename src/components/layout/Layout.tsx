@@ -1,11 +1,12 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
 
+import { DivType } from '@/types/elements/html-elements.types'
+
 import Footer from '@/components/layout/Footer/Footer'
 import Navbar from '@/components/layout/Navbar/Navbar'
 
 import styles from './Layout.module.scss'
-import { DivType } from '@/types/elements/html-elements.types'
 
 interface LayoutProps
 	extends Pick<DivType, 'className' | 'children' | 'style'> {

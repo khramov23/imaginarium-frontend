@@ -2,6 +2,8 @@ import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 
+import { IUser } from '@/types/api/user.types'
+
 import Avatar from '@/components/ui/Avatar/Avatar'
 import Button from '@/components/ui/Button/Button'
 import Title from '@/components/ui/Title/Title'
@@ -11,7 +13,6 @@ import { useSubscribeMutation } from '@/hooks/mutations/useSubscribeMutation'
 import authStore from '@/store/auth.store'
 
 import styles from './UserInfo.module.scss'
-import { IUser } from '@/types/api/user.types'
 
 interface UserInfoProps {
 	user: IUser

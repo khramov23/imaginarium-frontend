@@ -7,10 +7,11 @@ import FormInput from '@/components/ui/FormInput/FormInput'
 
 import { useUploadImage } from '@/hooks/mutations/useUploadImage'
 
+import { RoutePaths } from '@/router/router.types'
+
 import authStore from '@/store/auth.store'
 
 import styles from './UploadForm.module.scss'
-import { RoutePaths } from '@/router/router.types'
 
 const UploadForm = () => {
 	const { upload } = useUploadImage()

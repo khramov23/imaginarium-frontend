@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 
 import { ImageByPopularTag } from '@/components/screens/trending/Trending.types'
 
+import { RoutePaths } from '@/router/router.types'
+
 import filterStore from '@/store/filter.store'
 
 import styles from './Trending.module.scss'
-import { RoutePaths } from '@/router/router.types'
 
 interface TrendingImageProps {
 	image: ImageByPopularTag

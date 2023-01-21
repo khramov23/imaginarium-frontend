@@ -2,9 +2,11 @@ import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 
-import styles from './Avatar.module.scss'
-import { getAvatar } from '@/http/api.paths'
 import { IUser } from '@/types/api/user.types'
+
+import { getAvatar } from '@/http/api.paths'
+
+import styles from './Avatar.module.scss'
 
 interface AvatarProps {
 	user: IUser

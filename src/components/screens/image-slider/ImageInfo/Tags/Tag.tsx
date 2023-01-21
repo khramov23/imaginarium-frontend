@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { ITag } from '@/types/api/image.types'
+
 import styles from '@/components/screens/image-slider/ImageInfo/Tags/Tags.module.scss'
+
+import { RoutePaths } from '@/router/router.types'
 
 import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
-
-import { RoutePaths } from '@/router/router.types'
-import { ITag } from '@/types/api/image.types'
 
 interface TagProps {
 	tag: ITag

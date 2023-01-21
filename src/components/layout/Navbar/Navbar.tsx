@@ -12,13 +12,14 @@ import Logo from '@/components/ui/Logo/Logo'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
 
+import { RoutePaths } from '@/router/router.types'
+
 import { getMenuItems } from '@/utils/getMenuItems'
 
 import authStore from '@/store/auth.store'
 import filterStore from '@/store/filter.store'
 
 import styles from './Navbar.module.scss'
-import { RoutePaths } from '@/router/router.types'
 
 let items: MenuItem[] = []
 autorun(() => {

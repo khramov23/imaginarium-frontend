@@ -5,6 +5,8 @@ import React, { Dispatch, FC } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
+import { IImage } from '@/types/api/image.types'
+
 import ImageInfo from '@/components/screens/image-slider/ImageInfo/ImageInfo'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Modal from '@/components/ui/Modal/Modal'
@@ -13,7 +15,6 @@ import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
 
 import styles from './ImageSlider.module.scss'
-import { IImage } from '@/types/api/image.types'
 
 interface ImageSliderProps {
 	pages: IImage[][]

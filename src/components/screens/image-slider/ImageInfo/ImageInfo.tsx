@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 import { useQuery } from 'react-query'
 
+import { IImage } from '@/types/api/image.types'
+
 import ColorPercentage from '@/components/screens/image-slider/ImageInfo/ColorPercentage/ColorPercentage'
 import Tags from '@/components/screens/image-slider/ImageInfo/Tags/Tags'
 import Author from '@/components/ui/Author/Author'
@@ -19,7 +21,6 @@ import { capitalizedText } from '@/utils/capitalizedText'
 import authStore from '@/store/auth.store'
 
 import styles from './ImageInfo.module.scss'
-import { IImage } from '@/types/api/image.types'
 
 interface ImageInfoProps {
 	image: IImage

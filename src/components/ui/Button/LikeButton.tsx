@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-import Button from '@/components/ui/Button/Button'
-
 import { IImage } from '@/types/api/image.types'
+
+import Button from '@/components/ui/Button/Button'
 
 interface LikeButtonProps {
 	image: IImage

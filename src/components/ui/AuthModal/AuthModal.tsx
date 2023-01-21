@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom'
 import Modal from '@/components/ui/Modal/Modal'
 import Title from '@/components/ui/Title/Title'
 
+import { RoutePaths } from '@/router/router.types'
+
 import modalStore from '@/store/modal.store'
 
 import Button from '../Button/Button'
 
 import styles from './AuthModal.module.scss'
-import { RoutePaths } from '@/router/router.types'
 
 const AuthModal = () => {
 	const onClose = () => {

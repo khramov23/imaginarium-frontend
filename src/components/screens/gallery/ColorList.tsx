@@ -1,10 +1,10 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
 
+import { ColorNames } from '@/types/api/image.types'
+
 import styles from '@/components/screens/gallery/GalleryScreen.module.scss'
 import Color from '@/components/ui/Colors/Color'
-
-import { ColorNames } from '@/types/api/image.types'
 
 interface ColorListProps {
 	colors: ColorNames[]

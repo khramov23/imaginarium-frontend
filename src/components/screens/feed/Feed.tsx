@@ -1,6 +1,8 @@
 import React, { FC, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
+import { IImage } from '@/types/api/image.types'
+
 import FeedPost from '@/components/screens/feed/FeedPost/FeedPost'
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
@@ -8,7 +10,6 @@ import { Position } from '@/components/ui/Gallery/Gallery.types'
 import { useObserver } from '@/hooks/useObserver'
 
 import styles from './Feed.module.scss'
-import { IImage } from '@/types/api/image.types'
 
 interface FeedProps {
 	pages: IImage[][]

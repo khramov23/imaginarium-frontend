@@ -3,7 +3,7 @@
   flex: 0 0 32%;
 
   :global(.dark) & {
-      @apply hover:bg-light-20;
+    @apply hover:bg-light-20;
   }
 
   .username {

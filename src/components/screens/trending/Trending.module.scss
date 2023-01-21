@@ -10,18 +10,21 @@
     grid-row-start: 1;
     grid-row-end: 5;
   }
+
   .img:nth-child(2) {
     grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3;
   }
+
   .img:nth-child(3) {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 5;
   }
+
   .img:nth-child(4) {
     grid-column-start: 4;
     grid-column-end: 5;
@@ -37,8 +40,8 @@
   &:before {
     content: "";
     @apply absolute top-0 bottom-0 left-0 right-0;
-    background: rgb(0,0,0);
-    background: linear-gradient(25deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 80%);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(25deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 80%);
   }
 
   img {

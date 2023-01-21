@@ -1,7 +1,8 @@
 import { AxiosResponse } from 'axios'
 
-import { $authApi } from '@/http'
 import { IUser } from '@/types/api/user.types'
+
+import { $authApi } from '@/http'
 
 export class UserService {
 	static async fetchUsers(query: string): Promise<AxiosResponse<IUser[]>> {

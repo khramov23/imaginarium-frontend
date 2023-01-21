@@ -1,3 +1,5 @@
+import { Route, RoutePaths } from '@/router/router.types'
+
 import FeedPage from '@/pages/FeedPage'
 import GalleryPage from '@/pages/GalleryPage'
 import LoginPage from '@/pages/LoginPage'
@@ -6,7 +8,6 @@ import RegistrationPage from '@/pages/RegistrationPage'
 import UploadPage from '@/pages/UploadPage'
 import UserInfoPage from '@/pages/UserInfoPage'
 import UsersPage from '@/pages/UsersPage'
-import { Route, RoutePaths } from '@/router/router.types'
 
 export const routes: Route[] = [
 	{ element: MainPage, path: RoutePaths.MAIN },

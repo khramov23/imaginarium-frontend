@@ -1,9 +1,10 @@
+import { observer } from 'mobx-react-lite'
+
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
-import {observer} from "mobx-react-lite";
-import authStore from "@/store/auth.store";
+
+import authStore from '@/store/auth.store'
 
 const Social = () => {
-
 	return (
 		<div className="flex gap-4 items-center text-xl dark:text-white ">
 			<MaterialIcon name={'MdCode'} />

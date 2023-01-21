@@ -1,8 +1,9 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
 
-import styles from './Title.module.scss'
 import { HeadingType } from '@/types/elements/html-elements.types'
+
+import styles from './Title.module.scss'
 
 const Title: FC<HeadingType> = ({ children, className, ...props }) => {
 	return (

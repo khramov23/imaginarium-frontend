@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Error404Page from '@/pages/Error404Page'
 import { routes } from '@/router/routes'
+
+import Error404Page from '@/pages/Error404Page'
 
 const Router = () => {
 	return (

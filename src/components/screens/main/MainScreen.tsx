@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 import Button from '@/components/ui/Button/Button'
 
-import styles from './MainScreen.module.scss'
 import { RoutePaths } from '@/router/router.types'
+
+import styles from './MainScreen.module.scss'
 
 const MainScreen = () => {
 	return (

@@ -2,15 +2,17 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
+import { ILogin } from '@/types/api/auth.types'
+
 import Button from '@/components/ui/Button/Button'
 import FormInput from '@/components/ui/FormInput/FormInput'
 import Title from '@/components/ui/Title/Title'
 
+import { RoutePaths } from '@/router/router.types'
+
 import authStore from '@/store/auth.store'
 
 import styles from './LoginScreen.module.scss'
-import { RoutePaths } from '@/router/router.types'
-import { ILogin } from '@/types/api/auth.types'
 
 interface LoginInputs extends ILogin {}
 

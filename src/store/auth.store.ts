@@ -1,12 +1,14 @@
 import { makeAutoObservable } from 'mobx'
 
+import { AuthResponse, ILogin, IRegistration } from '@/types/api/auth.types'
+import { IUser } from '@/types/api/user.types'
+
+import { getRefreshEndpoint } from '@/http/api.paths'
+
 import { AuthService } from '@/services/authService'
 import { UserService } from '@/services/userService'
 
 import { $api } from '@/http'
-import { getRefreshEndpoint } from '@/http/api.paths'
-import { AuthResponse, ILogin, IRegistration } from '@/types/api/auth.types'
-import { IUser } from '@/types/api/user.types'
 
 class AuthStore {
 	user = {} as IUser

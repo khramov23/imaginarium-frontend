@@ -3,10 +3,14 @@ import { observer } from 'mobx-react-lite'
 import React, { Dispatch, FC } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
+import { IImage } from '@/types/api/image.types'
+
 import Author from '@/components/ui/Author/Author'
 import Button from '@/components/ui/Button/Button'
 import DateOutput from '@/components/ui/Date/DateOutput'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
+
+import { getImage } from '@/http/api.paths'
 
 import { useLikes } from '@/hooks/mutations/useLikes'
 import { useUserInfo } from '@/hooks/queries/useUserInfo'
@@ -15,8 +19,6 @@ import authStore from '@/store/auth.store'
 import modalStore from '@/store/modal.store'
 
 import styles from './FeedPost.module.scss'
-import { getImage } from '@/http/api.paths'
-import { IImage } from '@/types/api/image.types'
 
 interface FeedPostProps {
 	image: IImage

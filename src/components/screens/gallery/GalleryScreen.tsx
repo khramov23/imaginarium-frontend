@@ -1,6 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 
+import { ColorNames } from '@/types/api/image.types'
+import { optionValue } from '@/types/image-search-filter.type'
+
 import ColorList from '@/components/screens/gallery/ColorList'
 import { useSearchedImages } from '@/components/screens/gallery/useImages'
 import Gallery from '@/components/ui/Gallery/Gallery'
@@ -13,8 +16,6 @@ import { useDebounce } from '@/hooks/useDebounce'
 import filterStore from '@/store/filter.store'
 
 import styles from './GalleryScreen.module.scss'
-import { ColorNames } from '@/types/api/image.types'
-import { optionValue } from '@/types/image-search-filter.type'
 
 const optionValues: optionValue[] = ['title', 'tag', 'color']
 const colors: ColorNames[] = [
