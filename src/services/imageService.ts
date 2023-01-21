@@ -81,4 +81,8 @@ export class ImageService {
 	static async like(id: string): Promise<AxiosResponse<IImage>> {
 		return $authApi.post<IImage>(`/images/likes/${id}`)
 	}
+
+	static async upload(formData: FormData): Promise<AxiosResponse<IImage>> {
+		return $authApi.post<IImage>(`/images`, formData)
+	}
 }

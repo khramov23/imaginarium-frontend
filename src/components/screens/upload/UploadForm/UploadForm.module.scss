@@ -1,0 +1,8 @@
+.form {
+  width: 500px;
+  @apply p-5 flex flex-col gap-5;
+}
+
+.loaded {
+  @apply text-cyan;
+}

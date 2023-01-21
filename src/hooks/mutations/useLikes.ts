@@ -13,9 +13,7 @@ export const useLikes = () => {
 		{
 			onSuccess: async () => {
 				await authStore.updateMe()
-				await queryClient.invalidateQueries({
-					queryKey: 'fetch feed',
-				})
+				await queryClient.invalidateQueries('images')
 			},
 		}
 	)

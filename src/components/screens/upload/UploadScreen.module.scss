@@ -1,0 +1,8 @@
+.screen {
+  @apply flex items-center justify-center absolute top-0 left-0 bottom-0 right-0;
+
+  .box {
+    @apply text-center;
+  }
+}
+

@@ -38,3 +38,9 @@ export interface IImage {
 	tags: ITag[]
 	date: number
 }
+
+export interface ImageRequest {
+	title: string
+	tagValues: string[]
+	image: File
+}

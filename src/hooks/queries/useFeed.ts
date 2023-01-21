@@ -4,7 +4,7 @@ import { ImageService } from '@/services/imageService'
 
 export const useFeed = () => {
 	return useInfiniteQuery(
-		'fetch feed',
+		['images', 'feed'],
 		({ pageParam = 0 }) =>
 			ImageService.getFeed(pageParam).then((response) => response.data),
 		{

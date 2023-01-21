@@ -9,7 +9,7 @@ export const useImages = (type: ImageType, userId: string) => {
 		type === 'own' ? ImageService.getOwn : ImageService.getFavorites
 
 	return useInfiniteQuery(
-		['fetch images lazy', type, userId],
+		['images', type, userId],
 		({ pageParam = 0 }) =>
 			func(userId, pageParam).then((response) => response.data),
 		{

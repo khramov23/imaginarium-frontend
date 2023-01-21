@@ -13,9 +13,7 @@ export const useSubscribeMutation = () => {
 		{
 			onSuccess: async () => {
 				await authStore.updateMe()
-				await queryClient.invalidateQueries({
-					queryKey: 'fetch user info by id',
-				})
+				await queryClient.invalidateQueries('users')
 			},
 		}
 	)

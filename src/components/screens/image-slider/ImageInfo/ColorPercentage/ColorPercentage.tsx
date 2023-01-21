@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Color from '@/components/ui/Colors/Color'
 
@@ -6,6 +7,7 @@ import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
 
 import styles from './ColorPercentage.module.scss'
+import { RoutePaths } from '@/router/router.types'
 import { ColorNames, IColors } from '@/types/api/image.types'
 
 interface ColorPercentageProps {
@@ -13,6 +15,8 @@ interface ColorPercentageProps {
 }
 
 const ColorPercentage: FC<ColorPercentageProps> = ({ colors }) => {
+	const navigate = useNavigate()
+
 	const arr = Object.entries(colors)
 	const sortedArr = arr
 		.sort((a, b) => b[1] - a[1])
@@ -22,6 +26,7 @@ const ColorPercentage: FC<ColorPercentageProps> = ({ colors }) => {
 		filterStore.setParam('color')
 		filterStore.setColor(color as ColorNames)
 		modalStore.setImageSliderModal(false)
+		navigate(RoutePaths.GALLERY)
 	}
 
 	return (
