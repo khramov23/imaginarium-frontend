@@ -9,9 +9,8 @@ import { ImageService } from '@/services/imageService'
 import styles from './Trending.module.scss'
 
 const TrendingScreen = () => {
-	const { isLoading, data: images } = useQuery(
-		'4 images by popular tags',
-		() => ImageService.getByPopularTags()
+	const { isLoading, data: images } = useQuery(['images', 'tags'], () =>
+		ImageService.getByPopularTags()
 	)
 
 	return (

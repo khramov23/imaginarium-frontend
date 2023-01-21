@@ -9,13 +9,18 @@ import UploadPage from '@/pages/UploadPage'
 import UserInfoPage from '@/pages/UserInfoPage'
 import UsersPage from '@/pages/UsersPage'
 
-export const routes: Route[] = [
+export const privateRoutes: Route[] = [
 	{ element: MainPage, path: RoutePaths.MAIN },
-	{ element: LoginPage, path: RoutePaths.LOGIN },
-	{ element: RegistrationPage, path: RoutePaths.REGISTRATION },
 	{ element: UsersPage, path: RoutePaths.USERS },
 	{ element: GalleryPage, path: RoutePaths.GALLERY },
 	{ element: UserInfoPage, path: RoutePaths.USER_INFO },
 	{ element: FeedPage, path: RoutePaths.FEED },
 	{ element: UploadPage, path: RoutePaths.UPLOAD },
+]
+
+export const publicRoutes: Route[] = [
+	{ element: MainPage, path: RoutePaths.MAIN },
+	{ element: LoginPage, path: RoutePaths.LOGIN },
+	{ element: RegistrationPage, path: RoutePaths.REGISTRATION },
+	{ element: GalleryPage, path: RoutePaths.GALLERY },
 ]
