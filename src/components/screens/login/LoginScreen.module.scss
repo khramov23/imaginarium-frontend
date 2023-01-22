@@ -9,4 +9,12 @@
   .title {
     @apply text-center mb-5 mt-3;
   }
+
+  .inputError {
+    @apply block mb-2 text-primary text-lg;
+  }
+
+  .alert {
+    @apply mb-5;
+  }
 }

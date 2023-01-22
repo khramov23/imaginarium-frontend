@@ -135,25 +135,6 @@ const Tabs: FC<TabsProps> = ({ user }) => {
 						/>
 					)
 				)}
-
-				{/*{isSubscriptions && subscriptions ? (*/}
-				{/*	<Users users={subscriptions} />*/}
-				{/*) : isFollowers && followers ? (*/}
-				{/*	<Users users={followers} />*/}
-				{/*) : isFavorites && favorites ? (*/}
-				{/*	<Gallery*/}
-				{/*		pages={favorites.pages}*/}
-				{/*		fetchNextPage={fetchNextPageFavorites}*/}
-				{/*	/>*/}
-				{/*) : (*/}
-				{/*	isOwn &&*/}
-				{/*	own && (*/}
-				{/*		<Gallery*/}
-				{/*			pages={own.pages}*/}
-				{/*			fetchNextPage={fetchNextPageOwn}*/}
-				{/*		/>*/}
-				{/*	)*/}
-				{/*)}*/}
 			</div>
 		</div>
 	)

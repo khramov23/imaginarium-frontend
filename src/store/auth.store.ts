@@ -36,38 +36,24 @@ class AuthStore {
 	}
 
 	async login(loginDto: ILogin) {
-		try {
-			const response = await AuthService.login(loginDto)
-			localStorage.setItem('imaginarium-token', response.data.accessToken)
-			this.setAuth(true)
-			this.setUser(response.data.user)
-			console.log(response)
-		} catch (e: any) {
-			console.log(e.response?.data)
-		}
+		const response = await AuthService.login(loginDto)
+		localStorage.setItem('imaginarium-token', response.data.accessToken)
+		this.setAuth(true)
+		this.setUser(response.data.user)
 	}
 
 	async registration(registrationDto: IRegistration) {
-		try {
-			const response = await AuthService.registration(registrationDto)
-			localStorage.setItem('imaginarium-token', response.data.accessToken)
-			this.setAuth(true)
-			this.setUser(response.data.user)
-			console.log(response)
-		} catch (e: any) {
-			console.log(e.response?.data)
-		}
+		const response = await AuthService.registration(registrationDto)
+		localStorage.setItem('imaginarium-token', response.data.accessToken)
+		this.setAuth(true)
+		this.setUser(response.data.user)
 	}
 
 	async logout() {
-		try {
-			await AuthService.logout()
-			localStorage.setItem('imaginarium-token', '')
-			this.setAuth(false)
-			this.setUser({} as IUser)
-		} catch (e: any) {
-			console.log(e.response?.data)
-		}
+		await AuthService.logout()
+		localStorage.setItem('imaginarium-token', '')
+		this.setAuth(false)
+		this.setUser({} as IUser)
 	}
 
 	async checkAuth() {
