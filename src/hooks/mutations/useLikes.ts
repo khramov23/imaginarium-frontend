@@ -11,10 +11,11 @@ export const useLikes = () => {
 		['like image'],
 		(id: string) => ImageService.like(id),
 		{
-			onSuccess: async () => {
-				await authStore.updateMe()
-				await queryClient.invalidateQueries('images')
-			},
+			onSuccess: () =>
+				Promise.all([
+					authStore.updateMe(),
+					queryClient.invalidateQueries('images'),
+				]),
 		}
 	)
 	return { like, ...props }

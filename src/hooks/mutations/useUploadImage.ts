@@ -11,7 +11,9 @@ export const useUploadImage = () => {
 			ImageService.upload(formData).then((response) => response.data),
 		{
 			onSuccess: () => {
-				queryClient.invalidateQueries('images')
+				queryClient.invalidateQueries('images', {
+					refetchInactive: true,
+				})
 			},
 		}
 	)

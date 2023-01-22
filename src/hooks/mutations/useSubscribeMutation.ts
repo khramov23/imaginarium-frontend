@@ -11,10 +11,16 @@ export const useSubscribeMutation = () => {
 		'subscribe on user',
 		(userId: string) => UserService.subscribe(userId),
 		{
-			onSuccess: async () => {
-				await authStore.updateMe()
-				await queryClient.invalidateQueries('users')
-			},
+			onSuccess: () =>
+				Promise.all([
+					authStore.updateMe(),
+					queryClient.invalidateQueries('users', {
+						refetchInactive: true,
+					}),
+					queryClient.invalidateQueries('images', {
+						refetchInactive: true,
+					}),
+				]),
 		}
 	)
 	return { subscribe, ...last }

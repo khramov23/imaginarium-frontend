@@ -35,7 +35,6 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage }) => {
 	const { lastElement } = useObserver(
 		async (entries: IntersectionObserverEntry[]) => {
 			if (entries[0].isIntersecting) {
-				console.log(pages)
 				await fetchNextPage()
 			}
 		}

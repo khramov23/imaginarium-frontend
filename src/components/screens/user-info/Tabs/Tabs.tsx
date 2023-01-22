@@ -1,5 +1,5 @@
 import cls from 'classnames'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import { IUser } from '@/types/api/user.types'
 
@@ -76,6 +76,10 @@ const Tabs: FC<TabsProps> = ({ user }) => {
 		setIsFavorites(true)
 		await fetchNextPageFavorites()
 	}
+
+	useEffect(() => {
+		fetchOwn()
+	}, [])
 
 	return (
 		<div className={styles.page}>
