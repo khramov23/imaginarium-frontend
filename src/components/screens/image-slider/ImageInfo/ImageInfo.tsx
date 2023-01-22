@@ -1,7 +1,6 @@
 import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
-import { useQuery } from 'react-query'
 
 import { IImage } from '@/types/api/image.types'
 
@@ -14,8 +13,6 @@ import Title from '@/components/ui/Title/Title'
 
 import { useLikes } from '@/hooks/mutations/useLikes'
 import { useUserInfo } from '@/hooks/queries/useUserInfo'
-
-import { ImageService } from '@/services/imageService'
 
 import { capitalizedText } from '@/utils/capitalizedText'
 
@@ -34,16 +31,6 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 
 	const liked =
 		authStore.isAuth && authStore.user.favorites.includes(image._id)
-
-	const { data: img, isLoading: likesLoading } = useQuery(
-		['fetch image by id', liked],
-		() => {
-			console.log('update likes')
-			return ImageService.getById(image._id).then(
-				(response) => response.data
-			)
-		}
-	)
 
 	return (
 		<div className={styles.info}>
@@ -65,7 +52,7 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 					onClick={() => like(image._id)}
 				>
 					{/*Like {image.likes}*/}
-					Like {likesLoading ? image.likes : img?.likes}
+					Like {image.likes}
 				</Button>
 			</div>
 		</div>

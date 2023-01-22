@@ -6,7 +6,7 @@ import filterStore from '@/store/filter.store'
 
 export const useSearchedImages = (query: string) => {
 	return useInfiniteQuery(
-		['fetch images lazy', filterStore.param, query, filterStore.color],
+		['images', filterStore.param, query, filterStore.color],
 		({ pageParam = 0 }) =>
 			ImageService.getByAttribute(
 				{

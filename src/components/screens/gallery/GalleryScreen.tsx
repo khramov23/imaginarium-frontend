@@ -5,13 +5,13 @@ import { ColorNames } from '@/types/api/image.types'
 import { optionValue } from '@/types/image-search-filter.type'
 
 import ColorList from '@/components/screens/gallery/ColorList'
-import { useSearchedImages } from '@/components/screens/gallery/useImages'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import Select from '@/components/ui/Select/Select'
 import GalleryLoader from '@/components/ui/Skeletons/GalleryLoader/GalleryLoader'
 import Title from '@/components/ui/Title/Title'
 
+import { useSearchedImages } from '@/hooks/queries/useSearchedImages'
 import { useDebounce } from '@/hooks/useDebounce'
 
 import filterStore from '@/store/filter.store'
