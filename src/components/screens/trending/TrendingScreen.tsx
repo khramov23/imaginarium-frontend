@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 import TrendingImage from '@/components/screens/trending/TrendingImage'
+import TrendingLoader from '@/components/ui/Skeletons/TrendingLoader/TrendingLoader'
 import Title from '@/components/ui/Title/Title'
 
 import { ImageService } from '@/services/imageService'
@@ -21,10 +22,10 @@ const TrendingScreen = () => {
 				</Title>
 
 				{isLoading ? (
-					<Title>Loading...</Title>
+					<TrendingLoader />
 				) : images?.length ? (
 					<div className={styles.images}>
-						{images.map((image) => (
+						{images!.map((image) => (
 							<TrendingImage
 								image={image[0]}
 								key={image[0].src}

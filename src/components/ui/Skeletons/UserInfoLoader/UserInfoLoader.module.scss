@@ -1,0 +1,29 @@
+.userInfo {
+  @apply flex items-center gap-32 mt-10;
+
+  .avatar {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+  }
+
+  .infoBlock {
+    @apply flex flex-col items-center;
+
+    .username {
+      @apply h-6 w-32 block;
+    }
+
+    .button {
+      @apply w-44 h-12 mt-4;
+    }
+
+    .friendsCount {
+      @apply w-7 h-10 rounded-lg;
+    }
+  }
+
+  .friendName {
+    @apply text-gray-500 text-xl mb-2;
+  }
+}

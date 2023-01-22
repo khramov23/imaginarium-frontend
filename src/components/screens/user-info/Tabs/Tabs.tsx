@@ -4,6 +4,8 @@ import React, { FC, useState } from 'react'
 import { IUser } from '@/types/api/user.types'
 
 import Gallery from '@/components/ui/Gallery/Gallery'
+import GalleryLoader from '@/components/ui/Skeletons/GalleryLoader/GalleryLoader'
+import UserListLoader from '@/components/ui/Skeletons/UserBlockLoader/UserListLoader'
 import Users from '@/components/ui/Users/Users'
 
 import { useFavorites } from '@/hooks/queries/useFavorites'
@@ -18,14 +20,26 @@ interface TabsProps {
 }
 
 const Tabs: FC<TabsProps> = ({ user }) => {
-	const { data: subscriptions, refetch: refetchSubscriptions } =
-		useSubscriptions(user._id)
-	const { data: followers, refetch: refetchFollowers } = useFollowers(
-		user._id
-	)
-	const { data: own, fetchNextPage: fetchNextPageOwn } = useOwn(user._id)
-	const { data: favorites, fetchNextPage: fetchNextPageFavorites } =
-		useFavorites(user._id)
+	const {
+		data: subscriptions,
+		refetch: refetchSubscriptions,
+		isLoading: isSubscriptionsLoading,
+	} = useSubscriptions(user._id)
+	const {
+		data: followers,
+		refetch: refetchFollowers,
+		isLoading: isFollowersLoading,
+	} = useFollowers(user._id)
+	const {
+		data: own,
+		fetchNextPage: fetchNextPageOwn,
+		isLoading: isOwnLoading,
+	} = useOwn(user._id)
+	const {
+		data: favorites,
+		fetchNextPage: fetchNextPageFavorites,
+		isLoading: isFavoritesLoading,
+	} = useFavorites(user._id)
 
 	const [isOwn, setIsOwn] = useState(false)
 	const [isFavorites, setIsFavorites] = useState(false)
@@ -95,15 +109,23 @@ const Tabs: FC<TabsProps> = ({ user }) => {
 				</div>
 			</div>
 			<div className={styles.area}>
-				{isSubscriptions && subscriptions ? (
+				{isSubscriptions && isSubscriptionsLoading ? (
+					<UserListLoader />
+				) : isSubscriptions && subscriptions ? (
 					<Users users={subscriptions} />
+				) : isFollowers && isFollowersLoading ? (
+					<UserListLoader />
 				) : isFollowers && followers ? (
 					<Users users={followers} />
+				) : isFavorites && isFavoritesLoading ? (
+					<GalleryLoader />
 				) : isFavorites && favorites ? (
 					<Gallery
 						pages={favorites.pages}
 						fetchNextPage={fetchNextPageFavorites}
 					/>
+				) : isOwn && isOwnLoading ? (
+					<GalleryLoader />
 				) : (
 					isOwn &&
 					own && (
@@ -113,6 +135,25 @@ const Tabs: FC<TabsProps> = ({ user }) => {
 						/>
 					)
 				)}
+
+				{/*{isSubscriptions && subscriptions ? (*/}
+				{/*	<Users users={subscriptions} />*/}
+				{/*) : isFollowers && followers ? (*/}
+				{/*	<Users users={followers} />*/}
+				{/*) : isFavorites && favorites ? (*/}
+				{/*	<Gallery*/}
+				{/*		pages={favorites.pages}*/}
+				{/*		fetchNextPage={fetchNextPageFavorites}*/}
+				{/*	/>*/}
+				{/*) : (*/}
+				{/*	isOwn &&*/}
+				{/*	own && (*/}
+				{/*		<Gallery*/}
+				{/*			pages={own.pages}*/}
+				{/*			fetchNextPage={fetchNextPageOwn}*/}
+				{/*		/>*/}
+				{/*	)*/}
+				{/*)}*/}
 			</div>
 		</div>
 	)

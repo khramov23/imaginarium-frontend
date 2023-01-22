@@ -11,14 +11,6 @@ const UserListLoader = () => {
 			<UserBlockLoader />
 			<UserBlockLoader />
 			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
-			<UserBlockLoader />
 		</div>
 	)
 }
