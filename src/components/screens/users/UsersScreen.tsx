@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
+import UserListLoader from '@/components/ui/Skeletons/UserBlockLoader/UserListLoader'
 import Title from '@/components/ui/Title/Title'
 import Users from '@/components/ui/Users/Users'
 
@@ -30,7 +31,7 @@ const UsersScreen = () => {
 			/>
 			<div className={styles.users}>
 				{isLoading ? (
-					<Title>Loading...</Title>
+					<UserListLoader />
 				) : users?.length ? (
 					<Users users={users} />
 				) : (

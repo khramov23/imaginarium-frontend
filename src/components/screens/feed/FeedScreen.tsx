@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Feed from '@/components/screens/feed/Feed'
-import Title from '@/components/ui/Title/Title'
+import FeedPostLoader from '@/components/ui/Skeletons/FeedPostLoader/FeedPostLoader'
 
 import { useFeed } from '@/hooks/queries/useFeed'
 
@@ -11,7 +11,7 @@ const FeedScreen = () => {
 	return (
 		<div className="container">
 			{isLoading ? (
-				<Title>Loading...</Title>
+				<FeedPostLoader />
 			) : (
 				infData && (
 					<>

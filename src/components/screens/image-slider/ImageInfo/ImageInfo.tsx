@@ -9,12 +9,13 @@ import ColorPercentage from '@/components/screens/image-slider/ImageInfo/ColorPe
 import Tags from '@/components/screens/image-slider/ImageInfo/Tags/Tags'
 import Author from '@/components/ui/Author/Author'
 import Button from '@/components/ui/Button/Button'
+import AuthorLoader from '@/components/ui/Skeletons/AuthorLoader/AuthorLoader'
 import Title from '@/components/ui/Title/Title'
 
 import { useLikes } from '@/hooks/mutations/useLikes'
+import { useUserInfo } from '@/hooks/queries/useUserInfo'
 
 import { ImageService } from '@/services/imageService'
-import { UserService } from '@/services/userService'
 
 import { capitalizedText } from '@/utils/capitalizedText'
 
@@ -27,13 +28,7 @@ interface ImageInfoProps {
 }
 
 const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
-	const { data: user, isLoading: isUserLoading } = useQuery({
-		queryKey: ['fetch user by id', image.author],
-		queryFn: () =>
-			UserService.fetchUserById(image.author).then(
-				(response) => response.data
-			),
-	})
+	const { data: user, isLoading: isUserLoading } = useUserInfo(image.author)
 
 	const { like } = useLikes()
 
@@ -55,7 +50,7 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 			<Title>{capitalizedText(image.title)}</Title>
 			<div className={styles.username}>
 				{isUserLoading ? (
-					<>loading...</>
+					<AuthorLoader />
 				) : user ? (
 					<Author author={user} />
 				) : (

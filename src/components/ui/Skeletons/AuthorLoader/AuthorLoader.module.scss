@@ -1,0 +1,11 @@
+.author {
+  @apply flex items-center gap-5;
+
+  .avatar {
+    @apply w-12 h-12 rounded-full;
+  }
+
+  .username {
+    @apply w-32 h-4;
+  }
+}

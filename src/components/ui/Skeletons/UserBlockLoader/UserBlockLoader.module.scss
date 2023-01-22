@@ -1,0 +1,21 @@
+.user {
+  @apply flex items-center border-2 border-gray-500 px-5 py-3 rounded-xl gap-5;
+  flex: 0 0 32%;
+
+  .username {
+    @apply mb-2 h-6;
+  }
+
+  .avatar {
+    @apply w-24 h-24 rounded-full;
+  }
+
+  .field {
+    @apply block mb-1 w-full h-4;
+  }
+
+}
+
+.list {
+  @apply grid grid-cols-4 gap-7;
+}

@@ -9,6 +9,7 @@ import { useSearchedImages } from '@/components/screens/gallery/useImages'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import Select from '@/components/ui/Select/Select'
+import GalleryLoader from '@/components/ui/Skeletons/GalleryLoader/GalleryLoader'
 import Title from '@/components/ui/Title/Title'
 
 import { useDebounce } from '@/hooks/useDebounce'
@@ -64,7 +65,7 @@ const GalleryScreen = () => {
 					/>
 				)}
 				{isLoading ? (
-					<Title>Loading images...</Title>
+					<GalleryLoader />
 				) : lazyImages?.pages?.length && lazyImages.pages[0].length ? (
 					<Gallery
 						pages={lazyImages?.pages}
