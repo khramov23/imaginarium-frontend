@@ -1,0 +1,22 @@
+.box {
+  @apply flex bg-gray-800;
+
+  .leftPart > img {
+    min-height: 50vh;
+    max-height: 70vh;
+    max-width: 40vw;
+  }
+
+  .leftPart, .rightPart {
+    @apply relative;
+  }
+
+  .rightPart {
+    @apply flex flex-col items-center justify-center gap-5 p-10;
+
+    .imgWrapper {
+      @apply rounded-full w-56 h-56 overflow-hidden;
+    }
+
+  }
+}

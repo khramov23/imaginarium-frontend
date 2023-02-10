@@ -34,7 +34,8 @@ const UploadForm = () => {
 
 	return (
 		<div className={styles.form}>
-			<FileUploader setFile={setFile} />
+			<FileUploader setFile={setFile} file={file} />
+			{file && <img src={URL.createObjectURL(file)} alt="" />}
 			<FormInput
 				value={title}
 				onChange={(e) => setTitle(e.target.value)}

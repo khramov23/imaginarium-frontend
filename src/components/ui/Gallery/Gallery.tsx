@@ -5,9 +5,9 @@ import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 import { IImage } from '@/types/api/image.types'
 
 import ImageSlider from '@/components/screens/image-slider/ImageSlider'
-import AuthModal from '@/components/ui/AuthModal/AuthModal'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Image from '@/components/ui/Image/Image'
+import AuthModal from '@/components/ui/Modal/AuthModal/AuthModal'
 
 import { useObserver } from '@/hooks/useObserver'
 

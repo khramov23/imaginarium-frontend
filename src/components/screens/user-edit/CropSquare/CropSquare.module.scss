@@ -1,0 +1,15 @@
+.canvas {
+  @apply absolute left-0 top-0;
+}
+
+.range {
+  -webkit-appearance: none;
+  @apply w-full bg-gray-700 rounded-lg my-3;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @apply w-5 h-5 rounded-full bg-primary
+}
+
+

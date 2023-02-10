@@ -2,14 +2,13 @@ import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import Button from '@/components/ui/Button/Button'
 import Modal from '@/components/ui/Modal/Modal'
 import Title from '@/components/ui/Title/Title'
 
 import { RoutePaths } from '@/router/router.types'
 
 import modalStore from '@/store/modal.store'
-
-import Button from '../Button/Button'
 
 import styles from './AuthModal.module.scss'
 

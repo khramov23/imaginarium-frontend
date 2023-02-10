@@ -11,7 +11,10 @@ const FeedScreen = () => {
 	return (
 		<div className="container">
 			{isLoading ? (
-				<FeedPostLoader />
+				<>
+					<FeedPostLoader />
+					<FeedPostLoader />
+				</>
 			) : (
 				infData && (
 					<>

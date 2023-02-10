@@ -1,23 +1,15 @@
-import React, {
-	ChangeEvent,
-	Dispatch,
-	FC,
-	SetStateAction,
-	useRef,
-	useState,
-} from 'react'
+import React, { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from 'react'
 
 import Button from '@/components/ui/Button/Button'
 
-import styles from './UploadForm.module.scss'
-
 interface FileUploaderProps {
 	setFile: Dispatch<SetStateAction<File | null>>
+	file: File | null
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => any
 }
 
-const FileUploader: FC<FileUploaderProps> = ({ setFile }) => {
+const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange }) => {
 	const inputRef = useRef<HTMLInputElement>(null)
-	const [loaded, setLoaded] = useState(false)
 
 	const onButtonClick = () => {
 		if (inputRef.current) inputRef.current.click()
@@ -26,7 +18,7 @@ const FileUploader: FC<FileUploaderProps> = ({ setFile }) => {
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
 			setFile(e.target.files[0])
-			setLoaded(true)
+			onChange && onChange(e)
 		}
 	}
 
@@ -40,7 +32,6 @@ const FileUploader: FC<FileUploaderProps> = ({ setFile }) => {
 				className="hidden"
 			/>
 			<Button onClick={onButtonClick}>Load image</Button>
-			{loaded && <span className={styles.loaded}>loaded!</span>}
 		</>
 	)
 }
