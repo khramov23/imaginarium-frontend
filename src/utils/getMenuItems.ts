@@ -11,7 +11,6 @@ export const getMenuItems = () => {
 				{ link: RoutePaths.USERS, value: 'Users' },
 				{ link: RoutePaths.FEED, value: 'Feed' },
 				{ link: RoutePaths.UPLOAD, value: 'Upload a photo' },
-				{ link: RoutePaths.USER_EDIT, value: 'Edit' },
 		  ]
 		: [{ link: RoutePaths.GALLERY, value: 'Gallery' }]
 	return items

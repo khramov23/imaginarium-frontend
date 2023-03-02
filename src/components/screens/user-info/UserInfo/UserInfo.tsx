@@ -5,7 +5,8 @@ import React, { FC, useState } from 'react'
 import { IUser } from '@/types/api/user.types'
 
 import FileUploader from '@/components/screens/upload/UploadForm/FileUploader'
-import UploadModal from '@/components/screens/user-edit/UploadModal/UploadModal'
+import UpdatePasswordModal from '@/components/screens/user-edit/UpdatePasswordModal/UpdatePasswordModal'
+import UploadAvatarModal from '@/components/screens/user-edit/UploadAvatarModal/UploadAvatarModal'
 import Avatar from '@/components/ui/Avatar/Avatar'
 import Button from '@/components/ui/Button/Button'
 import Title from '@/components/ui/Title/Title'
@@ -25,8 +26,12 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 	const { subscribe } = useSubscribeMutation()
 	const [file, setFile] = useState<File | null>(null)
 
-	const onOpen = () => {
+	const onUploadAvatarModalOpen = () => {
 		modalStore.setUploadAvatarModal(true)
+	}
+
+	const onUpdatePasswordModalOpen = () => {
+		modalStore.setUpdatePasswordModal(true)
 	}
 
 	return (
@@ -41,14 +46,18 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 								<FileUploader
 									setFile={setFile}
 									file={file}
-									onChange={onOpen}
+									onChange={onUploadAvatarModalOpen}
 									className={styles.button}
 									text="Edit avatar"
 								/>
-								{file && <UploadModal file={file} />}
-								<Button className={styles.button}>
+								{file && <UploadAvatarModal file={file} />}
+								<Button
+									className={styles.button}
+									onClick={onUpdatePasswordModalOpen}
+								>
 									Edit password
 								</Button>
+								<UpdatePasswordModal />
 							</>
 						) : (
 							authStore.user.subscriptions && (

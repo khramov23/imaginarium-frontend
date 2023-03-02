@@ -2,6 +2,8 @@ import { AxiosResponse } from 'axios'
 
 import { IUser } from '@/types/api/user.types'
 
+import { UpdatePasswordArgs } from '@/hooks/mutations/useUpdatePasswordMutation'
+
 import { $authApi } from '@/http'
 
 export class UserService {
@@ -40,5 +42,11 @@ export class UserService {
 		const response = await $authApi.post<IUser>('/users/add-avatar', data)
 		console.log(response)
 		return response
+	}
+
+	static async updatePassword(
+		data: UpdatePasswordArgs
+	): Promise<AxiosResponse<IUser>> {
+		return await $authApi.post<IUser>('/users/update-password', data)
 	}
 }

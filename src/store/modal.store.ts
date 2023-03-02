@@ -4,6 +4,7 @@ class ModalStore {
 	imageSliderModal = false
 	authModal = false
 	uploadAvatarModal = false
+	updatePasswordModal = false
 
 	constructor() {
 		makeAutoObservable(this)
@@ -19,6 +20,10 @@ class ModalStore {
 
 	setUploadAvatarModal(flag: boolean) {
 		this.uploadAvatarModal = flag
+	}
+
+	setUpdatePasswordModal(flag: boolean) {
+		this.updatePasswordModal = flag
 	}
 }
 

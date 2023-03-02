@@ -6,7 +6,6 @@ import LoginPage from '@/pages/LoginPage'
 import MainPage from '@/pages/MainPage'
 import RegistrationPage from '@/pages/RegistrationPage'
 import UploadPage from '@/pages/UploadPage'
-import UserEditPage from '@/pages/UserEditPage'
 import UserInfoPage from '@/pages/UserInfoPage'
 import UsersPage from '@/pages/UsersPage'
 
@@ -17,7 +16,6 @@ export const privateRoutes: Route[] = [
 	{ element: UserInfoPage, path: RoutePaths.USER_INFO },
 	{ element: FeedPage, path: RoutePaths.FEED },
 	{ element: UploadPage, path: RoutePaths.UPLOAD },
-	{ element: UserEditPage, path: RoutePaths.USER_EDIT },
 ]
 
 export const publicRoutes: Route[] = [

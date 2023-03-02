@@ -10,13 +10,13 @@ import { useAvatarMutation } from '@/hooks/mutations/useAvatarMutation'
 
 import modalStore from '@/store/modal.store'
 
-import styles from './UploadModal.module.scss'
+import styles from './UploadAvatarModal.module.scss'
 
-interface UploadModalProps {
+interface UploadAvatarModalProps {
 	file: File
 }
 
-const UploadModal: FC<UploadModalProps> = ({ file }) => {
+const UploadAvatarModal: FC<UploadAvatarModalProps> = ({ file }) => {
 	const { upload, isLoading, isSuccess } = useAvatarMutation()
 
 	const imgRef = useRef<HTMLImageElement>(null)
@@ -85,4 +85,4 @@ const UploadModal: FC<UploadModalProps> = ({ file }) => {
 	)
 }
 
-export default observer(UploadModal)
+export default observer(UploadAvatarModal)
