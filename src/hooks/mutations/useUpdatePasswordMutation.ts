@@ -8,9 +8,8 @@ export interface UpdatePasswordArgs {
 }
 
 export const useUpdatePasswordMutation = () => {
-	const { mutate: update, ...props } = useMutation(
-		['update password'],
-		(data: UpdatePasswordArgs) => UserService.updatePassword(data)
+	const { mutate: update, ...props } = useMutation(['update password'], (data: UpdatePasswordArgs) =>
+		UserService.updatePassword(data)
 	)
 	return { update, ...props }
 }
