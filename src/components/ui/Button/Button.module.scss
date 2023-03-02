@@ -4,4 +4,8 @@
   :global(.dark) & {
     @apply hover:text-white;
   }
+
+  .loading {
+    @apply opacity-50;
+  }
 }

@@ -1,10 +1,12 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 
 import CropSquare from '@/components/screens/user-edit/CropSquare/CropSquare'
 import Button from '@/components/ui/Button/Button'
 import Modal from '@/components/ui/Modal/Modal'
 import Title from '@/components/ui/Title/Title'
+
+import { useAvatarMutation } from '@/hooks/mutations/useAvatarMutation'
 
 import modalStore from '@/store/modal.store'
 
@@ -15,6 +17,8 @@ interface UploadModalProps {
 }
 
 const UploadModal: FC<UploadModalProps> = ({ file }) => {
+	const { upload, isLoading, isSuccess } = useAvatarMutation()
+
 	const imgRef = useRef<HTMLImageElement>(null)
 	const [imgLoaded, setImgLoaded] = useState(false)
 	const [left, setLeft] = useState(0)
@@ -24,6 +28,19 @@ const UploadModal: FC<UploadModalProps> = ({ file }) => {
 	const onClose = () => {
 		modalStore.setUploadAvatarModal(false)
 		setImgLoaded(false)
+	}
+
+	useEffect(() => {
+		if (isSuccess) onClose()
+	}, [isSuccess])
+
+	const onUpload = () => {
+		const formData = new FormData()
+		formData.append('left', left.toString())
+		formData.append('top', top.toString())
+		formData.append('size', size.toString())
+		formData.append('avatar', file)
+		upload(formData)
 	}
 
 	return (
@@ -59,7 +76,9 @@ const UploadModal: FC<UploadModalProps> = ({ file }) => {
 							}}
 						/>
 					</div>
-					<Button>Ok</Button>
+					<Button loading={isLoading} onClick={onUpload}>
+						Ok
+					</Button>
 				</div>
 			</div>
 		</Modal>

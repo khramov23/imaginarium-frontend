@@ -35,4 +35,10 @@ export class UserService {
 	static subscribe(id: string): Promise<AxiosResponse<IUser[]>> {
 		return $authApi.post<IUser[]>(`/users/subscribe/${id}`)
 	}
+
+	static async addAvatar(data: FormData): Promise<AxiosResponse<IUser>> {
+		const response = await $authApi.post<IUser>('/users/add-avatar', data)
+		console.log(response)
+		return response
+	}
 }

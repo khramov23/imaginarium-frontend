@@ -6,9 +6,16 @@ interface FileUploaderProps {
 	setFile: Dispatch<SetStateAction<File | null>>
 	file: File | null
 	onChange?: (e: ChangeEvent<HTMLInputElement>) => any
+	className?: string
+	text?: string
 }
 
-const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange }) => {
+const FileUploader: FC<FileUploaderProps> = ({
+	setFile,
+	onChange,
+	className,
+	text = 'Load image',
+}) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	const onButtonClick = () => {
@@ -31,7 +38,9 @@ const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange }) => {
 				accept="image/*"
 				className="hidden"
 			/>
-			<Button onClick={onButtonClick}>Load image</Button>
+			<Button className={className} onClick={onButtonClick}>
+				{text}
+			</Button>
 		</>
 	)
 }
