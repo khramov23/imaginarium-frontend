@@ -14,8 +14,15 @@
   .rightPart {
     @apply flex flex-col items-center justify-center gap-5 p-10;
 
-    .imgWrapper {
-      @apply rounded-full w-56 h-56 overflow-hidden;
+    .imgPreview {
+      @apply rounded-full overflow-hidden;
+      width: 240px;
+      height: 240px;
+    }
+
+    img {
+      position: relative;
+      max-width: none;
     }
 
   }

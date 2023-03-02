@@ -5,12 +5,18 @@ import { useAvatarCropper } from '@/components/screens/user-edit/CropSquare/useA
 import styles from './CropSquare.module.scss'
 
 interface CropSquareProps {
-	file: File
-	aspect: number
 	imgRef: React.RefObject<HTMLImageElement>
+	setTop: (value: number) => void
+	setLeft: (value: number) => void
+	setSize: (value: number) => void
 }
 
-const CropSquare: FC<CropSquareProps> = ({ imgRef }) => {
+const CropSquare: FC<CropSquareProps> = ({
+	imgRef,
+	setTop,
+	setLeft,
+	setSize,
+}) => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null)
 	const {
 		width,
@@ -20,7 +26,7 @@ const CropSquare: FC<CropSquareProps> = ({ imgRef }) => {
 		onMouseMove,
 		size,
 		onSquareResize,
-	} = useAvatarCropper({ canvasRef, imgRef })
+	} = useAvatarCropper({ canvasRef, imgRef, setTop, setLeft, setSize })
 
 	return (
 		<>

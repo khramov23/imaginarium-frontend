@@ -5,10 +5,9 @@ import {
 	UseAvatarCropperArgs,
 } from '@/components/screens/user-edit/CropSquare/CropSquare.types'
 
-export const useAvatarCropper = ({
-	canvasRef,
-	imgRef,
-}: UseAvatarCropperArgs) => {
+export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
+	const { canvasRef, imgRef, setTop, setLeft, setSize } = args
+
 	const ctx = useRef<CanvasRenderingContext2D | null>(null)
 	const [width, setWidth] = useState(imgRef.current!.clientWidth)
 	const [height, setHeight] = useState(imgRef.current!.clientHeight)
@@ -16,13 +15,20 @@ export const useAvatarCropper = ({
 		mouseDown: false,
 		left: 0,
 		top: 0,
-		size: 200,
+		size:
+			Math.min(
+				imgRef.current!.clientWidth,
+				imgRef.current!.clientHeight
+			) / 2,
 	})
 
 	useEffect(() => {
 		if (canvasRef.current) {
 			ctx.current = canvasRef.current.getContext('2d')!
 		}
+		setSize(selection.size / width)
+		setLeft(selection.left / width)
+		setTop(selection.top / height)
 	}, [])
 
 	const drawSelection = () => {
@@ -103,6 +109,8 @@ export const useAvatarCropper = ({
 				left: checkLeftRight(x - selection.size / 2),
 				top: checkTopBottom(y - selection.size / 2),
 			})
+			setLeft(selection.left / width)
+			setTop(selection.top / height)
 		}
 	}
 
@@ -113,6 +121,9 @@ export const useAvatarCropper = ({
 		if (selection.left + size > width) left = selection.left - delta
 		if (selection.top + size > height) top = selection.top - delta
 		setSelection({ ...selection, size, left, top })
+		setSize(size / width)
+		setLeft(left / width)
+		setTop(top / height)
 	}
 
 	useEffect(() => {

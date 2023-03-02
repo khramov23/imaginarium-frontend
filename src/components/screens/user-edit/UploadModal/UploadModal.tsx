@@ -17,6 +17,9 @@ interface UploadModalProps {
 const UploadModal: FC<UploadModalProps> = ({ file }) => {
 	const imgRef = useRef<HTMLImageElement>(null)
 	const [imgLoaded, setImgLoaded] = useState(false)
+	const [left, setLeft] = useState(0)
+	const [top, setTop] = useState(0)
+	const [size, setSize] = useState(0.5)
 
 	const onClose = () => {
 		modalStore.setUploadAvatarModal(false)
@@ -35,19 +38,26 @@ const UploadModal: FC<UploadModalProps> = ({ file }) => {
 					/>
 					{imgLoaded && imgRef.current && (
 						<CropSquare
-							file={file}
 							imgRef={imgRef}
-							aspect={
-								imgRef.current.naturalHeight /
-								imgRef.current.naturalWidth
-							}
+							setLeft={setLeft}
+							setTop={setTop}
+							setSize={setSize}
 						/>
 					)}
 				</div>
 				<div className={styles.rightPart}>
 					<Title>Your avatar</Title>
-					<div className={styles.imgWrapper}>
-						<img src={URL.createObjectURL(file)} alt="" />
+					<div className={styles.imgPreview}>
+						<img
+							src={URL.createObjectURL(file)}
+							alt={'your avatar'}
+							style={{
+								width: `${100 / size}%`,
+								transform: `translate(-${100 * left}%, -${
+									100 * top
+								}%)`,
+							}}
+						/>
 					</div>
 					<Button>Ok</Button>
 				</div>

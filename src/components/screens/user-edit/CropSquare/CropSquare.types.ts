@@ -1,12 +1,5 @@
 import { MutableRefObject, RefObject } from 'react'
 
-export interface Margins {
-	top: number
-	left: number
-	bottom: number
-	right: number
-}
-
 export interface Selection {
 	mouseDown: boolean
 	top: number
@@ -17,4 +10,7 @@ export interface Selection {
 export interface UseAvatarCropperArgs {
 	canvasRef: MutableRefObject<HTMLCanvasElement | null>
 	imgRef: RefObject<HTMLImageElement>
+	setTop: (value: number) => void
+	setLeft: (value: number) => void
+	setSize: (value: number) => void
 }
