@@ -1,13 +1,13 @@
 import { Route, RoutePaths } from '@/router/router.types'
 
-import FeedPage from '@/pages/FeedPage'
-import GalleryPage from '@/pages/GalleryPage'
+import { FeedPage } from '@/pages/FeedPage'
+import { GalleryPage } from '@/pages/GalleryPage'
 import LoginPage from '@/pages/LoginPage'
-import MainPage from '@/pages/MainPage'
+import { MainPage } from '@/pages/MainPage'
 import RegistrationPage from '@/pages/RegistrationPage'
-import UploadPage from '@/pages/UploadPage'
-import UserInfoPage from '@/pages/UserInfoPage'
-import UsersPage from '@/pages/UsersPage'
+import { UploadPage } from '@/pages/UploadPage'
+import { UserInfoPage } from '@/pages/UserInfoPage'
+import { UsersPage } from '@/pages/UsersPage'
 
 export const privateRoutes: Route[] = [
 	{ element: MainPage, path: RoutePaths.MAIN },

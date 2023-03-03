@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+import PageLoader from '@/components/screens/page-loader/PageLoader'
 
 import { privateRoutes, publicRoutes } from '@/router/routes'
 
@@ -13,17 +15,15 @@ const Router = () => {
 
 	return (
 		<BrowserRouter>
-			<Routes>
-				{routes.map((route) => (
-					<Route
-						element={<route.element />}
-						path={route.path}
-						key={route.path}
-					/>
-				))}
+			<Suspense fallback={<PageLoader />}>
+				<Routes>
+					{routes.map((route) => (
+						<Route element={<route.element />} path={route.path} key={route.path} />
+					))}
 
-				<Route element={<Error404Page />} path={'*'} />
-			</Routes>
+					<Route element={<Error404Page />} path={'*'} />
+				</Routes>
+			</Suspense>
 		</BrowserRouter>
 	)
 }
