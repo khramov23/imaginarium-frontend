@@ -1,6 +1,6 @@
 import cls from 'classnames'
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, LinkProps } from 'react-router-dom'
 
 import { IUser } from '@/types/api/user.types'
 
@@ -10,18 +10,14 @@ import { RoutePaths } from '@/router/router.types'
 
 import styles from './Author.module.scss'
 
-interface AuthorProps {
+interface AuthorProps extends Partial<LinkProps> {
 	author: IUser
-	className?: string
 }
 
-const Author: FC<AuthorProps> = ({ author, className }) => {
+const Author: FC<AuthorProps> = ({ author, className, ...props }) => {
 	return (
-		<Link
-			to={`${RoutePaths.USERS}/${author._id}`}
-			className={cls(styles.author, className)}
-		>
-			<Avatar user={author} size={40} />
+		<Link to={`${RoutePaths.USERS}/${author._id}`} className={cls(styles.author, className)} {...props}>
+			<Avatar size="xs" user={author} />
 			<div className={styles.username}>{author.username}</div>
 		</Link>
 	)

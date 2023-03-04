@@ -17,7 +17,7 @@
     @apply flex items-center gap-10 mb-14 ;
 
     .color {
-      @apply relative rounded-xl cursor-pointer border-4;
+      @apply relative rounded-xl cursor-pointer;
 
       &:before {
         content: '';

@@ -1,9 +1,6 @@
 .skeleton {
-  @apply inline-block relative overflow-hidden bg-gray-300 rounded-xl;
-
-  :global(.dark) & {
-    @apply bg-gray-700
-  }
+  @apply inline-block relative overflow-hidden rounded-xl;
+  background: var(--active-bg-color);
 
   &:after {
     content: '';

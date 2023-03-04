@@ -1,9 +1,10 @@
 .user {
-  @apply flex items-center border-2 border-gray-500 px-5 py-3 rounded-xl gap-5 hover:bg-dark-20 cursor-pointer transition-colors;
+  @apply flex items-center px-5 py-3 rounded-xl gap-5 cursor-pointer transition-colors;
+  border: 3px solid var(--active-bg-color);
   flex: 0 0 32%;
 
-  :global(.dark) & {
-    @apply hover:bg-light-20;
+  &:hover {
+    background: rgba(var(--inveted-bg-color), 0.1);
   }
 
   .username {
@@ -12,10 +13,8 @@
 
   .field {
     @apply block mb-1;
+    color: var(--text-secondary-color);
 
-    :global(.dark) & {
-      @apply text-gray-300;
-    }
   }
 
 }

@@ -34,6 +34,7 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 
 	const logoutHandler = () => {
 		authStore.logout()
+		navigate(RoutePaths.GALLERY)
 	}
 
 	const formHandler = (e: any) => {
@@ -53,7 +54,11 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 			</div>
 			{pathname === '/' && (
 				<form onSubmit={formHandler} className={styles.searchForm}>
-					<SearchInput className={styles.input} value={filterStore.query} onChange={searchHandler} />
+					<SearchInput
+						className={styles.input}
+						value={filterStore.query}
+						onChange={searchHandler}
+					/>
 				</form>
 			)}
 			<Menu items={items} />

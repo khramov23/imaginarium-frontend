@@ -1,48 +1,46 @@
 .color {
-  @apply px-7 py-1 text-xl border-2 border-transparent inline-block;
-
-  :global(.dark) & {
-    @apply border-2
-  }
+  @apply px-7 py-2 text-xl inline-block;
 }
 
 .red {
-  @apply bg-primary text-white;
+  background: var(--primary-color);
+  color: white;
 }
 
 .cyan {
-  @apply text-black bg-cyan;
+  background: var(--cyan-color);
+  color: black;
 }
 
 .green {
-  @apply text-black bg-green;
+  background: var(--green-color);
+  color: black;
 }
 
 .pink {
-  @apply text-white bg-pink;
+  background: var(--pink-color);
+  color: white
 }
 
 .blue {
-  @apply text-white bg-blue;
+  background: var(--blue-color);
+  color: white
 }
 
 .yellow {
-  @apply text-black bg-yellow;
+  background: var(--yellow-color);
+  color: black
 }
 
 .white {
-  @apply text-black bg-white;
-  border: 1px solid black;
-
-  :global(.dark) & {
-    border-color: transparent;
-  }
+  background: white;
+  color: black;
+  border: 1px solid var(--text-color);
 }
 
 .black {
-  @apply text-white bg-black;
-  :global(.dark) & {
-    border-color: white;
-  }
+  background: black;
+  color: white;
+  border: 1px solid var(--text-color);
 }
 

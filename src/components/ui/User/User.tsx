@@ -17,15 +17,11 @@ interface UserProps {
 const User: FC<UserProps> = ({ user }) => {
 	return (
 		<Link to={`${RoutePaths.USERS}/${user._id}`} className={styles.user}>
-			<Avatar user={user} size={100} />
+			<Avatar size="lg" user={user} />
 			<div className={styles.userInfo}>
 				<Title className={styles.username}>{user.username}</Title>
-				<span className={styles.field}>
-					{user.subscriptions.length} subscriptions
-				</span>
-				<span className={styles.field}>
-					{user.followers.length} followers
-				</span>
+				<span className={styles.field}>{user.subscriptions.length} subscriptions</span>
+				<span className={styles.field}>{user.followers.length} followers</span>
 			</div>
 		</Link>
 	)

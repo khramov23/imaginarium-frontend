@@ -1,0 +1,6 @@
+.formInput {
+  @apply px-5 py-2 border-b-2 text-xl;
+  background: var(--active-bg-color);
+  color: var(--text-color);
+  border: 2px solid var(--text-secondary-color)
+}

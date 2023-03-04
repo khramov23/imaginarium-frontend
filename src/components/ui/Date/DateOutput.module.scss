@@ -1,7 +1,4 @@
 .date {
   @apply text-lg;
-
-  :global(.dark) & {
-    @apply text-gray-500;
-  }
+  color: var(--text-secondary-color);
 }

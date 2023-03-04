@@ -2,11 +2,8 @@
   @apply block relative mb-5 cursor-pointer;
 
   .background {
-    @apply absolute top-0 right-0 bottom-0 left-0 bg-dark-40 opacity-0 transition-opacity;
-
-    :global(.dark) & {
-      @apply bg-light-20;
-    }
+    @apply absolute top-0 right-0 bottom-0 left-0 opacity-0 transition-opacity;
+    background: rgba(var(--inveted-bg-color), 0.3);
   }
 
   &:hover .background {
@@ -14,10 +11,12 @@
   }
 
   .icons {
-    @apply absolute top-2 right-2 px-3 py-2 text-xl text-white bg-dark-40;
+    @apply absolute top-2 right-2 px-3 py-2 text-xl;
+    background: var(--bg-color);
+    color: var(--inveted-bg-color);
   }
 
   .liked {
-    @apply text-primary;
+    color: var(--primary-color);
   }
 }

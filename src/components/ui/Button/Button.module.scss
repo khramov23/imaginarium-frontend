@@ -1,34 +1,38 @@
 .button {
   @apply relative px-10 py-2 text-xl rounded-md transition-colors flex items-center justify-center gap-2;
-
-  :global(.dark) & {
-    @apply hover:text-white;
-  }
 }
 
 .loaderOuter {
   @apply absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center;
 }
 
-.button.loading {
-  @apply opacity-50 bg-transparent hover:bg-transparent text-transparent hover:text-transparent;
+.outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 
-  :global(.dark) & {
-    @apply text-transparent hover:text-transparent;
+  &:hover {
+    background: var(--primary-thin-color);
   }
 }
 
-.button.outline {
-  @apply bg-transparent border-primary border-2 hover:bg-red-thin text-primary;
+.fill {
+  background: var(--primary-color);
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-color);
+
+  &:hover {
+    background: var(--primary-dark-color);
+    border-color: var(--primary-dark-color);
+  }
 }
 
-.button.fill {
-  @apply bg-primary border-primary border-2 text-white hover:bg-red-dark hover:border-red-dark;
+.loading {
+  color: transparent;
+  background: var(--primary-thin-color);
+  &:hover {
+    background: var(--primary-thin-color);
+  }
 }
-
-.button.fill.loading {
-  @apply bg-transparent hover:bg-transparent;
-}
-
-
 

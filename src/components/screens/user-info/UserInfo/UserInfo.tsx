@@ -38,7 +38,7 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 		<div className={styles.userInfo}>
 			{user && (
 				<>
-					<Avatar size={300} user={user} />
+					<Avatar size="xl" user={user} />
 					<div className={styles.infoBlock}>
 						<Title>{user.username}</Title>
 						{authStore.user._id === user._id ? (
@@ -61,7 +61,9 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 								<Button
 									onClick={() => subscribe(user._id)}
 									className={cls(styles.button)}
-									theme={authStore.user.subscriptions.includes(user._id) ? 'fill' : 'outline'}
+									theme={
+										authStore.user.subscriptions.includes(user._id) ? 'fill' : 'outline'
+									}
 									loading={isLoading}
 								>
 									{authStore.user.subscriptions.includes(user._id) ? (

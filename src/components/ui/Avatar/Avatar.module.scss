@@ -1,11 +1,29 @@
 .box {
-  @apply flex bg-gray-300 justify-center items-center rounded-full text-3xl overflow-hidden border-2 border-gray-500;
-
-  :global(.dark) & {
-    @apply bg-gray-300 text-gray-900 border-gray-800;
-  }
+  @apply flex justify-center items-center rounded-full text-3xl overflow-hidden;
+  background: var(--active-bg-color);
+  color: var(--text-secondary-color);
 
   img {
     @apply w-full h-full object-cover;
   }
+}
+
+.box.xs {
+  width: 40px;
+  height: 40px;
+}
+
+.box.sm {
+  width: 50px;
+  height: 50px;
+}
+
+.box.lg {
+  width: 120px;
+  height: 120px;
+}
+
+.box.xl {
+  width: 300px;
+  height: 300px;
 }

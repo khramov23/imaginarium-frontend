@@ -16,6 +16,7 @@ import { useUserInfo } from '@/hooks/queries/useUserInfo'
 import { capitalizedText } from '@/utils/capitalizedText'
 
 import authStore from '@/store/auth.store'
+import modalStore from '@/store/modal.store'
 
 import styles from './ImageInfo.module.scss'
 
@@ -30,16 +31,30 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 
 	const liked = authStore.isAuth && authStore.user.favorites.includes(image._id)
 
+	const onAuthorClick = () => {
+		modalStore.setImageSliderModal(false)
+	}
+
 	return (
 		<div className={styles.info}>
 			<Title>{capitalizedText(image.title)}</Title>
 			<div className={styles.username}>
-				{isUserLoading ? <AuthorLoader /> : user ? <Author author={user} /> : <>unknown</>}
+				{isUserLoading ? (
+					<AuthorLoader />
+				) : user ? (
+					<Author onClick={onAuthorClick} author={user} />
+				) : (
+					<>unknown</>
+				)}
 			</div>
 			<Tags tags={image.tags} />
 			<ColorPercentage colors={image.colors} />
 			<div className={styles.buttons}>
-				<Button theme={liked ? 'fill' : 'outline'} onClick={() => like(image._id)} loading={isLoading}>
+				<Button
+					theme={liked ? 'fill' : 'outline'}
+					onClick={() => like(image._id)}
+					loading={isLoading}
+				>
 					{/*Like {image.likes}*/}
 					Like {image.likes}
 				</Button>

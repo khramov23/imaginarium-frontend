@@ -1,5 +1,6 @@
 .content {
-  @apply bg-gray-800 px-10 py-7;
+  @apply px-10 py-7;
+  background: var(--bg-color);
 
   .buttons {
     @apply mt-5 flex gap-5;

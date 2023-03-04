@@ -21,12 +21,9 @@ interface ImageProps {
 const Image: FC<ImageProps> = ({ image, onClick }) => {
 	const { like } = useLikes()
 
-	const liked =
-		authStore.isAuth && authStore.user.favorites.includes(image._id)
+	const liked = authStore.isAuth && authStore.user.favorites.includes(image._id)
 
-	const likeImage = async (
-		e: React.MouseEvent<HTMLDivElement, MouseEvent>
-	) => {
+	const likeImage = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		if (authStore.isAuth) {
 			e.stopPropagation()
 			like(image._id)
@@ -37,11 +34,8 @@ const Image: FC<ImageProps> = ({ image, onClick }) => {
 		<div className={styles.outer} onClick={onClick}>
 			<img src={getImage(image.src)} alt="" />
 			<div className={styles.background}>
-				<div
-					className={cls(styles.icons, liked && styles.liked)}
-					onClick={likeImage}
-				>
-					<FaHeart />
+				<div className={cls(styles.icons, liked && styles.liked)} onClick={likeImage}>
+					<FaHeart className={styles.icon} />
 				</div>
 			</div>
 		</div>

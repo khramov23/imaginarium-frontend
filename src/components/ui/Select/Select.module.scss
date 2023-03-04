@@ -1,27 +1,23 @@
 .select {
-  @apply w-32 text-xl relative cursor-pointer bg-gray-300;
+  @apply w-32 text-xl relative cursor-pointer;
+  background: var(--active-bg-color);
+  color: var(--text-secondary-color);
 
   .value {
-    @apply px-3 py-1 border-2 border-transparent;
+    @apply px-3 py-1;
+    border: 2px solid transparent;
   }
-
-  :global(.dark) & {
-    @apply bg-gray-700 text-gray-300;
-  }
-
 
   .options {
-    @apply absolute bg-gray-700 w-full z-10 bg-gray-300;
+    @apply absolute w-full z-10 bg-gray-300;
+    background: var(--active-bg-color);
     display: none;
     top: 100%;
-
-    :global(.dark) & {
-      @apply bg-gray-700 text-gray-300;
-    }
+    color: var(--text-secondary-color);
   }
 
   .activeValue {
-    @apply border-gray-500
+    border: 2px solid var(--text-secondary-color);
   }
 
   .activeDropDown {
@@ -29,7 +25,10 @@
   }
 
   .option {
-    @apply px-3 py-2 hover:bg-dark-20;
+    @apply px-3 py-2;
+    &:hover {
+      background: rgba(var(--inveted-bg-color), 0.1);
+    }
   }
 
 

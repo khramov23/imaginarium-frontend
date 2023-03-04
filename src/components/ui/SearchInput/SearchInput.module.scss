@@ -1,11 +1,5 @@
 .input {
-  @apply w-full px-7 py-3 text-xl rounded-3xl border-2 border-transparent bg-gray-300;
-
-  :global(.dark) & {
-    @apply bg-gray-700 text-white;
-
-    &:focus {
-      @apply border-gray-500 outline-none;
-    }
-  }
+  @apply w-full px-7 py-3 text-xl rounded-3xl;
+  border: 2px solid transparent;
+  background: var(--active-bg-color);
 }
