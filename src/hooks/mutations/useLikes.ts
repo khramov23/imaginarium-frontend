@@ -7,16 +7,14 @@ import authStore from '@/store/auth.store'
 export const useLikes = () => {
 	const queryClient = useQueryClient()
 
-	const { mutate: like, ...props } = useMutation(
-		['like image'],
-		(id: string) => ImageService.like(id),
-		{
-			onSuccess: () =>
-				Promise.all([
-					authStore.updateMe(),
-					queryClient.invalidateQueries('images'),
-				]),
-		}
-	)
+	const { mutate: like, ...props } = useMutation(['like image'], (id: string) => ImageService.like(id), {
+		onSuccess: () =>
+			Promise.all([
+				authStore.updateMe(),
+				queryClient.invalidateQueries('images', {
+					refetchInactive: true,
+				}),
+			]),
+	})
 	return { like, ...props }
 }

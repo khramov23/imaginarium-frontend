@@ -1,4 +1,3 @@
-import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { Dispatch, FC } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
@@ -30,17 +29,11 @@ interface FeedPostProps {
 	numberIndex: number
 }
 
-const FeedPost: FC<FeedPostProps> = ({
-	image,
-	setPosition,
-	pageIndex,
-	numberIndex,
-}) => {
+const FeedPost: FC<FeedPostProps> = ({ image, setPosition, pageIndex, numberIndex }) => {
 	const { data: user } = useUserInfo(image.author)
-	const { like } = useLikes()
+	const { like, isLoading } = useLikes()
 
-	const liked =
-		authStore.isAuth && authStore.user.favorites.includes(image._id)
+	const liked = authStore.isAuth && authStore.user.favorites.includes(image._id)
 
 	const onImageOpen = () => {
 		modalStore.setImageSliderModal(true)
@@ -63,10 +56,7 @@ const FeedPost: FC<FeedPostProps> = ({
 				<img src={getImage(image.src)} alt="" />
 			</div>
 			<div className={styles.buttons}>
-				<Button
-					onClick={() => like(image._id)}
-					className={cls(liked && styles.active)}
-				>
+				<Button onClick={() => like(image._id)} theme={liked ? 'fill' : 'outline'} loading={isLoading}>
 					Like {image.likes}
 				</Button>
 			</div>

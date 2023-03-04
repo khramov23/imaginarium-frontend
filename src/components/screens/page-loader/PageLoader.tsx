@@ -8,7 +8,7 @@ import styles from './PageLoader.module.scss'
 const PageLoader = () => {
 	return (
 		<Layout className={styles.pageLoader}>
-			<Loader />
+			<Loader big />
 		</Layout>
 	)
 }

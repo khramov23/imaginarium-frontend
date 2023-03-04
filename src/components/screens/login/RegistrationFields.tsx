@@ -11,17 +11,10 @@ interface RegistrationFieldsProps {
 	errors: FieldErrors<RegistrationInputs>
 }
 
-const RegistrationFields: FC<RegistrationFieldsProps> = ({
-	register,
-	errors,
-}) => {
+const RegistrationFields: FC<RegistrationFieldsProps> = ({ register, errors }) => {
 	return (
 		<>
-			{errors.username && (
-				<span className={styles.inputError}>
-					{errors.username.message}
-				</span>
-			)}
+			{errors.username && <span className={styles.inputError}>{errors.username.message}</span>}
 			<FormInput
 				className="w-full mb-5"
 				placeholder="Username..."
@@ -41,7 +34,7 @@ const RegistrationFields: FC<RegistrationFieldsProps> = ({
 			<AuthFields errors={errors} register={register} />
 
 			{errors.confirmPassword && (
-				<span className="text-primary">This field is required</span>
+				<span className="block mb-2 text-primary text-lg">Confirm password is required</span>
 			)}
 			<FormInput
 				className="w-full mb-5"

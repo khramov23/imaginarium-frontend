@@ -26,8 +26,7 @@ autorun(() => {
 	items = getMenuItems()
 })
 
-interface NavbarInterface
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+interface NavbarInterface extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 	const navigate = useNavigate()
@@ -54,11 +53,7 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 			</div>
 			{pathname === '/' && (
 				<form onSubmit={formHandler} className={styles.searchForm}>
-					<SearchInput
-						className={styles.input}
-						value={filterStore.query}
-						onChange={searchHandler}
-					/>
+					<SearchInput className={styles.input} value={filterStore.query} onChange={searchHandler} />
 				</form>
 			)}
 			<Menu items={items} />

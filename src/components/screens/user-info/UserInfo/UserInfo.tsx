@@ -23,7 +23,7 @@ interface UserInfoProps {
 }
 
 const UserInfo: FC<UserInfoProps> = ({ user }) => {
-	const { subscribe } = useSubscribeMutation()
+	const { subscribe, isLoading } = useSubscribeMutation()
 	const [file, setFile] = useState<File | null>(null)
 
 	const onUploadAvatarModalOpen = () => {
@@ -51,10 +51,7 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 									text="Edit avatar"
 								/>
 								{file && <UploadAvatarModal file={file} />}
-								<Button
-									className={styles.button}
-									onClick={onUpdatePasswordModalOpen}
-								>
+								<Button className={styles.button} onClick={onUpdatePasswordModalOpen}>
 									Edit password
 								</Button>
 								<UpdatePasswordModal />
@@ -63,16 +60,11 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 							authStore.user.subscriptions && (
 								<Button
 									onClick={() => subscribe(user._id)}
-									className={cls(
-										styles.button,
-										authStore.user.subscriptions.includes(
-											user._id
-										) && styles.active
-									)}
+									className={cls(styles.button)}
+									theme={authStore.user.subscriptions.includes(user._id) ? 'fill' : 'outline'}
+									loading={isLoading}
 								>
-									{authStore.user.subscriptions.includes(
-										user._id
-									) ? (
+									{authStore.user.subscriptions.includes(user._id) ? (
 										<>Unsubscribe -</>
 									) : (
 										<>Subscribe +</>
@@ -82,15 +74,11 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 						)}
 					</div>
 					<div className={styles.infoBlock}>
-						<Title className={styles.friendsCount}>
-							{user.followers.length}
-						</Title>{' '}
+						<Title className={styles.friendsCount}>{user.followers.length}</Title>{' '}
 						<span className={styles.friendName}>followers</span>
 					</div>
 					<div className={styles.infoBlock}>
-						<Title className={styles.friendsCount}>
-							{user.subscriptions.length}
-						</Title>{' '}
+						<Title className={styles.friendsCount}>{user.subscriptions.length}</Title>{' '}
 						<span className={styles.friendName}>subscriptions</span>
 					</div>
 				</>

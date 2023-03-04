@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -30,27 +31,23 @@ const LoginScreen = () => {
 	const [error, setError] = useState('')
 
 	const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-		authStore
-			.login(data)
-			.catch((error: ApiError) => setError(error.response.data.message))
+		authStore.login(data).catch((error: ApiError) => setError(error.response.data.message))
 	}
 
 	return (
 		<div className={styles.box}>
-			<form
-				action=""
-				onSubmit={handleSubmit(onSubmit)}
-				onChange={() => setError('')}
-			>
+			<form action="" onSubmit={handleSubmit(onSubmit)} onChange={() => setError('')}>
 				<Title className={styles.title}>Login</Title>
 
 				{error && <Alert className={styles.alert} text={error} />}
 				<AuthFields register={register} errors={errors} />
 
-				<Button className="block ml-auto mr-auto">Login</Button>
+				<Button className="block ml-auto mr-auto" loading={authStore.isLoading}>
+					Login
+				</Button>
 				<div className="mt-5 dark:text-white text-xl">
 					First time here?
-					<Link to={RoutePaths.REGISTRATION} className="text-primary">
+					<Link to={RoutePaths.REGISTRATION} className="text-primary ml-2">
 						Create an account!
 					</Link>
 				</div>
@@ -59,4 +56,4 @@ const LoginScreen = () => {
 	)
 }
 
-export default LoginScreen
+export default observer(LoginScreen)

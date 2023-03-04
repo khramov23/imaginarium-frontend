@@ -12,13 +12,9 @@ const MainScreen = () => {
 		<div className={styles.main}>
 			<div className={styles.info}>
 				<h1 className={styles.title}>Imaginarium</h1>
-				<h2 className={styles.subtitle}>
-					Find and download the best photos, designs, and mockups
-				</h2>
+				<h2 className={styles.subtitle}>Find and download the best photos, designs, and mockups</h2>
 				<Link to={RoutePaths.GALLERY}>
-					<Button className="border-red-main text-red-main">
-						Search Images
-					</Button>
+					<Button className="mx-auto">Search Images</Button>
 				</Link>
 			</div>
 		</div>

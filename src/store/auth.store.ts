@@ -13,6 +13,7 @@ import { $api } from '@/http'
 class AuthStore {
 	user = {} as IUser
 	isAuth = false
+	isLoading = false
 
 	constructor() {
 		makeAutoObservable(this)
@@ -26,6 +27,10 @@ class AuthStore {
 		this.user = user
 	}
 
+	setIsLoading(flag: boolean) {
+		this.isLoading = flag
+	}
+
 	async updateMe() {
 		try {
 			const response = await UserService.fetchUserById(this.user._id)
@@ -36,17 +41,32 @@ class AuthStore {
 	}
 
 	async login(loginDto: ILogin) {
-		const response = await AuthService.login(loginDto)
-		localStorage.setItem('imaginarium-token', response.data.accessToken)
-		this.setAuth(true)
-		this.setUser(response.data.user)
+		this.setIsLoading(true)
+		try {
+			const response = await AuthService.login(loginDto)
+			console.log(response)
+			localStorage.setItem('imaginarium-token', response.data.accessToken)
+			this.setIsLoading(false)
+			this.setAuth(true)
+			this.setUser(response.data.user)
+		} catch (e) {
+			this.setIsLoading(false)
+			throw e
+		}
 	}
 
 	async registration(registrationDto: IRegistration) {
-		const response = await AuthService.registration(registrationDto)
-		localStorage.setItem('imaginarium-token', response.data.accessToken)
-		this.setAuth(true)
-		this.setUser(response.data.user)
+		this.setIsLoading(true)
+		try {
+			const response = await AuthService.registration(registrationDto)
+			localStorage.setItem('imaginarium-token', response.data.accessToken)
+			this.setIsLoading(false)
+			this.setAuth(true)
+			this.setUser(response.data.user)
+		} catch (e) {
+			this.setIsLoading(false)
+			throw e
+		}
 	}
 
 	async logout() {
