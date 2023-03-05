@@ -5,9 +5,7 @@ import Layout from '@/components/layout/Layout'
 const Error404Page = () => {
 	return (
 		<Layout center>
-			<div className="text-3xl dark:text-white">
-				Error 404. Page not found!
-			</div>
+			<div className="text-3xl">Error 404. Page not found!</div>
 		</Layout>
 	)
 }

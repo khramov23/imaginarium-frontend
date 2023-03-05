@@ -2,11 +2,10 @@ import React, { FC } from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { LoginInputs } from '@/components/screens/login/LoginScreen'
+import Alert from '@/components/ui/Alert/Alert'
 import FormInput from '@/components/ui/FormInput/FormInput'
 
 import { emailPattern } from '@/utils/emailPattern'
-
-import styles from './LoginScreen.module.scss'
 
 export interface AuthFieldsProps {
 	errors: FieldErrors<LoginInputs>
@@ -16,11 +15,7 @@ export interface AuthFieldsProps {
 const AuthFields: FC<AuthFieldsProps> = ({ errors, register }) => {
 	return (
 		<>
-			{errors.email && (
-				<span className={styles.inputError}>
-					{errors.email.message}
-				</span>
-			)}
+			{errors.email && <Alert text={errors.email.message!} small />}
 			<FormInput
 				className="w-full mb-5"
 				placeholder="E-mail..."
@@ -33,11 +28,7 @@ const AuthFields: FC<AuthFieldsProps> = ({ errors, register }) => {
 				})}
 			/>
 
-			{errors.password && (
-				<span className={styles.inputError}>
-					{errors.password.message}
-				</span>
-			)}
+			{errors.password && <Alert text={errors.password.message!} small />}
 			<FormInput
 				className="w-full mb-5"
 				placeholder="Password..."

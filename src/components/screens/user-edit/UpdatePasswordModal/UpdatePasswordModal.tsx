@@ -27,13 +27,7 @@ interface UpdatePasswordInputs {
 
 const UpdatePasswordModal = () => {
 	const navigate = useNavigate()
-	const {
-		update,
-		isLoading,
-		isSuccess,
-		isError,
-		error: updatePasswordError,
-	} = useUpdatePasswordMutation()
+	const { update, isLoading, isSuccess, isError, error: updatePasswordError } = useUpdatePasswordMutation()
 	const onClose = () => {
 		modalStore.setUpdatePasswordModal(false)
 	}
@@ -53,26 +47,26 @@ const UpdatePasswordModal = () => {
 				navigate(RoutePaths.LOGIN)
 			})
 		}
-		if (isError)
-			setError((updatePasswordError as ApiError).response.data.message)
+		if (isError) setError((updatePasswordError as ApiError).response.data.message)
 	}, [isSuccess, isError])
 
 	const [error, setError] = useState('')
 
+	const onChange = () => {
+		setError('')
+	}
+
 	const onSubmit: SubmitHandler<UpdatePasswordInputs> = async (data) => {
-		update(data)
+		if (data.oldPassword === data.newPassword) setError('Passwords are equal')
+		else update(data)
 	}
 
 	return (
 		<Modal visible={modalStore.updatePasswordModal} onClose={onClose}>
-			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+			<form className={styles.form} onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
 				<Title className={styles.title}>Change password</Title>
 				{error && <Alert className={styles.alert} text={error} />}
-				{errors.oldPassword && (
-					<span className={styles.inputError}>
-						{errors.oldPassword.message}
-					</span>
-				)}
+				{errors.oldPassword && <Alert text={errors.oldPassword.message!} small />}
 				<FormInput
 					placeholder="Old password..."
 					className={styles.input}
@@ -89,11 +83,7 @@ const UpdatePasswordModal = () => {
 						},
 					})}
 				/>
-				{errors.newPassword && (
-					<span className={styles.inputError}>
-						{errors.newPassword.message}
-					</span>
-				)}
+				{errors.newPassword && <Alert text={errors.newPassword.message!} small />}
 				<FormInput
 					placeholder="New password..."
 					className={styles.input}

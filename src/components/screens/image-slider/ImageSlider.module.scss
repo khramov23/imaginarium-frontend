@@ -9,7 +9,9 @@
   }
 
   .arrow {
-    @apply absolute h-full top-0 bg-light-20 hover:opacity-20 transition-opacity  text-7xl text-white flex items-center justify-center cursor-pointer;
+    @apply absolute h-full top-0 hover:opacity-20 transition-opacity text-7xl flex items-center justify-center cursor-pointer;
+    background: rgba(white, 0.2);
+    color: white;
     width: 7%;
     opacity: 3%;
   }

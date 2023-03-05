@@ -1,20 +1,22 @@
 .box {
-  @apply px-12 py-6 rounded-xl bg-light-95 z-10;
+  @apply px-12 py-6 rounded-xl z-10;
+  background: rgba(white, 0.95);
   width: 420px;
 
   :global(.dark) & {
-    @apply bg-dark-80
+    background: rgba(black, 0.8);
   }
 
   .title {
     @apply text-center mb-5 mt-3;
   }
 
-  .inputError {
-    @apply block mb-2 text-primary text-lg;
-  }
-
   .alert {
     @apply mb-5;
+  }
+
+  .link {
+    @apply ml-2;
+    color: var(--primary-color);
   }
 }

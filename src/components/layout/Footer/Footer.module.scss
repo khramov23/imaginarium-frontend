@@ -1,18 +1,18 @@
 .footer {
   @apply flex items-center justify-between py-4 px-10;
-  box-shadow: 0px -3px 8px 0px rgba(191, 191, 191, 0.2);
+  background: var(--navbar-bg-color);
+  box-shadow: 0px -3px 8px 0px rgba(var(--inveted-bg-color), 0.1);
   flex: 0 0 auto;
 
   :global(.dark) & {
-    @apply bg-gray-900;
-    box-shadow: 0px -3px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
   }
+}
+
+.social {
+  @apply flex gap-4 items-center text-xl;
 }
 
 .copyright {
   @apply text-xl;
-
-  :global(.dark) & {
-    @apply text-white;
-  }
 }

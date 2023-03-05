@@ -7,13 +7,10 @@
     .button {
       @apply mt-4;
     }
-
-    .active {
-      @apply bg-primary text-white;
-    }
   }
 
   .friendName {
-    @apply text-gray-500 text-xl mb-2;
+    @apply text-xl mb-2;
+    color: var(--text-secondary-color);
   }
 }

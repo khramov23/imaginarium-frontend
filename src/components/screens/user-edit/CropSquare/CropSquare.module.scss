@@ -4,12 +4,14 @@
 
 .range {
   -webkit-appearance: none;
-  @apply w-full bg-gray-700 rounded-lg my-3;
+  @apply w-full rounded-lg my-3;
+  background: var(--active-bg-color);
 }
 
 .range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  @apply w-5 h-5 rounded-full bg-primary
+  @apply w-5 h-5 rounded-full;
+  background: var(--primary-color);
 }
 
 

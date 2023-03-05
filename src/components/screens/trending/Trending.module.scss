@@ -49,6 +49,7 @@
   }
 
   .tag {
-    @apply absolute left-5 bottom-5 text-light-80 text-3xl;
+    @apply absolute left-5 bottom-5 text-3xl;
+    color: rgba(white, 0.9);
   }
 }

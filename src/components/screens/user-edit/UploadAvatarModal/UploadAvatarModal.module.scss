@@ -1,5 +1,6 @@
 .box {
-  @apply flex bg-gray-800;
+  @apply flex;
+  background: var(--bg-color);
 
   .leftPart > img {
     min-height: 50vh;

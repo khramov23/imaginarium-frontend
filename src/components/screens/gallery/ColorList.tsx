@@ -1,4 +1,3 @@
-import cls from 'classnames'
 import React, { FC } from 'react'
 
 import { ColorNames } from '@/types/api/image.types'
@@ -9,23 +8,14 @@ import Color from '@/components/ui/Colors/Color'
 interface ColorListProps {
 	colors: ColorNames[]
 	setColor: (color: ColorNames) => void
-	value: ColorNames | null
 	text?: string
 }
 
-const ColorList: FC<ColorListProps> = ({ colors, value, setColor }) => {
+const ColorList: FC<ColorListProps> = ({ colors, setColor }) => {
 	return (
 		<div className={styles.colors}>
 			{colors.map((color) => (
-				<Color
-					key={color}
-					color={color}
-					className={cls(
-						styles.color,
-						value === color && styles.colorActive
-					)}
-					onClick={() => setColor(color)}
-				>
+				<Color key={color} color={color} className={styles.color} onClick={() => setColor(color)}>
 					{color}
 				</Color>
 			))}

@@ -45,9 +45,9 @@ const LoginScreen = () => {
 				<Button className="block ml-auto mr-auto" loading={authStore.isLoading}>
 					Login
 				</Button>
-				<div className="mt-5 dark:text-white text-xl">
+				<div className="mt-5 text-xl">
 					First time here?
-					<Link to={RoutePaths.REGISTRATION} className="text-primary ml-2">
+					<Link to={RoutePaths.REGISTRATION} className={styles.link}>
 						Create an account!
 					</Link>
 				</div>

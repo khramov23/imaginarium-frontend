@@ -1,6 +1,7 @@
 .user {
   @apply flex items-center px-5 py-3 rounded-xl gap-5 cursor-pointer transition-colors;
   border: 3px solid var(--active-bg-color);
+  background: var(--secondary-bg-color);
   flex: 0 0 32%;
 
   &:hover {

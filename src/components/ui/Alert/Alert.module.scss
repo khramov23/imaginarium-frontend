@@ -1,5 +1,11 @@
 .alert {
-  @apply w-full px-5 py-2 border-2 border-primary text-xl text-primary;
+  @apply w-full px-5 py-2 text-xl;
+  border: 3px solid var(--primary-color);
   background: var(--primary-thin-color);
   color: var(--primary-color)
+}
+
+.small {
+  background: transparent;
+  border: transparent;
 }

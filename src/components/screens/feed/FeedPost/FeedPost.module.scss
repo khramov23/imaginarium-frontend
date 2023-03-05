@@ -1,5 +1,7 @@
 .post {
-  @apply rounded-xl border-2 border-gray-700 py-5 mt-10;
+  @apply rounded-xl py-5 mt-10;
+  border: 3px solid var(--active-bg-color);
+  background: var(--secondary-bg-color);
 
   .author {
     @apply ml-5
@@ -19,9 +21,5 @@
 
   .buttons {
     @apply ml-5 mt-5;
-
-    .active {
-      @apply bg-primary text-white;
-    }
   }
 }

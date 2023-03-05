@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import AuthFields from '@/components/screens/login/AuthFields'
-import styles from '@/components/screens/login/LoginScreen.module.scss'
 import { RegistrationInputs } from '@/components/screens/login/RegistrationScreen'
+import Alert from '@/components/ui/Alert/Alert'
 import FormInput from '@/components/ui/FormInput/FormInput'
 
 interface RegistrationFieldsProps {
@@ -14,7 +14,8 @@ interface RegistrationFieldsProps {
 const RegistrationFields: FC<RegistrationFieldsProps> = ({ register, errors }) => {
 	return (
 		<>
-			{errors.username && <span className={styles.inputError}>{errors.username.message}</span>}
+			{errors.username && <Alert text={errors.username.message!} small />}
+
 			<FormInput
 				className="w-full mb-5"
 				placeholder="Username..."
@@ -33,9 +34,7 @@ const RegistrationFields: FC<RegistrationFieldsProps> = ({ register, errors }) =
 
 			<AuthFields errors={errors} register={register} />
 
-			{errors.confirmPassword && (
-				<span className="block mb-2 text-primary text-lg">Confirm password is required</span>
-			)}
+			{errors.confirmPassword && <Alert text={errors.confirmPassword.message!} small />}
 			<FormInput
 				className="w-full mb-5"
 				placeholder="Confirm password..."

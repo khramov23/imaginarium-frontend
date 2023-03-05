@@ -32,7 +32,10 @@ const RegistrationScreen = () => {
 
 	const onSubmit: SubmitHandler<RegistrationInputs> = async (data) => {
 		if (data.password !== data.confirmPassword) setError('Passwords are not equal!')
-		else await authStore.registration(data).catch((error: ApiError) => setError(error.response.data.message))
+		else
+			await authStore
+				.registration(data)
+				.catch((error: ApiError) => setError(error.response.data.message))
 	}
 
 	return (
@@ -46,9 +49,9 @@ const RegistrationScreen = () => {
 				<Button className="block ml-auto mr-auto" loading={authStore.isLoading}>
 					Registration
 				</Button>
-				<div className="mt-5 dark:text-white text-xl">
+				<div className="mt-5 text-xl">
 					Already have an account?
-					<Link to={RoutePaths.LOGIN} className="text-primary ml-2">
+					<Link to={RoutePaths.LOGIN} className={styles.link}>
 						Login!
 					</Link>
 				</div>

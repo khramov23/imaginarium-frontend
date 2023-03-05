@@ -5,35 +5,31 @@
 
   &:before {
     content: "";
-    @apply absolute top-0 bottom-0 left-0 right-0 bg-white opacity-0;
+    @apply absolute top-0 bottom-0 left-0 right-0 opacity-10;
+    background: var(--bg-color);
 
     :global(.dark) & {
-      @apply bg-black opacity-50;
+      @apply opacity-50;
     }
   }
 
   .info {
     z-index: 1;
     text-align: center;
-    @apply bg-light-80 px-10 py-5;
+    @apply px-10 py-5;
+    background: rgba(white, 0.8);
     :global(.dark) & {
-      @apply bg-dark-40;
+      background: rgba(black, 0.5);
     }
 
     .title {
       @apply text-7xl font-bold mb-7;
 
-      :global(.dark) & {
-        @apply text-white;
-      }
     }
 
     .subtitle {
       @apply text-2xl mb-5;
-
-      :global(.dark) & {
-        @apply text-gray-300;
-      }
+      color: var(--text-secondary-color);
     }
   }
 }

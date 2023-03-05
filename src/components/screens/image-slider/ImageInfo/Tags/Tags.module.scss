@@ -9,10 +9,12 @@
     @apply flex gap-2 items-center flex-wrap;
 
     .tag {
-      @apply block px-5 py-1 bg-gray-300 rounded-full transition-colors cursor-pointer hover:bg-gray-500  ;
+      @apply block px-5 py-1 rounded-full transition-colors cursor-pointer;
+      background: var(--active-bg-color);
+      color: var(--text-secondary-color);
 
-      :global(.dark) & {
-        @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
+      &:hover {
+        background: var(--secondary-bg-color);
       }
     }
   }
