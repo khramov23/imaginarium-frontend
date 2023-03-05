@@ -1,7 +1,7 @@
 import cls from 'classnames'
 import { autorun } from 'mobx'
 import { observer } from 'mobx-react-lite'
-import { ChangeEvent, DetailedHTMLProps, FC, HTMLAttributes } from 'react'
+import { ChangeEvent, DetailedHTMLProps, FC, HTMLAttributes, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import Menu from '@/components/layout/Navbar/Menu/Menu'
@@ -11,6 +11,8 @@ import Button from '@/components/ui/Button/Button'
 import Logo from '@/components/ui/Logo/Logo'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
+
+import { useMatchMedia } from '@/hooks/useMatchMedia'
 
 import { RoutePaths } from '@/router/router.types'
 
@@ -29,8 +31,11 @@ autorun(() => {
 interface NavbarInterface extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
+	const { lg, xl, xxl, xs } = useMatchMedia()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
+
+	const isSearchInputShown = useMemo(() => xl || xxl || lg, [xl, xxl, lg])
 
 	const logoutHandler = () => {
 		authStore.logout()
@@ -49,10 +54,8 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 
 	return (
 		<div className={cls(styles.navbar, className)} {...rest}>
-			<div style={{ width: 200 }}>
-				<Logo />
-			</div>
-			{pathname === '/' && (
+			<Logo className={styles.logo} />
+			{pathname === '/' && isSearchInputShown && (
 				<form onSubmit={formHandler} className={styles.searchForm}>
 					<SearchInput
 						className={styles.input}
@@ -61,7 +64,7 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 					/>
 				</form>
 			)}
-			<Menu items={items} />
+			{!xs && <Menu items={items} />}
 			<div className={styles.rightPart}>
 				<ThemeSwitcher />
 				{authStore.isAuth ? (

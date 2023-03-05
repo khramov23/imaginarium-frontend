@@ -15,6 +15,7 @@
 
   .colors {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 2.5rem;
     margin-bottom: 3.5rem;
@@ -24,6 +25,20 @@
       border-radius: var(--round-lg);
       cursor: pointer;
     }
-
+    @media (max-width: 1500px) {
+      gap: 2rem;
+    }
+    @media (max-width: 992px) {
+      justify-content: center;
+      gap: 1rem;
+      .color {
+        flex-basis: 23%;
+      }
+    }
+    @media (max-width: 576px) {
+      .color {
+        flex-basis: 30%;
+      }
+    }
   }
 }

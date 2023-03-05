@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2.5rem;
+  padding: 1rem 2rem;
   background: var(--navbar-bg-color);
   box-shadow: 0px -3px 8px 0px rgba(var(--inveted-bg-color), 0.1);
   flex: 0 0 auto;
@@ -15,6 +15,9 @@
 .social {
   display: flex;
   gap: 1rem;
+  @media (max-width: 576px) {
+    gap: 0.25rem;
+  }
   align-items: center;
   font-size: 1.25rem;
 }

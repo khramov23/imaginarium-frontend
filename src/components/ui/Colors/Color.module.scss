@@ -4,6 +4,18 @@
   display: inline-block;
   font-size: 1.25rem;
   padding: 0.5rem 2rem;
+  @media (max-width: 1200px) {
+    padding: 0.5rem 1.4rem;
+  }
+  @media (max-width: 992px) {
+    padding: 0.5rem 1.2rem;
+  }
+  @media (max-width: 768px) {
+
+  }
+  @media (max-width: 576px) {
+
+  }
 
   &:after {
     content: '';

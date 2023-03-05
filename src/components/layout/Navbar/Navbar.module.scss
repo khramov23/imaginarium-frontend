@@ -6,6 +6,10 @@
   box-shadow: 0 3px 8px 0 rgba(var(--inveted-bg-color), 0.1);
   background: var(--navbar-bg-color);
   flex: 0 0 auto;
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
 
   :global(.dark) & {
     box-shadow: none;
@@ -13,12 +17,15 @@
 
   .searchForm {
     flex-grow: 1;
-    margin-right: 2.5rem;
+    margin-left: 2.5rem;
   }
 
   .rightPart {
     display: flex;
     gap: 2.5rem;
+    @media (max-width: 768px) {
+      gap: 1rem;
+    }
   }
 }
 
@@ -28,4 +35,8 @@
   align-items: center;
   gap: 2rem;
   padding: 0 2.5rem;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
 }

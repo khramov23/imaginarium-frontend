@@ -35,4 +35,20 @@
   width: 18rem;
   height: 18rem;
   font-size: 5rem;
+
+  @media (max-width: 1500px) {
+    width: 15rem;
+    height: 15rem;
+  }
+  @media (max-width: 992px) {
+    width: 12rem;
+    height: 12rem;
+  }
+  @media (max-width: 768px) {
+    width: 10rem;
+    height: 10rem;
+  }
+  @media (max-width: 576px) {
+
+  }
 }

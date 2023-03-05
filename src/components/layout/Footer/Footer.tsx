@@ -11,9 +11,7 @@ interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
 const Footer: FC<FooterProps> = ({ className, ...rest }) => {
 	return (
 		<div className={cls(styles.footer, className)} {...rest}>
-			<div style={{ width: 150 }}>
-				<Logo />
-			</div>
+			<Logo />
 
 			<div className={styles.copyright}>&copy; khramov, 2022</div>
 			<Social />

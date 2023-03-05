@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
 import { IImage } from '@/types/api/image.types'
@@ -9,6 +9,7 @@ import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Image from '@/components/ui/Image/Image'
 import AuthModal from '@/components/ui/Modal/AuthModal/AuthModal'
 
+import { useMatchMedia } from '@/hooks/useMatchMedia'
 import { useObserver } from '@/hooks/useObserver'
 
 import { getColumns } from '@/utils/getColumns'
@@ -26,19 +27,26 @@ interface GalleryProps {
 	) => Promise<InfiniteQueryObserverResult<IImage[], unknown>>
 }
 
-const columnsNum = 4
-const columns = getColumns(columnsNum)
-
 const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage }) => {
 	const [position, setPosition] = useState<Position>({ page: 0, number: 0 })
 
-	const { lastElement } = useObserver(
-		async (entries: IntersectionObserverEntry[]) => {
-			if (entries[0].isIntersecting) {
-				await fetchNextPage()
-			}
+	const { xs, md, sm } = useMatchMedia()
+
+	const columnsNum = useMemo(() => {
+		if (xs) {
+			return 2
+		} else if (sm || md) {
+			return 3
+		} else return 4
+	}, [xs, sm, md])
+
+	const columns = useMemo(() => getColumns(columnsNum), [columnsNum])
+
+	const { lastElement } = useObserver(async (entries: IntersectionObserverEntry[]) => {
+		if (entries[0].isIntersecting) {
+			await fetchNextPage()
 		}
-	)
+	})
 
 	const onImageOpen = () => {
 		if (authStore.isAuth) modalStore.setImageSliderModal(true)
@@ -54,9 +62,7 @@ const Gallery: FC<GalleryProps> = ({ pages, fetchNextPage }) => {
 							<React.Fragment key={pageIndex}>
 								{page.map(
 									(image, numberIndex) =>
-										(pageIndex * filterStore.limit +
-											numberIndex) %
-											columnsNum ===
+										(pageIndex * filterStore.limit + numberIndex) % columnsNum ===
 											columns[colNum] && (
 											<Image
 												image={image}

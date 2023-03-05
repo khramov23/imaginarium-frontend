@@ -2,6 +2,22 @@
   display: grid;
   gap: 1.25rem;
   max-height: 600px;
+  @media (max-width: 1500px) {
+    max-height: 520px;
+  }
+  @media (max-width: 1200px) {
+    max-height: 460px;
+  }
+  @media (max-width: 992px) {
+    max-height: 400px;
+  }
+  @media (max-width: 768px) {
+    max-height: 300px;
+  }
+  @media (max-width: 576px) {
+    max-height: 230px;
+  }
+
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 
@@ -61,6 +77,9 @@
     bottom: 1.25rem;
     font-size: 1.75rem;
     color: rgba(white, 0.9);
+    @media (max-width: 576px) {
+      font-size: 1.25rem;
+    }
   }
 }
 

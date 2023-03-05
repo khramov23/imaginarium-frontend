@@ -1,9 +1,13 @@
 .form {
-  width: 500px;
+  width: 35rem;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.25rem;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 }
 
 .loaded {
