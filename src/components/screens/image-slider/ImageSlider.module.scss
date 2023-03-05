@@ -1,26 +1,38 @@
 .box {
-  @apply flex;
+  display: flex;
 
   > img {
-    @apply flex;
+    display: flex;
     min-height: 50vh;
     max-height: 80vh;
     max-width: 60vw;
   }
 
   .arrow {
-    @apply absolute h-full top-0 hover:opacity-20 transition-opacity text-7xl flex items-center justify-center cursor-pointer;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 4.5rem;
     background: rgba(white, 0.2);
     color: white;
     width: 7%;
     opacity: 3%;
+    transition: opacity var(--transition);
+
+    &:hover {
+      opacity: 0.2;
+    }
   }
 
   .prev {
-    @apply left-0;
+    left: 0;
   }
 
   .next {
-    @apply right-0;
+    right: 0;
   }
 }

@@ -18,8 +18,7 @@ const UsersScreen = () => {
 
 	const { data: users, isLoading } = useQuery({
 		queryKey: ['fetch users', query],
-		queryFn: () =>
-			UserService.fetchUsers(username).then((response) => response.data),
+		queryFn: () => UserService.fetchUsers(username).then((response) => response.data),
 	})
 
 	return (

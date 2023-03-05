@@ -1,7 +1,7 @@
 .author {
-  @apply flex items-center gap-3;
-
-  .username {
-    @apply font-bold text-xl;
-  }
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: bold;
+  font-size: 1.25rem;
 }

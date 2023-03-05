@@ -1,3 +1,4 @@
+import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 
@@ -17,15 +18,8 @@ const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ className }) => {
 	}
 
 	return (
-		<div
-			className={styles.switcher + ` ${className}`}
-			onClick={switchThemeHandler}
-		>
-			<MaterialIcon
-				name={
-					themeStore.theme === 'light' ? 'MdLightMode' : 'MdDarkMode'
-				}
-			/>
+		<div className={cls(styles.switcher, className)} onClick={switchThemeHandler}>
+			<MaterialIcon name={themeStore.theme === 'light' ? 'MdLightMode' : 'MdDarkMode'} />
 		</div>
 	)
 }

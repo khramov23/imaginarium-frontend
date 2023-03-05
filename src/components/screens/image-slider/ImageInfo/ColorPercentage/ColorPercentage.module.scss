@@ -1,15 +1,23 @@
 .box {
-  @apply flex gap-5 mt-7;
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
 
   .title {
-    @apply text-2xl;
+    font-size: 1.5rem;
   }
 
   .colors {
-    @apply flex gap-2 items-center flex-wrap;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
 
     .color {
-      @apply block px-5 py-1 rounded-full cursor-pointer;
+      display: block;
+      padding: 0.25rem 1.25rem;
+      border-radius: var(--round-lg);
+      cursor: pointer;
     }
   }
 }

@@ -1,19 +1,21 @@
+import cls from 'classnames'
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { MenuItem } from '@/components/layout/Navbar/Menu/Menu.types'
+
+import styles from './MenuItemComponent.module.scss'
 
 interface MenuItemProps {
 	item: MenuItem
 }
 
 const MenuItemComponent: FC<MenuItemProps> = ({ item }) => {
+	const activeClass = cls(styles.navlink, styles.active)
+
 	return (
 		<li>
-			<NavLink
-				to={item.link}
-				className="px-1 py-1 border-b-2 border-transparent hover:border-primary transition-colors text-xl"
-			>
+			<NavLink to={item.link} className={({ isActive }) => (isActive ? activeClass : styles.navlink)}>
 				{item.value}
 			</NavLink>
 		</li>

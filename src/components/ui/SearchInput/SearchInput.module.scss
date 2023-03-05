@@ -1,5 +1,8 @@
 .input {
-  @apply w-full px-7 py-3 text-xl rounded-3xl;
+  width: 100%;
+  padding: 0.25rem 1.25rem;
+  font-size: 1.25rem;
+  border-radius: var(--round-sm);
   border: 2px solid transparent;
   background: var(--active-bg-color);
 }

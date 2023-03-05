@@ -1,21 +1,39 @@
 .user {
-  @apply flex items-center border-2 px-5 py-3 rounded-xl gap-5;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border: 0.125rem solid var(--active-bg-color);
+  border-radius: var(--round-lg);
+  gap: 1.25rem;
   flex: 0 0 32%;
 
+  .userInfo {
+    flex: 1;
+  }
+
   .username {
-    @apply mb-2 h-6;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 1.5rem;
   }
 
   .avatar {
-    @apply w-24 h-24 rounded-full;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
   }
 
   .field {
-    @apply block mb-1 w-full h-4;
+    display: block;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 1rem;
   }
 
 }
 
 .list {
-  @apply grid grid-cols-4 gap-7;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
 }

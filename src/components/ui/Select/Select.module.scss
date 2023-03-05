@@ -1,17 +1,23 @@
 .select {
-  @apply w-32 text-xl relative cursor-pointer;
+  width: 8rem;
+  font-size: 1.25rem;
+  position: relative;
+  cursor: pointer;
   background: var(--active-bg-color);
   color: var(--text-secondary-color);
+  border-radius: var(--round-sm);
 
   .value {
-    @apply px-3 py-1;
+    padding: 0.25rem 1.25rem;
     border: 2px solid transparent;
   }
 
   .options {
-    @apply absolute w-full z-10;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
     background: var(--active-bg-color);
-    display: none;
+    display: block;
     top: 100%;
     color: var(--text-secondary-color);
   }
@@ -20,12 +26,9 @@
     border: 2px solid var(--text-secondary-color);
   }
 
-  .activeDropDown {
-    @apply block;
-  }
-
   .option {
-    @apply px-3 py-2;
+    padding: 0.25rem 1.25rem;
+
     &:hover {
       background: rgba(var(--inveted-bg-color), 0.1);
     }

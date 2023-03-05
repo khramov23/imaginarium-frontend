@@ -1,5 +1,23 @@
 .color {
-  @apply px-7 py-2 text-xl inline-block;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background-color var(--transition);
+  }
+
+  &:hover:after {
+    background-color: rgba(var(--inveted-bg-color), 0.2);
+  }
 }
 
 .red {

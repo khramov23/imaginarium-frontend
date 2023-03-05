@@ -6,6 +6,8 @@ import { RegistrationInputs } from '@/components/screens/login/RegistrationScree
 import Alert from '@/components/ui/Alert/Alert'
 import FormInput from '@/components/ui/FormInput/FormInput'
 
+import styles from './LoginScreen.module.scss'
+
 interface RegistrationFieldsProps {
 	register: UseFormRegister<any>
 	errors: FieldErrors<RegistrationInputs>
@@ -17,7 +19,7 @@ const RegistrationFields: FC<RegistrationFieldsProps> = ({ register, errors }) =
 			{errors.username && <Alert text={errors.username.message!} small />}
 
 			<FormInput
-				className="w-full mb-5"
+				className={styles.input}
 				placeholder="Username..."
 				{...register('username', {
 					required: 'Username is required',
@@ -36,7 +38,7 @@ const RegistrationFields: FC<RegistrationFieldsProps> = ({ register, errors }) =
 
 			{errors.confirmPassword && <Alert text={errors.confirmPassword.message!} small />}
 			<FormInput
-				className="w-full mb-5"
+				className={styles.input}
 				placeholder="Confirm password..."
 				type="password"
 				{...register('confirmPassword', {

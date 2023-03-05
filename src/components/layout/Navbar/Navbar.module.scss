@@ -1,6 +1,9 @@
 .navbar {
-  @apply px-10 py-4 flex items-center justify-between;
-  box-shadow: 0px 3px 8px 0px rgba(var(--inveted-bg-color), 0.1);
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 8px 0 rgba(var(--inveted-bg-color), 0.1);
   background: var(--navbar-bg-color);
   flex: 0 0 auto;
 
@@ -9,10 +12,20 @@
   }
 
   .searchForm {
-    @apply flex-grow mr-10;
-
-    .input {
-      @apply w-full py-1;
-    }
+    flex-grow: 1;
+    margin-right: 2.5rem;
   }
+
+  .rightPart {
+    display: flex;
+    gap: 2.5rem;
+  }
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2.5rem;
 }

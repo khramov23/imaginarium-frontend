@@ -1,29 +1,38 @@
 .box {
-  @apply flex justify-center items-center rounded-full text-3xl overflow-hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
   background: var(--active-bg-color);
   color: var(--text-secondary-color);
 
   img {
-    @apply w-full h-full object-cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
 .box.xs {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .box.sm {
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
 }
 
 .box.lg {
-  width: 120px;
-  height: 120px;
+  width: 6rem;
+  height: 6rem;
+  font-size: 3rem;
 }
 
 .box.xl {
-  width: 300px;
-  height: 300px;
+  width: 18rem;
+  height: 18rem;
+  font-size: 5rem;
 }

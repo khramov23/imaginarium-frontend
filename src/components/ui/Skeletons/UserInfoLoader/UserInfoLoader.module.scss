@@ -1,29 +1,41 @@
 .userInfo {
-  @apply flex items-center gap-32 mt-10;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  margin-top: 2.5rem;
 
   .avatar {
-    width: 300px;
-    height: 300px;
+    width: 18rem;
+    height: 18rem;
     border-radius: 100%;
   }
 
   .infoBlock {
-    @apply flex flex-col items-center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .username {
-      @apply h-6 w-32 block;
+      display: block;
+      height: 1.5rem;
+      width: 8rem;
     }
 
     .button {
-      @apply w-44 h-12 mt-4;
+      width: 11rem;
+      height: 3rem;
+      margin-top: 1rem;
     }
 
     .friendsCount {
-      @apply w-7 h-10 rounded-lg;
+      width: 1.75rem;
+      height: 2.5rem;
+      border-radius: var(--round-lg);
     }
   }
 
   .friendName {
-    @apply text-xl mb-2;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 }

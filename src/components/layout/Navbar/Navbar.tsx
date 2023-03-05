@@ -62,7 +62,7 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 				</form>
 			)}
 			<Menu items={items} />
-			<div className="flex gap-10">
+			<div className={styles.rightPart}>
 				<ThemeSwitcher />
 				{authStore.isAuth ? (
 					<>

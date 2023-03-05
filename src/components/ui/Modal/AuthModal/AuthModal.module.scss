@@ -1,8 +1,10 @@
 .content {
-  @apply px-10 py-7;
+  padding: 2rem 2.5rem;
   background: var(--bg-color);
 
   .buttons {
-    @apply mt-5 flex gap-5;
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
   }
 }

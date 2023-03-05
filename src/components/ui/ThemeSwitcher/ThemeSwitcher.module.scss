@@ -1,5 +1,12 @@
 .switcher {
-  @apply w-12 h-12 rounded-full transition-colors flex items-center justify-center cursor-pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   &:hover {
     background: var(--active-bg-color);

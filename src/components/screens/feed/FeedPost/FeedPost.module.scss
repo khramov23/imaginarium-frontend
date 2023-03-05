@@ -1,25 +1,26 @@
 .post {
-  @apply rounded-xl py-5 mt-10;
+  padding: 1.25rem 0;
+  margin-top: 2.5rem;
+  border-radius: var(--round-lg);
   border: 3px solid var(--active-bg-color);
   background: var(--secondary-bg-color);
 
   .author {
-    @apply ml-5
+    margin-left: 1.25rem;
   }
 
   .date {
-    @apply ml-5 mb-3 mt-2;
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
   }
 
   .img {
-    @apply cursor-pointer;
-
-    img {
-      @apply w-full;
-    }
+    cursor: pointer;
   }
 
   .buttons {
-    @apply ml-5 mt-5;
+    margin-left: 1.25rem;
+    margin-top: 1.25rem;
   }
 }

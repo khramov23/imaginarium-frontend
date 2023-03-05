@@ -1,5 +1,7 @@
 .box {
-  @apply px-12 py-6 rounded-xl z-10;
+  padding: 1.5rem 3rem;
+  border-radius: var(--round-lg);
+  z-index: 10;
   background: rgba(white, 0.95);
   width: 420px;
 
@@ -8,15 +10,32 @@
   }
 
   .title {
-    @apply text-center mb-5 mt-3;
+    text-align: center;
+    margin-top: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .input {
+    width: 100%;
+    margin-bottom: 1.25rem;
   }
 
   .alert {
-    @apply mb-5;
+    margin-bottom: 1.25rem;
   }
 
   .link {
-    @apply ml-2;
+    margin-left: 0.5rem;
     color: var(--primary-color);
+  }
+
+  .button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .register {
+    margin-top: 1.25rem;
+    font-size: 1.25rem;
   }
 }

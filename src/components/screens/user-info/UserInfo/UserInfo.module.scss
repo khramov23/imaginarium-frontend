@@ -1,16 +1,21 @@
 .userInfo {
-  @apply flex items-center gap-32 mt-10;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+  margin-top: 2.5rem;
 
   .infoBlock {
-    @apply text-center flex flex-col;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 
     .button {
-      @apply mt-4;
+      margin-top: 1rem;
     }
   }
 
   .friendName {
-    @apply text-xl mb-2;
+    font-size: 1.25rem;
     color: var(--text-secondary-color);
   }
 }

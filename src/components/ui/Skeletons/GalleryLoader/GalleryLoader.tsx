@@ -8,20 +8,20 @@ const GalleryLoader = () => {
 	return (
 		<div className={styles.gallery}>
 			<div className={styles.col}>
-				<Skeleton className="w-full mb-5" style={{ height: 500 }} />
-				<Skeleton className="w-full mb-5" style={{ height: 500 }} />
+				<Skeleton className={styles.image} style={{ height: 500 }} />
+				<Skeleton className={styles.image} style={{ height: 500 }} />
 			</div>
 			<div className={styles.col}>
-				<Skeleton className="w-full mb-5" style={{ height: 400 }} />
-				<Skeleton className="w-full mb-5" style={{ height: 600 }} />
+				<Skeleton className={styles.image} style={{ height: 400 }} />
+				<Skeleton className={styles.image} style={{ height: 600 }} />
 			</div>
 			<div className={styles.col}>
-				<Skeleton className="w-full mb-5" style={{ height: 600 }} />
-				<Skeleton className="w-full mb-5" style={{ height: 400 }} />
+				<Skeleton className={styles.image} style={{ height: 600 }} />
+				<Skeleton className={styles.image} style={{ height: 400 }} />
 			</div>
 			<div className={styles.col}>
-				<Skeleton className="w-full mb-5" style={{ height: 450 }} />
-				<Skeleton className="w-full mb-5" style={{ height: 550 }} />
+				<Skeleton className={styles.image} style={{ height: 450 }} />
+				<Skeleton className={styles.image} style={{ height: 550 }} />
 			</div>
 		</div>
 	)

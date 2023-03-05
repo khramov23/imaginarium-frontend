@@ -56,10 +56,12 @@ const Feed: FC<FeedProps> = ({ pages, fetchNextPage }) => {
 					/>
 				</div>
 			) : (
-				<Title className={styles.title}>There is no posts! Follow other users and check their images</Title>
+				<Title className={styles.title}>
+					There is no posts! Follow other users and check their images
+				</Title>
 			)}
 
-			<div ref={lastElement} className="h-20"></div>
+			<div ref={lastElement} className="lastElement"></div>
 		</>
 	)
 }

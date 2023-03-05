@@ -55,7 +55,6 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 					onClick={() => like(image._id)}
 					loading={isLoading}
 				>
-					{/*Like {image.likes}*/}
 					Like {image.likes}
 				</Button>
 			</div>

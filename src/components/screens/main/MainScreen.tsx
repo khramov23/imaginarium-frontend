@@ -14,7 +14,7 @@ const MainScreen = () => {
 				<h1 className={styles.title}>Imaginarium</h1>
 				<h2 className={styles.subtitle}>Find and download the best photos, designs, and mockups</h2>
 				<Link to={RoutePaths.GALLERY}>
-					<Button className="mx-auto">Search Images</Button>
+					<Button className={styles.button}>Search Images</Button>
 				</Link>
 			</div>
 		</div>

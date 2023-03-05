@@ -10,12 +10,7 @@ interface FileUploaderProps {
 	text?: string
 }
 
-const FileUploader: FC<FileUploaderProps> = ({
-	setFile,
-	onChange,
-	className,
-	text = 'Load image',
-}) => {
+const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange, className, text = 'Load image' }) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	const onButtonClick = () => {
@@ -31,13 +26,7 @@ const FileUploader: FC<FileUploaderProps> = ({
 
 	return (
 		<>
-			<input
-				onChange={onInputChange}
-				ref={inputRef}
-				type="file"
-				accept="image/*"
-				className="hidden"
-			/>
+			<input onChange={onInputChange} hidden ref={inputRef} type="file" accept="image/*" />
 			<Button className={className} onClick={onButtonClick}>
 				{text}
 			</Button>

@@ -1,10 +1,17 @@
 .skeleton {
-  @apply inline-block relative overflow-hidden rounded-xl;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: var(--round-lg);
   background: var(--active-bg-color);
 
   &:after {
     content: '';
-    @apply absolute top-0 right-0 left-0 bottom-0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     transform: translateX(-100%);
     background-image: linear-gradient(
                     90deg,

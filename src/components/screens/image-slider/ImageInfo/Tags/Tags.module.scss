@@ -1,15 +1,24 @@
 .tags {
-  @apply flex gap-5 mt-5;
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
 
   .tagsTitle {
-    @apply text-2xl;
+    font-size: 1.5rem;
   }
 
   .tagList {
-    @apply flex gap-2 items-center flex-wrap;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
 
     .tag {
-      @apply block px-5 py-1 rounded-full transition-colors cursor-pointer;
+      display: block;
+      padding: 0.25rem 1.25rem;
+      border-radius: var(--round-lg);
+      transition: background var(--transition);
+      cursor: pointer;
       background: var(--active-bg-color);
       color: var(--text-secondary-color);
 

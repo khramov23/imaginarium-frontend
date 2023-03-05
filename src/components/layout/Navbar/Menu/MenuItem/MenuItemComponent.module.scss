@@ -1,0 +1,13 @@
+.navlink {
+  padding: 0.25rem;
+  border-bottom: 2px solid transparent;
+  font-size: 1.25rem;
+  transition: border-bottom-color var(--transition);
+  &:hover {
+    border-color: var(--primary-color);
+  }
+}
+
+.active {
+  border-color: var(--primary-color);
+}

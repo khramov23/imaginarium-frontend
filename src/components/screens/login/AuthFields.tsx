@@ -7,6 +7,8 @@ import FormInput from '@/components/ui/FormInput/FormInput'
 
 import { emailPattern } from '@/utils/emailPattern'
 
+import styles from './LoginScreen.module.scss'
+
 export interface AuthFieldsProps {
 	errors: FieldErrors<LoginInputs>
 	register: UseFormRegister<any>
@@ -17,7 +19,8 @@ const AuthFields: FC<AuthFieldsProps> = ({ errors, register }) => {
 		<>
 			{errors.email && <Alert text={errors.email.message!} small />}
 			<FormInput
-				className="w-full mb-5"
+				className={styles.input}
+				autoFocus
 				placeholder="E-mail..."
 				{...register('email', {
 					required: 'Email is required',
@@ -30,7 +33,7 @@ const AuthFields: FC<AuthFieldsProps> = ({ errors, register }) => {
 
 			{errors.password && <Alert text={errors.password.message!} small />}
 			<FormInput
-				className="w-full mb-5"
+				className={styles.input}
 				placeholder="Password..."
 				type="password"
 				{...register('password', {

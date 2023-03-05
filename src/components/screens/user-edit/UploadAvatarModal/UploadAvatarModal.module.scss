@@ -1,5 +1,5 @@
 .box {
-  @apply flex;
+  display: flex;
   background: var(--bg-color);
 
   .leftPart > img {
@@ -9,14 +9,20 @@
   }
 
   .leftPart, .rightPart {
-    @apply relative;
+    position: relative;
   }
 
   .rightPart {
-    @apply flex flex-col items-center justify-center gap-5 p-10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2.5rem;
 
     .imgPreview {
-      @apply rounded-full overflow-hidden;
+      overflow: hidden;
+      border-radius: 50%;
       width: 240px;
       height: 240px;
     }

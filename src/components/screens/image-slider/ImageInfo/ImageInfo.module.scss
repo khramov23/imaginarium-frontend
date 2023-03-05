@@ -1,13 +1,17 @@
 .info {
-  @apply relative px-10 py-10;
+  position: relative;
+  padding: 2.5rem;
   background: var(--bg-color);
   width: 450px;
 
   .username {
-    @apply mt-4;
+    margin-top: 1rem;
   }
 
   .buttons {
-    @apply absolute flex gap-5 bottom-10;
+    position: absolute;
+    display: flex;
+    gap: 1.25rem;
+    bottom: 2.5rem;
   }
 }

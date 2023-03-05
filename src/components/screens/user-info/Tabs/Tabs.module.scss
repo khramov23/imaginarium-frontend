@@ -1,20 +1,28 @@
 .tabs {
-  @apply flex items-center justify-around text-2xl mt-10 ;
-
-  :global(.dark) & {
-    @apply text-white;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
 
   .tab {
-    @apply border-b-4 border-transparent hover:border-primary cursor-pointer pb-2 px-10 transition-colors;
+    border-bottom: 0.25rem solid transparent;
+    cursor: pointer;
+    padding-bottom: 0.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    transition: border-bottom-color var(--transition);
+    &:hover {
+      border-color: var(--primary-color);
+    }
   }
 
   .active {
-    @apply border-primary;
+    border-color: var(--primary-color)
   }
 
 }
 
 .area {
-  @apply mt-5;
+  margin-top: 1.25rem;
 }

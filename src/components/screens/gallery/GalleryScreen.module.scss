@@ -1,23 +1,28 @@
 .gallery {
-  @apply py-10;
+  padding: 2.5rem 0;
 
   .title {
-    @apply mb-7;
+    margin-bottom: 1.75rem;
   }
 
   .select {
-    @apply my-5;
+    margin: 1.25rem 0;
   }
 
   .search {
-    @apply mb-10;
+    margin-bottom: 2.5rem;
   }
 
   .colors {
-    @apply flex items-center gap-10 mb-14 ;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
 
     .color {
-      @apply relative rounded-xl cursor-pointer;
+      position: relative;
+      border-radius: var(--round-lg);
+      cursor: pointer;
     }
 
   }

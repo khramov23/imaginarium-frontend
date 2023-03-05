@@ -6,8 +6,7 @@ import Logo from '@/components/ui/Logo/Logo'
 
 import styles from './Footer.module.scss'
 
-interface FooterProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 const Footer: FC<FooterProps> = ({ className, ...rest }) => {
 	return (
@@ -16,7 +15,7 @@ const Footer: FC<FooterProps> = ({ className, ...rest }) => {
 				<Logo />
 			</div>
 
-			<div className={styles.copyright}>Copyright by khramov 2022</div>
+			<div className={styles.copyright}>&copy; khramov, 2022</div>
 			<Social />
 		</div>
 	)

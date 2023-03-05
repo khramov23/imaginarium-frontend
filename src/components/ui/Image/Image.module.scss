@@ -1,17 +1,30 @@
 .outer {
-  @apply block relative mb-5 cursor-pointer;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
 
   .background {
-    @apply absolute top-0 right-0 bottom-0 left-0 opacity-0 transition-opacity;
-    background: rgba(var(--inveted-bg-color), 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity var(--transition);
+    background: rgba(var(--inveted-bg-color), 0.2);
   }
 
   &:hover .background {
-    @apply opacity-100;
+    opacity: 1;
   }
 
   .icons {
-    @apply absolute top-2 right-2 px-3 py-2 text-xl;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.25rem;
     background: var(--bg-color);
     color: var(--inveted-bg-color);
   }

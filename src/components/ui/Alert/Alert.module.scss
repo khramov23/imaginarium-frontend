@@ -1,5 +1,6 @@
 .alert {
-  @apply w-full px-5 py-2 text-xl;
+  width: 100%;
+  padding: 0.5rem 1.25rem;
   border: 3px solid var(--primary-color);
   background: var(--primary-thin-color);
   color: var(--primary-color)

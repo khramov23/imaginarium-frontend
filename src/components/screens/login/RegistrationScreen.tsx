@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { IRegistration } from '@/types/api/auth.types'
 import { ApiError } from '@/types/api/axios.types'
@@ -22,6 +22,8 @@ export interface RegistrationInputs extends IRegistration {
 }
 
 const RegistrationScreen = () => {
+	const navigate = useNavigate()
+
 	const {
 		register,
 		handleSubmit,
@@ -35,6 +37,7 @@ const RegistrationScreen = () => {
 		else
 			await authStore
 				.registration(data)
+				.then(() => navigate(RoutePaths.GALLERY))
 				.catch((error: ApiError) => setError(error.response.data.message))
 	}
 
@@ -43,13 +46,13 @@ const RegistrationScreen = () => {
 			<form action="" onSubmit={handleSubmit(onSubmit)} onChange={() => setError('')}>
 				<Title className={styles.title}>Registration</Title>
 
-				{error && <Alert text={error} className="mb-4" />}
+				{error && <Alert text={error} className={styles.alert} />}
 				<RegistrationFields register={register} errors={errors} />
 
-				<Button className="block ml-auto mr-auto" loading={authStore.isLoading}>
+				<Button className={styles.button} loading={authStore.isLoading}>
 					Registration
 				</Button>
-				<div className="mt-5 text-xl">
+				<div className={styles.register}>
 					Already have an account?
 					<Link to={RoutePaths.LOGIN} className={styles.link}>
 						Login!

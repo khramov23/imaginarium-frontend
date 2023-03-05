@@ -33,11 +33,7 @@ const colors: ColorNames[] = [
 const GalleryScreen = () => {
 	const debouncedQuery = useDebounce(filterStore.query, 500)
 
-	const {
-		data: lazyImages,
-		isLoading,
-		fetchNextPage,
-	} = useSearchedImages(debouncedQuery)
+	const { data: lazyImages, isLoading, fetchNextPage } = useSearchedImages(debouncedQuery)
 
 	return (
 		<div className={styles.gallery}>
@@ -52,11 +48,7 @@ const GalleryScreen = () => {
 					className={styles.select}
 				/>
 				{filterStore.param === 'color' ? (
-					<ColorList
-						colors={colors}
-						value={filterStore.color}
-						setColor={filterStore.setColor.bind(filterStore)}
-					/>
+					<ColorList colors={colors} setColor={filterStore.setColor.bind(filterStore)} />
 				) : (
 					<SearchInput
 						className={styles.search}
@@ -67,10 +59,7 @@ const GalleryScreen = () => {
 				{isLoading ? (
 					<GalleryLoader />
 				) : lazyImages?.pages?.length && lazyImages.pages[0].length ? (
-					<Gallery
-						pages={lazyImages?.pages}
-						fetchNextPage={fetchNextPage}
-					/>
+					<Gallery pages={lazyImages?.pages} fetchNextPage={fetchNextPage} />
 				) : (
 					<Title>No images with this {filterStore.param}</Title>
 				)}

@@ -1,20 +1,30 @@
 .outer {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 
   .content {
-    @apply relative h-full flex justify-center items-center;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-size: 10% !important;
 
     &:before {
       content: '';
-      @apply absolute top-0 bottom-0 left-0 right-0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
   }
 }
 
 .layout {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
 
   .content {
@@ -24,5 +34,7 @@
 }
 
 .center {
-  @apply flex items-center justify-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

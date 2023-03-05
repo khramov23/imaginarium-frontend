@@ -1,28 +1,26 @@
+import cls from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+
+import { RoutePaths } from '@/router/router.types'
 
 import logoDark from '@/assets/logo-dark.png'
 import logoLight from '@/assets/logo-light.png'
 
 import themeStore from '@/store/theme.store'
 
+import styles from './Logo.module.scss'
+
 interface LogoProps {
 	className?: string
-	switchMode?: boolean
 }
 
-const Logo: FC<LogoProps> = ({ className, switchMode = false }) => {
-	const currentTheme = switchMode ? !themeStore.theme : themeStore.theme
-
+const Logo: FC<LogoProps> = ({ className }) => {
 	return (
-		<div className={`w-12 ${className}`}>
-			<Link to={'/'} className="block">
-				<img
-					className="w-full"
-					src={currentTheme === 'light' ? logoLight : logoDark}
-					alt="imaginarium"
-				/>
+		<div className={styles.logo}>
+			<Link to={RoutePaths.MAIN} className={cls(styles.link, className)}>
+				<img src={themeStore.theme === 'light' ? logoLight : logoDark} alt="imaginarium" />
 			</Link>
 		</div>
 	)

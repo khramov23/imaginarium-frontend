@@ -1,36 +1,52 @@
 .main {
   padding: 350px 0;
-  background: url("../../../assets/main-bg.jpg");
-  @apply relative bg-cover bg-fixed flex items-center justify-center;
+  background-image: url("../../../assets/main-bg.jpg");
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:before {
     content: "";
-    @apply absolute top-0 bottom-0 left-0 right-0 opacity-10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.1;
     background: var(--bg-color);
 
     :global(.dark) & {
-      @apply opacity-50;
+      opacity: 0.5;
     }
   }
 
   .info {
     z-index: 1;
     text-align: center;
-    @apply px-10 py-5;
+    padding: 1.25rem 2.5rem;
     background: rgba(white, 0.8);
     :global(.dark) & {
       background: rgba(black, 0.5);
     }
 
     .title {
-      @apply text-7xl font-bold mb-7;
-
+      font-size: 4rem;
+      font-family: 'DockerOne', serif;
+      letter-spacing: 5px;
     }
 
     .subtitle {
-      @apply text-2xl mb-5;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
       color: var(--text-secondary-color);
     }
+  }
+
+  .button {
+    margin: 0 auto;
   }
 }
 

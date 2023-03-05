@@ -1,9 +1,20 @@
 .button {
-  @apply relative px-10 py-2 text-xl rounded-md transition-colors flex items-center justify-center gap-2;
+  position: relative;
+  padding: 0.5rem 2rem;
+  font-size: 1.25rem;
+  transition: all var(--transition);
+  border-radius: var(--round-sm);
 }
 
 .loaderOuter {
-  @apply absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .outline {
@@ -21,6 +32,7 @@
   border-width: 2px;
   border-style: solid;
   border-color: var(--primary-color);
+  color: white;
 
   &:hover {
     background: var(--primary-dark-color);

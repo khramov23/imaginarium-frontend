@@ -1,21 +1,30 @@
 .post {
-  @apply w-1/3 mx-auto rounded-xl py-5 mt-10;
+  width: 33%;
+  margin: 2.5rem auto 0;
+  padding: 1.25rem 0;
   border: 2px solid var(--active-bg-color);
 
   .author {
-    @apply ml-5;
+    margin-left: 1.25rem;
   }
 
   .date {
-    @apply ml-5 mb-3 mt-2 w-40 h-4;
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+    width: 10rem;
+    height: 1rem;
   }
 
   .image {
-    @apply mt-5 w-full rounded-none;
-    height: 600px;
+    margin-top: 1.25rem;
+    width: 100%;
+    border-radius: 0;
+    height: 500px;
   }
 
   .button {
-    @apply ml-5 mt-5
+    margin-left: 1.25rem;
+    margin-top: 1.25rem;
   }
 }
