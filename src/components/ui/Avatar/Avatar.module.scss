@@ -17,6 +17,10 @@
 .box.xs {
   width: 2.5rem;
   height: 2.5rem;
+  @media (max-width: 1500px) {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
 }
 
 .box.sm {

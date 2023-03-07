@@ -3,7 +3,14 @@
   border-radius: var(--round-lg);
   z-index: 10;
   background: rgba(white, 0.95);
-  width: 420px;
+  width: 28rem;
+  @media (max-width: 992px) {
+    width: 35rem;
+  }
+  @media (max-width: 576px) {
+    width: 100%;
+    height: 100%;
+  }
 
   :global(.dark) & {
     background: rgba(black, 0.8);

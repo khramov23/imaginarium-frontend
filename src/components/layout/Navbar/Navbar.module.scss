@@ -39,4 +39,18 @@
     padding: 0 1rem;
     gap: 1rem;
   }
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+
+.logoName {
+  font-family: 'DockerOne', serif;
+  letter-spacing: 0.5rem;
+  font-size: 1.5rem;
+  @media (max-width: 350px) {
+    font-size: 1.3rem;
+  }
 }

@@ -21,3 +21,28 @@
     }
   }
 }
+
+@media (max-width: 1500px) {
+  .box {
+    .title {
+      font-size: 1.25rem;
+    }
+    .colors {
+      .color {
+        padding: 0.125rem 1rem;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 576px) {
+
+}

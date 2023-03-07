@@ -10,15 +10,16 @@ import styles from './ThemeSwitcher.module.scss'
 
 interface ThemeSwitcherInterface {
 	className?: string
+	big?: boolean
 }
 
-const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ className }) => {
+const ThemeSwitcher: FC<ThemeSwitcherInterface> = ({ className, big = false }) => {
 	const switchThemeHandler = () => {
 		themeStore.toggleTheme()
 	}
 
 	return (
-		<div className={cls(styles.switcher, className)} onClick={switchThemeHandler}>
+		<div className={cls(styles.switcher, className, { [styles.big]: big })} onClick={switchThemeHandler}>
 			<MaterialIcon name={themeStore.theme === 'light' ? 'MdLightMode' : 'MdDarkMode'} />
 		</div>
 	)

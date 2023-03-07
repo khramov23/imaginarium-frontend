@@ -1,0 +1,40 @@
+.burger {
+  position: relative;
+  width: 3rem;
+  height: 2rem;
+
+  .layer {
+    position: absolute;
+    width: 3rem;
+    height: 4px;
+    background: var(--text-color);
+    transition: all var(--transition);
+  }
+
+  .top {
+    top: 0;
+  }
+
+  .center {
+    top: calc(50% - 2px);
+  }
+
+  .bottom {
+    bottom: 0;
+  }
+}
+
+.active {
+  z-index: 12;
+  .top {
+    top: calc(50% - 2px);
+    transform: rotate(45deg);
+  }
+  .center {
+    opacity: 0;
+  }
+  .bottom {
+    top: calc(50% - 2px);
+    transform: rotate(135deg);
+  }
+}

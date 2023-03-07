@@ -1,7 +1,7 @@
 import cls from 'classnames'
 import { runInAction } from 'mobx'
 import { observer } from 'mobx-react-lite'
-import React, { Dispatch, FC } from 'react'
+import React, { Dispatch, FC, useMemo, useState } from 'react'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 
@@ -10,6 +10,9 @@ import { IImage } from '@/types/api/image.types'
 import ImageInfo from '@/components/screens/image-slider/ImageInfo/ImageInfo'
 import { Position } from '@/components/ui/Gallery/Gallery.types'
 import Modal from '@/components/ui/Modal/Modal'
+import { Sidebar } from '@/components/ui/Sidebar/Sidebar'
+
+import { useMatchMedia } from '@/hooks/useMatchMedia'
 
 import filterStore from '@/store/filter.store'
 import modalStore from '@/store/modal.store'
@@ -25,12 +28,22 @@ interface ImageSliderProps {
 	) => Promise<InfiniteQueryObserverResult<IImage[], unknown>>
 }
 
-const ImageSlider: FC<ImageSliderProps> = ({
-	pages,
-	position,
-	setPosition,
-	fetchNextPage,
-}) => {
+const ImageSlider: FC<ImageSliderProps> = ({ pages, position, setPosition, fetchNextPage }) => {
+	const { xs, sm, lg, xl, xxl } = useMatchMedia()
+
+	const [isSidebarOpened, setIsSidebarOpened] = useState(false)
+
+	const onSidebarToggle = () => {
+		setIsSidebarOpened((prev) => !prev)
+	}
+
+	const onSidebarClose = () => {
+		setIsSidebarOpened(false)
+	}
+
+	const isSidebarShown = useMemo(() => xs || sm, [xs, sm])
+	const isArrowsShown = useMemo(() => lg || xl || xxl, [lg, xl, xxl])
+
 	const incrementNumber = async () => {
 		if (position.number === filterStore.limit - 1) {
 			if (position.page === pages.length - 1) {
@@ -73,35 +86,45 @@ const ImageSlider: FC<ImageSliderProps> = ({
 
 	if (!pages[position.page][position.number]) {
 		runInAction(onModalClose)
-		document.body.style.overflow = 'unset'
+		document.body.style.overflowY = 'unset'
 		return null
 	}
 
 	const img = pages[position.page][position.number]
 
 	return (
-		<Modal onClose={onModalClose} visible={modalStore.imageSliderModal}>
-			<div className={styles.box}>
-				<img
-					src={`${process.env.REACT_APP_API_URL}/images/${img.src}`}
-					alt={img.title}
-					onClick={incrementNumber}
-				/>
-				<ImageInfo image={img} />
-				<div
-					className={cls(styles.arrow, styles.prev)}
-					onClick={decrementNumber}
-				>
-					<FaArrowLeft />
+		<>
+			<Modal onClose={onModalClose} visible={modalStore.imageSliderModal}>
+				<div className={styles.box} onClick={() => console.log('click')}>
+					<div className={styles.imgOuter}>
+						<img
+							src={`${process.env.REACT_APP_API_URL}/images/${img.src}`}
+							alt={img.title}
+							onClick={incrementNumber}
+							className={styles.img}
+						/>
+						<div className={styles.imgOuterLeft} onClick={decrementNumber}></div>
+						<div className={styles.imgOuterRight} onClick={incrementNumber}></div>
+					</div>
+					{!isSidebarShown && <ImageInfo image={img} />}
+					{isSidebarShown && modalStore.imageSliderModal && (
+						<Sidebar isOpen={isSidebarOpened} onToggle={onSidebarToggle} onClose={onSidebarClose}>
+							<ImageInfo image={img} />
+						</Sidebar>
+					)}
+					{isArrowsShown && (
+						<>
+							<div className={cls(styles.arrow, styles.prev)} onClick={decrementNumber}>
+								<FaArrowLeft />
+							</div>
+							<div className={cls(styles.arrow, styles.next)} onClick={incrementNumber}>
+								<FaArrowRight />
+							</div>
+						</>
+					)}
 				</div>
-				<div
-					className={cls(styles.arrow, styles.next)}
-					onClick={incrementNumber}
-				>
-					<FaArrowRight />
-				</div>
-			</div>
-		</Modal>
+			</Modal>
+		</>
 	)
 }
 

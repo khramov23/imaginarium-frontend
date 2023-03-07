@@ -37,7 +37,7 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 
 	return (
 		<div className={styles.info}>
-			<Title>{capitalizedText(image.title)}</Title>
+			<Title className={styles.title}>{capitalizedText(image.title)}</Title>
 			<div className={styles.username}>
 				{isUserLoading ? (
 					<AuthorLoader />

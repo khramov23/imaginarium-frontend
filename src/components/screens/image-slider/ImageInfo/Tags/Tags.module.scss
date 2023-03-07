@@ -5,6 +5,9 @@
 
   .tagsTitle {
     font-size: 1.5rem;
+    @media (max-width: 1500px) {
+      font-size: 1.25rem;
+    }
   }
 
   .tagList {
@@ -21,6 +24,9 @@
       cursor: pointer;
       background: var(--active-bg-color);
       color: var(--text-secondary-color);
+      @media (max-width: 1500px) {
+        padding: 0.25rem 1rem;
+      }
 
       &:hover {
         background: var(--secondary-bg-color);

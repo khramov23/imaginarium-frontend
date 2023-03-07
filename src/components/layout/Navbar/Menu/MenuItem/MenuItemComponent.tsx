@@ -14,7 +14,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ item }) => {
 	const activeClass = cls(styles.navlink, styles.active)
 
 	return (
-		<li>
+		<li className={styles.li}>
 			<NavLink to={item.link} className={({ isActive }) => (isActive ? activeClass : styles.navlink)}>
 				{item.value}
 			</NavLink>

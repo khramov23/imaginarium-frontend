@@ -1,11 +1,47 @@
 .box {
   display: flex;
 
-  > img {
+  .imgOuter {
+    position: relative;
+  }
+
+  .imgOuterLeft, .imgOuterRight {
+    position: absolute;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+  }
+
+  .imgOuterLeft {
+    left: 0;
+  }
+
+  .imgOuterRight {
+    right: 0;
+  }
+
+  .img {
     display: flex;
-    min-height: 50vh;
     max-height: 80vh;
     max-width: 60vw;
+
+    @media (max-width: 1500px) {
+      max-height: 80vh;
+      max-width: 50vw;
+    }
+    @media (max-width: 1200px) {
+
+    }
+    @media (max-width: 992px) {
+
+    }
+    @media (max-width: 768px) {
+      max-height: 90vh;
+      max-width: 90vw;
+    }
+    @media (max-width: 576px) {
+
+    }
   }
 
   .arrow {

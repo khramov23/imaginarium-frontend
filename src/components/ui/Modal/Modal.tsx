@@ -12,7 +12,7 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ onClose, children, visible }) => {
 	useEffect(() => {
-		document.body.style.overflow = visible ? 'hidden' : 'unset'
+		document.body.style.overflowY = visible ? 'hidden' : 'unset'
 	}, [visible])
 
 	if (!visible) {

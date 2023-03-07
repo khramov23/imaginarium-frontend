@@ -1,12 +1,14 @@
 import cls from 'classnames'
 import { autorun } from 'mobx'
 import { observer } from 'mobx-react-lite'
-import { ChangeEvent, DetailedHTMLProps, FC, HTMLAttributes, useMemo } from 'react'
+import { ChangeEvent, DetailedHTMLProps, FC, HTMLAttributes, useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
+import BurgerMenu from '@/components/layout/Navbar/BurgerMenu/BurgerMenu'
 import Menu from '@/components/layout/Navbar/Menu/Menu'
 import { MenuItem } from '@/components/layout/Navbar/Menu/Menu.types'
 import Avatar from '@/components/ui/Avatar/Avatar'
+import Burger from '@/components/ui/Burger/Burger'
 import Button from '@/components/ui/Button/Button'
 import Logo from '@/components/ui/Logo/Logo'
 import SearchInput from '@/components/ui/SearchInput/SearchInput'
@@ -34,6 +36,16 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 	const { lg, xl, xxl, xs } = useMatchMedia()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
+
+	const [isBurgerActive, setIsBurgerActive] = useState(false)
+
+	const onBurgerToggle = () => {
+		setIsBurgerActive((prev) => !prev)
+	}
+
+	const onBurgerClose = () => {
+		setIsBurgerActive(false)
+	}
 
 	const isSearchInputShown = useMemo(() => xl || xxl || lg, [xl, xxl, lg])
 
@@ -65,21 +77,35 @@ const Navbar: FC<NavbarInterface> = ({ className, ...rest }) => {
 				</form>
 			)}
 			{!xs && <Menu items={items} />}
-			<div className={styles.rightPart}>
-				<ThemeSwitcher />
-				{authStore.isAuth ? (
-					<>
-						<Link to={`${RoutePaths.USERS}/${authStore.user._id}`}>
-							<Avatar user={authStore.user} />
+			{xs && <h2 className={styles.logoName}>imaginarium</h2>}
+			{!xs && (
+				<div className={styles.rightPart}>
+					<ThemeSwitcher />
+					{authStore.isAuth ? (
+						<>
+							<Link to={`${RoutePaths.USERS}/${authStore.user._id}`}>
+								<Avatar user={authStore.user} />
+							</Link>
+							<Button onClick={logoutHandler}>Logout</Button>
+						</>
+					) : (
+						<Link to={RoutePaths.LOGIN}>
+							<Button>Login</Button>
 						</Link>
-						<Button onClick={logoutHandler}>Logout</Button>
-					</>
-				) : (
-					<Link to={RoutePaths.LOGIN}>
-						<Button>Login</Button>
-					</Link>
-				)}
-			</div>
+					)}
+				</div>
+			)}
+			{xs && (
+				<>
+					<Burger isActive={isBurgerActive} onToggle={onBurgerToggle} />
+					<BurgerMenu
+						onBurgerToggle={onBurgerToggle}
+						isBurgerActive={isBurgerActive}
+						onBurgerClose={onBurgerClose}
+						items={items}
+					/>
+				</>
+			)}
 		</div>
 	)
 }
