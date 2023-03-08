@@ -1,6 +1,8 @@
-import React, { FC, MouseEventHandler, ReactNode, useEffect } from 'react'
+import React, { FC, MouseEventHandler, ReactNode } from 'react'
 
 import Portal from '@/components/ui/Portal/Portal'
+
+import { useScrollBlock } from '@/hooks/useScrollBlock'
 
 import styles from './Modal.module.scss'
 
@@ -11,9 +13,7 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ onClose, children, visible }) => {
-	useEffect(() => {
-		document.body.style.overflowY = visible ? 'hidden' : 'unset'
-	}, [visible])
+	useScrollBlock(visible)
 
 	if (!visible) {
 		return null

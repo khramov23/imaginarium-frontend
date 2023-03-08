@@ -12,6 +12,7 @@ import Button from '@/components/ui/Button/Button'
 import Title from '@/components/ui/Title/Title'
 
 import { useSubscribeMutation } from '@/hooks/mutations/useSubscribeMutation'
+import { useMatchMedia } from '@/hooks/useMatchMedia'
 
 import authStore from '@/store/auth.store'
 import modalStore from '@/store/modal.store'
@@ -23,6 +24,7 @@ interface UserInfoProps {
 }
 
 const UserInfo: FC<UserInfoProps> = ({ user }) => {
+	const { xs } = useMatchMedia()
 	const { subscribe, isLoading } = useSubscribeMutation()
 	const [file, setFile] = useState<File | null>(null)
 
@@ -75,14 +77,18 @@ const UserInfo: FC<UserInfoProps> = ({ user }) => {
 							)
 						)}
 					</div>
-					<div className={styles.infoBlock}>
-						<Title className={styles.friendsCount}>{user.followers.length}</Title>{' '}
-						<span className={styles.friendName}>followers</span>
-					</div>
-					<div className={styles.infoBlock}>
-						<Title className={styles.friendsCount}>{user.subscriptions.length}</Title>{' '}
-						<span className={styles.friendName}>subscriptions</span>
-					</div>
+					{!xs && (
+						<>
+							<div className={styles.infoBlock}>
+								<Title className={styles.friendsCount}>{user.followers.length}</Title>{' '}
+								<span className={styles.friendName}>followers</span>
+							</div>
+							<div className={styles.infoBlock}>
+								<Title className={styles.friendsCount}>{user.subscriptions.length}</Title>{' '}
+								<span className={styles.friendName}>subscriptions</span>
+							</div>
+						</>
+					)}
 				</>
 			)}
 		</div>

@@ -4,6 +4,9 @@
   justify-content: space-around;
   font-size: 1.5rem;
   margin-top: 2.5rem;
+  @media (max-width: 576px) {
+    flex-wrap: wrap;
+  }
 
   .tab {
     border-bottom: 0.25rem solid transparent;
@@ -24,7 +27,9 @@
       padding-right: 1rem;
     }
     @media (max-width: 576px) {
-
+      margin-bottom: 1rem;
+      flex-basis: 49%;
+      text-align: center;
     }
   }
 

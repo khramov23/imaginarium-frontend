@@ -3,6 +3,21 @@
   margin: 2.5rem auto 0;
   padding: 1.25rem 0;
   border: 2px solid var(--active-bg-color);
+  @media (max-width: 1500px) {
+    width: 40%;
+  }
+  @media (max-width: 1200px) {
+    width: 50%;
+  }
+  @media (max-width: 992px) {
+    width: 60%;
+  }
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+  @media (max-width: 576px) {
+    width: 90%;
+  }
 
   .author {
     margin-left: 1.25rem;
@@ -21,6 +36,9 @@
     width: 100%;
     border-radius: 0;
     height: 500px;
+    @media (max-width: 576px) {
+      height: 350px;
+    }
   }
 
   .button {

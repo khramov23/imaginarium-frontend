@@ -3,6 +3,8 @@ import React, { FC, MouseEventHandler, ReactNode } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
+import { useScrollBlock } from '@/hooks/useScrollBlock'
+
 import styles from './Sidebar.module.scss'
 
 type Mode = 'bottom' | 'right'
@@ -18,6 +20,7 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = (props) => {
 	const { isOpen, onClose, onToggle, children, mode = 'bottom', widthArrow = true } = props
+	useScrollBlock(isOpen)
 
 	return (
 		<>

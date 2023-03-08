@@ -8,7 +8,6 @@
   transition: background var(--transition);
   border: 3px solid var(--active-bg-color);
   background: var(--secondary-bg-color);
-  flex: 0 0 32%;
 
   &:hover {
     background: rgba(var(--inveted-bg-color), 0.1);

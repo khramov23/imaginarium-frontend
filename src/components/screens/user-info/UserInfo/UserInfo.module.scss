@@ -10,7 +10,7 @@
     gap: 3rem;
   }
   @media (max-width: 576px) {
-    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .infoBlock {

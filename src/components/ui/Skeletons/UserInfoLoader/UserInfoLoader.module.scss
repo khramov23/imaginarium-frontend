@@ -3,11 +3,14 @@
   align-items: center;
   gap: 8rem;
   margin-top: 2.5rem;
-
-  .avatar {
-    width: 18rem;
-    height: 18rem;
-    border-radius: 100%;
+  @media (max-width: 1200px) {
+    gap: 5rem;
+  }
+  @media (max-width: 768px) {
+    gap: 3rem;
+  }
+  @media (max-width: 576px) {
+    justify-content: center;
   }
 
   .infoBlock {
