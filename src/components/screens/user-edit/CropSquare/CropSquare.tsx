@@ -11,22 +11,16 @@ interface CropSquareProps {
 	setSize: (value: number) => void
 }
 
-const CropSquare: FC<CropSquareProps> = ({
-	imgRef,
-	setTop,
-	setLeft,
-	setSize,
-}) => {
+const CropSquare: FC<CropSquareProps> = ({ imgRef, setTop, setLeft, setSize }) => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null)
-	const {
-		width,
-		height,
-		onMouseUp,
-		onMouseDown,
-		onMouseMove,
-		size,
-		onSquareResize,
-	} = useAvatarCropper({ canvasRef, imgRef, setTop, setLeft, setSize })
+	const { width, height, onMouseUp, onMouseDown, onMouseMove, size, onSquareResize, onTouch } =
+		useAvatarCropper({
+			canvasRef,
+			imgRef,
+			setTop,
+			setLeft,
+			setSize,
+		})
 
 	return (
 		<>
@@ -38,6 +32,9 @@ const CropSquare: FC<CropSquareProps> = ({
 				onMouseDown={onMouseDown}
 				onMouseUp={onMouseUp}
 				onMouseMove={onMouseMove}
+				onTouchStart={onMouseDown}
+				onTouchEnd={onMouseDown}
+				onTouchMove={onTouch}
 			></canvas>
 
 			<input

@@ -1,9 +1,6 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { MouseEvent, TouchEvent, useEffect, useRef, useState } from 'react'
 
-import {
-	Selection,
-	UseAvatarCropperArgs,
-} from '@/components/screens/user-edit/CropSquare/CropSquare.types'
+import { Selection, UseAvatarCropperArgs } from '@/components/screens/user-edit/CropSquare/CropSquare.types'
 
 export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 	const { canvasRef, imgRef, setTop, setLeft, setSize } = args
@@ -15,33 +12,15 @@ export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 		mouseDown: false,
 		left: 0,
 		top: 0,
-		size:
-			Math.min(
-				imgRef.current!.clientWidth,
-				imgRef.current!.clientHeight
-			) / 2,
+		size: Math.min(imgRef.current!.clientWidth, imgRef.current!.clientHeight) / 2,
 	})
-
-	useEffect(() => {
-		if (canvasRef.current) {
-			ctx.current = canvasRef.current.getContext('2d')!
-		}
-		setSize(selection.size / width)
-		setLeft(selection.left / width)
-		setTop(selection.top / height)
-	}, [])
 
 	const drawSelection = () => {
 		if (ctx.current && canvasRef.current) {
 			ctx.current.fillStyle = 'rgba(50, 0, 0, 0.7)'
 			ctx.current.clearRect(0, 0, width, height)
 			ctx.current.fillRect(0, 0, width, height)
-			ctx.current.clearRect(
-				selection.left,
-				selection.top,
-				selection.size,
-				selection.size
-			)
+			ctx.current.clearRect(selection.left, selection.top, selection.size, selection.size)
 			ctx.current.beginPath()
 			ctx.current.arc(
 				selection.left + selection.size / 2,
@@ -87,8 +66,7 @@ export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 
 	const checkLeftRight = (left: number) => {
 		if (left < 0) return 0
-		if (left > canvasRef.current!.width - selection.size)
-			return canvasRef.current!.width - selection.size
+		if (left > canvasRef.current!.width - selection.size) return canvasRef.current!.width - selection.size
 		return left
 	}
 
@@ -114,6 +92,31 @@ export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 		}
 	}
 
+	const onTouch = (e: TouchEvent) => {
+		if (selection.mouseDown && canvasRef.current) {
+			if (e.touches.length > 1) {
+				onTouchScale(e)
+			} else {
+				onTouchMove(e)
+			}
+		}
+	}
+
+	const onTouchMove = (e: TouchEvent) => {
+		const rect = canvasRef.current!.getBoundingClientRect()
+		const x = e.touches[0].clientX - rect.left
+		const y = e.touches[0].clientY - rect.top
+		setSelection({
+			...selection,
+			left: checkLeftRight(x - selection.size / 2),
+			top: checkTopBottom(y - selection.size / 2),
+		})
+		setLeft(selection.left / width)
+		setTop(selection.top / height)
+	}
+
+	const onTouchScale = (e: TouchEvent) => {}
+
 	const onSquareResize = (size: number) => {
 		const delta = size - selection.size
 		let left = selection.left
@@ -125,6 +128,15 @@ export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 		setLeft(left / width)
 		setTop(top / height)
 	}
+
+	useEffect(() => {
+		if (canvasRef.current) {
+			ctx.current = canvasRef.current.getContext('2d')!
+		}
+		setSize(selection.size / width)
+		setLeft(selection.left / width)
+		setTop(selection.top / height)
+	}, [])
 
 	useEffect(() => {
 		updateCanvasSize()
@@ -144,6 +156,7 @@ export const useAvatarCropper = (args: UseAvatarCropperArgs) => {
 		onMouseDown,
 		onMouseMove,
 		onMouseUp,
+		onTouch,
 		width,
 		height,
 		size: selection.size,

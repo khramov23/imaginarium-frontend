@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import CropSquare from '@/components/screens/user-edit/CropSquare/CropSquare'
 import Button from '@/components/ui/Button/Button'
@@ -7,6 +7,7 @@ import Modal from '@/components/ui/Modal/Modal'
 import Title from '@/components/ui/Title/Title'
 
 import { useAvatarMutation } from '@/hooks/mutations/useAvatarMutation'
+import { useMatchMedia } from '@/hooks/useMatchMedia'
 
 import modalStore from '@/store/modal.store'
 
@@ -17,6 +18,10 @@ interface UploadAvatarModalProps {
 }
 
 const UploadAvatarModal: FC<UploadAvatarModalProps> = ({ file }) => {
+	console.log(file)
+	const { xs, sm } = useMatchMedia()
+	const isRightPartShown = useMemo(() => !(xs || sm), [xs, sm])
+
 	const { upload, isLoading, isSuccess } = useAvatarMutation()
 
 	const imgRef = useRef<HTMLImageElement>(null)
@@ -54,32 +59,31 @@ const UploadAvatarModal: FC<UploadAvatarModalProps> = ({ file }) => {
 						onLoad={() => setImgLoaded(true)}
 					/>
 					{imgLoaded && imgRef.current && (
-						<CropSquare
-							imgRef={imgRef}
-							setLeft={setLeft}
-							setTop={setTop}
-							setSize={setSize}
-						/>
+						<CropSquare imgRef={imgRef} setLeft={setLeft} setTop={setTop} setSize={setSize} />
 					)}
 				</div>
-				<div className={styles.rightPart}>
-					<Title>Your avatar</Title>
-					<div className={styles.imgPreview}>
-						<img
-							src={URL.createObjectURL(file)}
-							alt={'your avatar'}
-							style={{
-								width: `${100 / size}%`,
-								transform: `translate(-${100 * left}%, -${
-									100 * top
-								}%)`,
-							}}
-						/>
+				{isRightPartShown ? (
+					<div className={styles.rightPart}>
+						<Title>Your avatar</Title>
+						<div className={styles.imgPreview}>
+							<img
+								src={URL.createObjectURL(file)}
+								alt={'your avatar'}
+								style={{
+									width: `${100 / size}%`,
+									transform: `translate(-${100 * left}%, -${100 * top}%)`,
+								}}
+							/>
+						</div>
+						<Button loading={isLoading} onClick={onUpload}>
+							Ok
+						</Button>
 					</div>
+				) : (
 					<Button loading={isLoading} onClick={onUpload}>
 						Ok
 					</Button>
-				</div>
+				)}
 			</div>
 		</Modal>
 	)
