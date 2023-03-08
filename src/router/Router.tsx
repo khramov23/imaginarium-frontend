@@ -8,7 +8,7 @@ import { privateRoutes, publicRoutes } from '@/router/routes'
 
 import authStore from '@/store/auth.store'
 
-import Error404Page from '@/pages/Error404Page'
+import LoginPage from '@/pages/LoginPage'
 
 const Router = () => {
 	const routes = authStore.isAuth ? privateRoutes : publicRoutes
@@ -21,7 +21,7 @@ const Router = () => {
 						<Route element={<route.element />} path={route.path} key={route.path} />
 					))}
 
-					<Route element={<Error404Page />} path={'*'} />
+					<Route element={<LoginPage />} path={'*'} />
 				</Routes>
 			</Suspense>
 		</BrowserRouter>

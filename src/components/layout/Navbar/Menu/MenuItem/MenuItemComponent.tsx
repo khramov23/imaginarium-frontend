@@ -8,13 +8,14 @@ import styles from './MenuItemComponent.module.scss'
 
 interface MenuItemProps {
 	item: MenuItem
+	onMenuItemChoose?: () => void
 }
 
-const MenuItemComponent: FC<MenuItemProps> = ({ item }) => {
+const MenuItemComponent: FC<MenuItemProps> = ({ item, onMenuItemChoose }) => {
 	const activeClass = cls(styles.navlink, styles.active)
 
 	return (
-		<li className={styles.li}>
+		<li className={styles.li} onClick={() => onMenuItemChoose?.()}>
 			<NavLink to={item.link} className={({ isActive }) => (isActive ? activeClass : styles.navlink)}>
 				{item.value}
 			</NavLink>

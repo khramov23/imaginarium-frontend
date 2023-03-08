@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Menu from '@/components/layout/Navbar/Menu/Menu'
 import { MenuItem } from '@/components/layout/Navbar/Menu/Menu.types'
@@ -22,8 +23,14 @@ interface BurgerMenuProps {
 
 const BurgerMenu: FC<BurgerMenuProps> = (props) => {
 	const { onBurgerToggle, onBurgerClose, isBurgerActive, items } = props
+	const navigate = useNavigate()
 
 	const mobileItems = [...items, { link: `${RoutePaths.USERS}/${authStore.user._id}`, value: 'Profile' }]
+
+	const logoutHandler = () => {
+		authStore.logout()
+		navigate(RoutePaths.GALLERY)
+	}
 
 	return (
 		<Sidebar
@@ -34,10 +41,12 @@ const BurgerMenu: FC<BurgerMenuProps> = (props) => {
 			widthArrow={false}
 		>
 			<div className={styles.burgerMenu}>
-				<Menu items={mobileItems} />
+				<Menu items={mobileItems} onMenuItemChoose={onBurgerClose} />
 				<div className={styles.bottom}>
 					<ThemeSwitcher big />
-					<Button className={styles.button}>Logout</Button>
+					<Button className={styles.button} onClick={logoutHandler}>
+						Logout
+					</Button>
 				</div>
 			</div>
 		</Sidebar>
