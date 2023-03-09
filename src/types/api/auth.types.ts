@@ -1,11 +1,4 @@
-import { IRole } from '@/types/api/role.types'
 import { IUser } from '@/types/api/user.types'
-
-export interface InfoFromToken {
-	_id: string
-	role: IRole
-	isActivated: boolean
-}
 
 export interface ITokens {
 	accessToken: string

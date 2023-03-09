@@ -28,3 +28,10 @@
     color: var(--text-secondary-color);
   }
 }
+
+.adminSection {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}

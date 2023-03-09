@@ -66,6 +66,7 @@ class AuthStore {
 			this.setIsLoading(false)
 			this.setAuth(true)
 			this.setUser(response.data.user)
+			notificationStore.success('Successfully registered')
 		} catch (e) {
 			this.setIsLoading(false)
 			throw e
@@ -77,6 +78,7 @@ class AuthStore {
 		localStorage.setItem('imaginarium-token', '')
 		this.setAuth(false)
 		this.setUser({} as IUser)
+		notificationStore.success('Successfully logged out')
 	}
 
 	async checkAuth() {

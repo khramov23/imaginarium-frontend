@@ -23,7 +23,7 @@ const Select: FC<SelectProps> = ({ options, param, setParam, className }) => {
 
 	return (
 		<div ref={ref} className={cls(styles.select, className)} onClick={toggleActive}>
-			<div className={cls(styles.value, active && styles.activeValue)}>By {param}</div>
+			<div className={cls(styles.value, active && styles.activeValue)}>{param}</div>
 			{active && (
 				<div className={cls(styles.options)}>
 					{options.map((option) => (

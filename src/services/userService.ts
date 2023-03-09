@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios'
 
 import { IUser } from '@/types/api/user.types'
 
+import { ChangeRoleArgs } from '@/hooks/mutations/useChangeRoleMutation'
 import { UpdatePasswordArgs } from '@/hooks/mutations/useUpdatePasswordMutation'
 
 import { $authApi } from '@/http'
@@ -44,9 +45,11 @@ export class UserService {
 		return response
 	}
 
-	static async updatePassword(
-		data: UpdatePasswordArgs
-	): Promise<AxiosResponse<IUser>> {
+	static async updatePassword(data: UpdatePasswordArgs): Promise<AxiosResponse<IUser>> {
 		return await $authApi.post<IUser>('/users/update-password', data)
+	}
+
+	static async changeRole(data: ChangeRoleArgs): Promise<AxiosResponse<IUser>> {
+		return await $authApi.post<IUser>(`/users/give-role/${data.id}`, { roleValue: data.role })
 	}
 }

@@ -25,16 +25,16 @@ class NotificationStore {
 		this.notices.shift()
 	}
 
-	success(text: string, duration?: number) {
-		this.notice({ title: 'Success', text, type: 'success', duration })
+	success(text: string, title?: string, duration?: number) {
+		this.notice({ text, title, type: 'success', duration })
 	}
 
-	error(text: string, duration?: number) {
-		this.notice({ title: 'Error', text, type: 'error', duration })
+	error(text: string, title?: string, duration?: number) {
+		this.notice({ text, title, type: 'error', duration })
 	}
 
-	warning(text: string, duration?: number) {
-		this.notice({ title: 'Warning', text, type: 'warning', duration })
+	warning(text: string, title?: string, duration?: number) {
+		this.notice({ text, title, type: 'warning', duration })
 	}
 }
 

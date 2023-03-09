@@ -7,7 +7,6 @@ export enum RoutePaths {
 	GALLERY = '/gallery',
 	UPLOAD = '/upload',
 	USER_INFO = '/users/:id',
-	USER_EDIT = '/users/edit',
 }
 
 export interface Route {

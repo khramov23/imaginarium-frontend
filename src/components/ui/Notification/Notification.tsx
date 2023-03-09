@@ -43,7 +43,7 @@ const Notification = () => {
 						className={cls(styles.notice, styles[notice.type])}
 						{...noticeAnimation}
 					>
-						<h2 className={styles.title}>{notice.title}</h2>
+						{notice.title && <h2 className={styles.title}>{notice.title}</h2>}
 						<p className={styles.text}>{notice.text}</p>
 						<motion.div
 							className={styles.duration}
