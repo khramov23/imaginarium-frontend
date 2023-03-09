@@ -15,6 +15,7 @@ const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange, className, tex
 
 	const onButtonClick = () => {
 		if (inputRef.current) inputRef.current.click()
+		console.log('clicked')
 	}
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +28,7 @@ const FileUploader: FC<FileUploaderProps> = ({ setFile, onChange, className, tex
 	return (
 		<>
 			<input onChange={onInputChange} hidden ref={inputRef} type="file" accept="image/*" />
-			<Button className={className} onClick={onButtonClick}>
+			<Button type={'button'} className={className} onClick={onButtonClick}>
 				{text}
 			</Button>
 		</>

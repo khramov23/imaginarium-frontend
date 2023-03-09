@@ -8,6 +8,8 @@ import { getRefreshEndpoint } from '@/http/api.paths'
 import { AuthService } from '@/services/authService'
 import { UserService } from '@/services/userService'
 
+import notificationStore from '@/store/notification.store'
+
 import { $api } from '@/http'
 
 class AuthStore {
@@ -49,6 +51,7 @@ class AuthStore {
 			this.setIsLoading(false)
 			this.setAuth(true)
 			this.setUser(response.data.user)
+			notificationStore.success('Successfully logged in')
 		} catch (e) {
 			this.setIsLoading(false)
 			throw e

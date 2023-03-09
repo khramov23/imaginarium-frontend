@@ -27,9 +27,13 @@ const BurgerMenu: FC<BurgerMenuProps> = (props) => {
 
 	const mobileItems = [...items, { link: `${RoutePaths.USERS}/${authStore.user._id}`, value: 'Profile' }]
 
-	const logoutHandler = () => {
-		authStore.logout()
+	const logoutHandler = async () => {
+		await authStore.logout()
 		navigate(RoutePaths.GALLERY)
+	}
+
+	const loginHandler = () => {
+		navigate(RoutePaths.LOGIN)
 	}
 
 	return (
@@ -44,9 +48,15 @@ const BurgerMenu: FC<BurgerMenuProps> = (props) => {
 				<Menu items={mobileItems} onMenuItemChoose={onBurgerClose} />
 				<div className={styles.bottom}>
 					<ThemeSwitcher big />
-					<Button className={styles.button} onClick={logoutHandler}>
-						Logout
-					</Button>
+					{authStore.isAuth ? (
+						<Button className={styles.button} onClick={logoutHandler}>
+							Logout
+						</Button>
+					) : (
+						<Button className={styles.button} onClick={loginHandler}>
+							Login
+						</Button>
+					)}
 				</div>
 			</div>
 		</Sidebar>
