@@ -6,8 +6,12 @@
   --cyan-color: rgba(38, 208, 187,1);
   --yellow-color: rgba(226, 226, 68, 1);
   --pink-color: rgba(217, 80, 217, 1);
-  --green-color: rgba(38, 174, 38, 1);
+  --green-color: rgba(0, 255, 0, 1);
   --blue-color: rgba(41, 41, 208, 1);
+
+  --success-color: #2ecc71;
+  --error-color: var(--primary-color);
+  --warning-color: #f1c40f;
 
   --transition-duration: 150ms;
   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

@@ -1,0 +1,45 @@
+.notices {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  width: 30rem;
+  gap: 1rem;
+}
+
+.notice {
+  overflow: hidden;
+  border-radius: var(--round-lg);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.success {
+  background-color: var(--success-color);
+}
+
+.warning {
+  background-color: var(--warning-color);
+}
+
+.error {
+  background-color: var(--error-color);
+}
+
+.title {
+  font-weight: bold;
+  padding: 0 1rem;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.text {
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.duration {
+  width: 100%;
+  height: 0.7rem;
+  background-color: rgba(white, 0.6)
+}

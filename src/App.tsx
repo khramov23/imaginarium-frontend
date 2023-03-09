@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+import Notification from '@/components/ui/Notification/Notification'
+
 import Router from '@/router/Router'
 
 import authStore from '@/store/auth.store'
@@ -12,7 +14,12 @@ function App() {
 		}
 	}, [])
 
-	return <Router />
+	return (
+		<>
+			<Router />
+			<Notification />
+		</>
+	)
 }
 
 export default App
