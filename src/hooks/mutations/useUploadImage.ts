@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 
+import { ApiError } from '@/types/api/axios.types'
+
 import { RoutePaths } from '@/router/router.types'
 
 import { ImageService } from '@/services/imageService'
@@ -22,6 +24,9 @@ export const useUploadImage = () => {
 				})
 				notificationStore.success('Image successfully uploaded')
 				navigate(`${RoutePaths.USERS}/${authStore.user._id}`)
+			},
+			onError: (error: ApiError) => {
+				notificationStore.error(error.response.data.message)
 			},
 		}
 	)

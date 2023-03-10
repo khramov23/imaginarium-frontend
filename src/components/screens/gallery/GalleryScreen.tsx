@@ -38,9 +38,7 @@ const GalleryScreen = () => {
 	return (
 		<div className={styles.gallery}>
 			<div className="container">
-				<Title onClick={() => fetchNextPage()} className={styles.title}>
-					Gallery
-				</Title>
+				<Title className={styles.title}>Gallery</Title>
 				<Select
 					param={filterStore.param}
 					options={optionValues}

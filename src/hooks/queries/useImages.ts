@@ -1,6 +1,10 @@
 import { useInfiniteQuery } from 'react-query'
 
+import { ApiError } from '@/types/api/axios.types'
+
 import { ImageService } from '@/services/imageService'
+
+import notificationStore from '@/store/notification.store'
 
 type ImageType = 'own' | 'favorites'
 
@@ -16,6 +20,9 @@ export const useImages = (type: ImageType, userId: string) => {
 				return allPages.length
 			},
 			enabled: false,
+			onError: (error: ApiError) => {
+				notificationStore.error(error.response.data.message)
+			},
 		}
 	)
 }

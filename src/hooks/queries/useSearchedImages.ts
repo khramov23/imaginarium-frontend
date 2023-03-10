@@ -1,8 +1,11 @@
 import { useInfiniteQuery } from 'react-query'
 
+import { ApiError } from '@/types/api/axios.types'
+
 import { ImageService } from '@/services/imageService'
 
 import filterStore from '@/store/filter.store'
+import notificationStore from '@/store/notification.store'
 
 export const useSearchedImages = (query: string) => {
 	return useInfiniteQuery(
@@ -20,6 +23,9 @@ export const useSearchedImages = (query: string) => {
 			getNextPageParam: (lastPage, allPages) => {
 				if (lastPage.length === 0) return undefined
 				return allPages.length
+			},
+			onError: (error: ApiError) => {
+				notificationStore.error(error.response.data.message)
 			},
 		}
 	)

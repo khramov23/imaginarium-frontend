@@ -1,5 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
+import { ApiError } from '@/types/api/axios.types'
+
 import { UserService } from '@/services/userService'
 
 import authStore from '@/store/auth.store'
@@ -18,6 +20,9 @@ export const useAvatarMutation = () => {
 				})
 				authStore.checkAuth()
 				notificationStore.success('Avatar uploaded successfully')
+			},
+			onError: (error: ApiError) => {
+				notificationStore.error(error.response.data.message)
 			},
 		}
 	)

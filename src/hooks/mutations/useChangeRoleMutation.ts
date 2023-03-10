@@ -1,5 +1,7 @@
 import { useMutation } from 'react-query'
 
+import { ApiError } from '@/types/api/axios.types'
+
 import { UserService } from '@/services/userService'
 
 import notificationStore from '@/store/notification.store'
@@ -16,6 +18,9 @@ export const useChangeRoleMutation = (username: string) => {
 		{
 			onSuccess: () => {
 				notificationStore.success(`User "${username}" got a new role`)
+			},
+			onError: (error: ApiError) => {
+				notificationStore.error(error.response.data.message)
 			},
 		}
 	)
