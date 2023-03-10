@@ -25,6 +25,10 @@ class NotificationStore {
 		this.notices.shift()
 	}
 
+	removeById(id: number) {
+		this.notices = this.notices.filter((notice) => notice.id !== id)
+	}
+
 	success(text: string, title?: string, duration?: number) {
 		this.notice({ text, title, type: 'success', duration })
 	}

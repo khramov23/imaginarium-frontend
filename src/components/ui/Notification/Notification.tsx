@@ -34,12 +34,17 @@ const noticeAnimation: MotionProps = {
 }
 
 const Notification = () => {
+	const removeNotice = (id: number) => {
+		notificationStore.removeById(id)
+	}
+
 	return (
 		<div className={styles.notices}>
 			<AnimatePresence>
 				{notificationStore.notices.map((notice) => (
 					<motion.div
 						key={notice.id}
+						onClick={() => removeNotice(notice.id!)}
 						className={cls(styles.notice, styles[notice.type])}
 						{...noticeAnimation}
 					>
