@@ -11,19 +11,14 @@ import { $api, $authApi } from '@/http'
 
 export class ImageService {
 	static async getAll(page: number) {
-		return $api.get<IImage[]>(
-			`/images?limit=${filterStore.limit}&page=${page}`
-		)
+		return $api.get<IImage[]>(`/images?limit=${filterStore.limit}&page=${page}`)
 	}
 
 	static async getById(id: string): Promise<AxiosResponse<IImage>> {
 		return $authApi.get<IImage>(`/images/by-id/${id}`)
 	}
 
-	static async getByAttribute(
-		filter: ImageSearchFilter,
-		page: number
-	): Promise<AxiosResponse<IImage[]>> {
+	static async getByAttribute(filter: ImageSearchFilter, page: number): Promise<AxiosResponse<IImage[]>> {
 		const { param, color } = filter
 		let query = filter.query
 		let response: AxiosResponse<IImage[]>
@@ -54,29 +49,17 @@ export class ImageService {
 		return response.data
 	}
 
-	static async getFavorites(
-		userId: string,
-		page: number
-	): Promise<AxiosResponse<IImage[]>> {
-		return $authApi.get<IImage[]>(
-			`/images/favorites/${userId}?limit=${filterStore.limit}&page=${page}`
-		)
+	static async getFavorites(userId: string, page: number): Promise<AxiosResponse<IImage[]>> {
+		return $authApi.get<IImage[]>(`/images/favorites/${userId}?limit=${filterStore.limit}&page=${page}`)
 	}
 
-	static async getOwn(
-		userId: string,
-		page: number
-	): Promise<AxiosResponse<IImage[]>> {
-		return $authApi.get<IImage[]>(
-			`/images/own/${userId}?limit=${filterStore.limit}&page=${page}`
-		)
+	static async getOwn(userId: string, page: number): Promise<AxiosResponse<IImage[]>> {
+		return $authApi.get<IImage[]>(`/images/own/${userId}?limit=${filterStore.limit}&page=${page}`)
 	}
 
 	static async getFeed(page: number): Promise<AxiosResponse<IImage[]>> {
 		console.log('getFeed')
-		return $authApi.get<IImage[]>(
-			`/images/feed?limit=${filterStore.limit}&page=${page}`
-		)
+		return $authApi.get<IImage[]>(`/images/feed?limit=${filterStore.limit}&page=${page}`)
 	}
 
 	static async like(id: string): Promise<AxiosResponse<IImage>> {
@@ -85,5 +68,9 @@ export class ImageService {
 
 	static async upload(formData: FormData): Promise<AxiosResponse<IImage>> {
 		return $authApi.post<IImage>(`/images`, formData)
+	}
+
+	static async delete(id: string): Promise<AxiosResponse<IImage>> {
+		return $authApi.delete<IImage>(`/images/${id}`)
 	}
 }

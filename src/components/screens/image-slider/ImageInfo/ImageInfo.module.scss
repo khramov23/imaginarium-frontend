@@ -44,3 +44,18 @@
     padding-left: 2rem;
   }
 }
+
+.adminContent {
+  background: var(--bg-color);
+  padding: 2rem;
+}
+
+.modalButtons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  button {
+    flex-basis: 45%;
+  }
+}

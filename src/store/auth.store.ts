@@ -35,7 +35,7 @@ class AuthStore {
 
 	async updateMe() {
 		try {
-			const response = await UserService.fetchUserById(this.user._id)
+			const response = await UserService.fetchUserInfoById(this.user._id)
 			this.setUser(response.data)
 		} catch (e: any) {
 			console.log(e.response?.data)
@@ -46,7 +46,6 @@ class AuthStore {
 		this.setIsLoading(true)
 		try {
 			const response = await AuthService.login(loginDto)
-			console.log(response)
 			localStorage.setItem('imaginarium-token', response.data.accessToken)
 			this.setIsLoading(false)
 			this.setAuth(true)

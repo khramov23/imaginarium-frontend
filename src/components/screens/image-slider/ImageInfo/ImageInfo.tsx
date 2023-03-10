@@ -2,8 +2,10 @@ import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 
 import { IImage } from '@/types/api/image.types'
+import { IRole } from '@/types/api/user.types'
 
 import ColorPercentage from '@/components/screens/image-slider/ImageInfo/ColorPercentage/ColorPercentage'
+import ImageInfoAdmin from '@/components/screens/image-slider/ImageInfo/ImageInfoAdmin'
 import Tags from '@/components/screens/image-slider/ImageInfo/Tags/Tags'
 import Author from '@/components/ui/Author/Author'
 import Button from '@/components/ui/Button/Button'
@@ -24,11 +26,14 @@ interface ImageInfoProps {
 	image: IImage
 }
 
+const deleteRoles: IRole[] = ['admin', 'manager']
+
 const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 	const { data: user, isLoading: isUserLoading } = useUserInfo(image.author)
 
-	const { like, isLoading } = useLikes()
+	const { like, isLoading: isLikeLoading } = useLikes()
 
+	const canDelete = deleteRoles.includes(authStore.user.role)
 	const liked = authStore.isAuth && authStore.user.favorites.includes(image._id)
 
 	const onAuthorClick = () => {
@@ -53,10 +58,11 @@ const ImageInfo: FC<ImageInfoProps> = ({ image }) => {
 				<Button
 					theme={liked ? 'fill' : 'outline'}
 					onClick={() => like(image._id)}
-					loading={isLoading}
+					loading={isLikeLoading}
 				>
 					Like {image.likes}
 				</Button>
+				{canDelete && <ImageInfoAdmin image={image} />}
 			</div>
 		</div>
 	)
